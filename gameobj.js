@@ -5,26 +5,27 @@ const GAME = {
 
   createGame(p1, p2,) {
     const pole = document.createElement("div");
-    pole.className = "pole";
+    pole.className = "field";
     pole.style.cssText = `width: 600px;
                         display: flex;
                         flex-wrap: wrap;
                         margin: 0 auto;
                         margin-top: 10%;`
-
     document.body.append(pole);
-    
-    let i = 1;
-    while (i < 26) {
+
+    for (let i = 1; i < 26; i++) {
       let kletka = document.createElement("div");
-      kletka.className = "kletka";
+      kletka.className = "empty-cage"; 
+      kletka.id = `kletka${i}`;
       kletka.style.cssText = `position: relative;
                               border: 3px solid #fff;
                               width: 120px;
                               height: 120px;`
       pole.append(kletka);
+      this.pole.push(kletka);
       if (i === 2 || i === 4) {
         let triangleLookDown = document.createElement("span");
+        triangleLookDown.className = "triangle-look-down";
         triangleLookDown.style.cssText =` position: absolute;
                                           top: 50%;
                                           left: 50%;
@@ -35,8 +36,11 @@ const GAME = {
                                           border-right: 20px solid transparent;
                                           border-top: 40px solid rgb(255, 0, 0);`
         kletka.append(triangleLookDown);
+        kletka.className = "triangle-look-down-unit";
+        this.trianglePlayer2.push(triangleLookDown);
       } else if (i === 3) {
         let squareLookDown = document.createElement("span");
+        squareLookDown.className = "square-look-down";
         squareLookDown.style.cssText = `position: absolute;
                                         top: 50%;
                                         left: 50%;
@@ -45,9 +49,12 @@ const GAME = {
                                         background-color: rgb(255, 0, 0);
                                         width: 50px;
                                         height: 50px;`
-        kletka.append((squareLookDown));
+        kletka.append(squareLookDown);
+        kletka.className = "square-look-down-unit";
+        this.squarePlayer2.push(squareLookDown);
       } else if (i === 7 || i === 8 || i === 9) {
         let circleLookDown = document.createElement("span");
+        circleLookDown.className = "circle-look-down";
         circleLookDown.style.cssText = `position: absolute;
                                         top: 50%;
                                         left: 50%;
@@ -57,9 +64,12 @@ const GAME = {
                                         border-radius: 100%;
                                         width: 40px;
                                         height: 40px;`
-        kletka.append((circleLookDown));
+        kletka.append(circleLookDown);
+        kletka.className = "circle-look-down-unit";
+        this.circlePlayer2.push(circleLookDown);
       } else if (i === 22 || i === 24) {
         let triangleLookUp = document.createElement("span");
+        triangleLookUp.className = "triangle-look-up";
         triangleLookUp.style.cssText = `position: absolute;
                                         top: 50%;
                                         left: 50%;
@@ -70,8 +80,11 @@ const GAME = {
                                         border-right: 20px solid transparent;
                                         border-bottom: 40px solid rgb(0, 255, 0);`
         kletka.append(triangleLookUp);
+        kletka.className = "triangle-look-up-unit";
+        this.trianglePlayer1.push(triangleLookUp);
       } else if (i === 23) {
         let squareLookUp = document.createElement("span");
+        squareLookUp.className = "square-look-up";
         squareLookUp.style.cssText = `position: absolute;
                                         top: 50%;
                                         left: 50%;
@@ -80,9 +93,12 @@ const GAME = {
                                         background-color: rgb(0, 255, 0);
                                         width: 50px;
                                         height: 50px;`
-        kletka.append((squareLookUp));
+        kletka.append(squareLookUp);
+        kletka.className = "square-look-up-unit";
+        this.squarePlayer1.push(squareLookUp);
       } else if (i === 17 || i === 18 || i === 19) {
         let circleLookUp = document.createElement("span");
+        circleLookUp.className = "circle-look-up";
         circleLookUp.style.cssText = `position: absolute;
                                         top: 50%;
                                         left: 50%;
@@ -92,18 +108,92 @@ const GAME = {
                                         border-radius: 100%;
                                         width: 40px;
                                         height: 40px;`
-        kletka.append((circleLookUp));
+        kletka.append(circleLookUp);
+        kletka.className = "circle-look-up-unit";
+        this.circlePlayer1.push(circleLookUp);
       } 
-      i++;
     };
 
     return this;
   },
 
-  circle: `document.querySelectorAll(".circleLookDown")`,
-  // [this.circleLookDown, this.circleLookUp],
-}
 
+  pole: [],
+  trianglePlayer1: [],
+  trianglePlayer2: [],
+  squarePlayer1: [],
+  squarePlayer2: [],
+  circlePlayer1: [],
+  circlePlayer2: [],
+
+
+  selectUnit () {
+
+  },
+
+
+
+
+  showUnits(index) {
+    let request = +prompt(`Какие юниты показать?
+    0 - Треугольники игрока 1;
+    1 - Треугольники игрока 2;
+    2 - Квадраты игрока 1;
+    3 - Квадраты игрока 2;
+    4 - Курги игрока 1;
+    5 - Круги игрока 2.
+    6 - Показать в консоли`,);
+
+    if (request === 0) {
+      alert(this.trianglePlayer1);
+    } else if (request === 1) {
+      alert(this.trianglePlayer2);
+    } else if (request === 2) {
+      alert(this.squarePlayer1);
+    } else if (request === 3) {
+      alert(this.squarePlayer2);
+    } else if (request === 4) {
+      alert(this.circlePlayer1);
+    } else if (request === 5) {
+      alert(this.circlePlayer2);
+    } else if (request === 6) {
+      let unitsArr = [
+        this.trianglePlayer1,
+        this.trianglePlayer1,
+        this.trianglePlayer2,
+        this.squarePlayer1,
+        this.squarePlayer2,
+        this.circlePlayer1,
+        this.circlePlayer2,
+      ]
+      let enteringConsole = +prompt(`Какие юниты показать в консоли?
+      0 - Треугольники игрока 1;
+      1 - Треугольники игрока 2;
+      2 - Квадраты игрока 1;
+      3 - Квадраты игрока 2;
+      4 - Курги игрока 1;
+      5 - Круги игрока 2.
+      6 - Всех`,);
+      if (enteringConsole === 6) {
+        console.log(this.trianglePlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
+        console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
+        console.log(this.squarePlayer1); // Array [ span.square-look-up]
+        console.log(this.squarePlayer2); // Array [ span.square-look-down]
+        console.log(this.circlePlayer1); // Array(3) [ span.circle-look-up, span.circle-look-up, span.circle-look-up]
+        console.log(this.circlePlayer2); // Array(3) [ span.circle-look-down, span.circle-look-down, span.circle-look-down]
+      } else if (typeof enteringConsole === null) {
+        return
+      } else
+        console.log(unitsArr[enteringConsole]);
+
+    } else if (typeof request === null) {
+      return
+    } else {
+      alert("Ошибка ввода, попробуй ещё раз");
+      showUnits(index);
+    }
+  }
+}
 
 const startGameBTN = document.querySelector(".border-menu__item");
 
@@ -111,3 +201,18 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
 });
+
+showUnit.addEventListener("click", function () {
+  GAME.showUnits();
+});
+
+
+
+
+
+
+
+
+
+
+
