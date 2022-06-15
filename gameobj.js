@@ -1,124 +1,70 @@
 const GAME = {
 
-  player1: true,
-  player2: false,
-
   createGame(p1, p2,) {
-    const pole = document.createElement("div");
-    pole.className = "field";
-    pole.style.cssText = `width: 600px;
+    const field = document.createElement("div");
+    field.className = "field";
+    field.style.cssText = `width: 600px;
                         display: flex;
                         flex-wrap: wrap;
                         margin: 0 auto;
                         margin-top: 10%;`
-    document.body.append(pole);
+    document.body.append(field);
 
     for (let i = 1; i < 26; i++) {
-      let kletka = document.createElement("div");
-      kletka.className = "empty-cage"; 
-      kletka.id = `kletka${i}`;
-      kletka.style.cssText = `position: relative;
+      let cage = document.createElement("div");
+      cage.className = "cage empty-cage"; 
+      cage.id = `cage${i}`;
+      cage.style.cssText = `position: relative;
                               border: 3px solid #fff;
                               width: 120px;
                               height: 120px;`
-      pole.append(kletka);
-      this.pole.push(kletka);
+      field.append(cage);
+      this.field.push(cage);
       if (i === 2 || i === 4) {
         let triangleLookDown = document.createElement("span");
         triangleLookDown.className = "triangle-look-down";
-        triangleLookDown.style.cssText =` position: absolute;
-                                          top: 50%;
-                                          left: 50%;
-                                          transform: translate(-50%, -50%);
-                                          width: 0;
-                                          height: 0;
-                                          border-left: 20px solid transparent;
-                                          border-right: 20px solid transparent;
-                                          border-top: 40px solid rgb(255, 0, 0);`
-        kletka.append(triangleLookDown);
-        kletka.className = "triangle-look-down-unit";
+        cage.append(triangleLookDown);
+        cage.className = "cage triangle-look-down-unit";
         this.trianglePlayer2.push(triangleLookDown);
       } else if (i === 3) {
         let squareLookDown = document.createElement("span");
         squareLookDown.className = "square-look-down";
-        squareLookDown.style.cssText = `position: absolute;
-                                        top: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%, -50%);
-                                        border: 1px solid rgb(255, 0, 0);
-                                        background-color: rgb(255, 0, 0);
-                                        width: 50px;
-                                        height: 50px;`
-        kletka.append(squareLookDown);
-        kletka.className = "square-look-down-unit";
+        cage.append(squareLookDown);
+        cage.className = "cage square-look-down-unit";
         this.squarePlayer2.push(squareLookDown);
       } else if (i === 7 || i === 8 || i === 9) {
         let circleLookDown = document.createElement("span");
         circleLookDown.className = "circle-look-down";
-        circleLookDown.style.cssText = `position: absolute;
-                                        top: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%, -50%);
-                                        border: 1px solid rgb(255, 0, 0);
-                                        background-color: rgb(255, 0, 0);
-                                        border-radius: 100%;
-                                        width: 40px;
-                                        height: 40px;`
-        kletka.append(circleLookDown);
-        kletka.className = "circle-look-down-unit";
+        cage.append(circleLookDown);
+        cage.className = "cage circle-look-down-unit";
         this.circlePlayer2.push(circleLookDown);
       } else if (i === 22 || i === 24) {
         let triangleLookUp = document.createElement("span");
         triangleLookUp.className = "triangle-look-up";
-        triangleLookUp.style.cssText = `position: absolute;
-                                        top: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%, -50%);
-                                        width: 0;
-                                        height: 0;
-                                        border-left: 20px solid transparent;
-                                        border-right: 20px solid transparent;
-                                        border-bottom: 40px solid rgb(0, 255, 0);`
-        kletka.append(triangleLookUp);
-        kletka.className = "triangle-look-up-unit";
+        cage.append(triangleLookUp);
+        cage.className = "cage triangle-look-up-unit";
         this.trianglePlayer1.push(triangleLookUp);
       } else if (i === 23) {
         let squareLookUp = document.createElement("span");
         squareLookUp.className = "square-look-up";
-        squareLookUp.style.cssText = `position: absolute;
-                                        top: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%, -50%);
-                                        border: 1px solid rgb(0, 255, 0);
-                                        background-color: rgb(0, 255, 0);
-                                        width: 50px;
-                                        height: 50px;`
-        kletka.append(squareLookUp);
-        kletka.className = "square-look-up-unit";
+        cage.append(squareLookUp);
+        cage.className = "cage square-look-up-unit";
         this.squarePlayer1.push(squareLookUp);
       } else if (i === 17 || i === 18 || i === 19) {
         let circleLookUp = document.createElement("span");
         circleLookUp.className = "circle-look-up";
-        circleLookUp.style.cssText = `position: absolute;
-                                        top: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%, -50%);
-                                        border: 1px solid rgb(0, 255, 0);
-                                        background-color: rgb(0, 255, 0);
-                                        border-radius: 100%;
-                                        width: 40px;
-                                        height: 40px;`
-        kletka.append(circleLookUp);
-        kletka.className = "circle-look-up-unit";
+        cage.append(circleLookUp);
+        cage.className = "cage circle-look-up-unit";
         this.circlePlayer1.push(circleLookUp);
       } 
     };
-
     return this;
   },
 
+  player1: true,
+  player2: false,
 
-  pole: [],
+  field: [],
   trianglePlayer1: [],
   trianglePlayer2: [],
   squarePlayer1: [],
@@ -126,16 +72,53 @@ const GAME = {
   circlePlayer1: [],
   circlePlayer2: [],
 
-
   selectUnit () {
+    const cage = document.querySelectorAll(".cage");
 
+    /* TODO: make a separate method for active pressing
+      this.circlePlayer1[1].style.backgroundColor="rgb(0, 255, 0)" 
+      ↓↓↓↓↓↓↓↓↓↓
+    */
+
+    for (let i = 0; i < cage.length; i++) {
+      cage[i].addEventListener("click", (event) => {
+        if (cage[i].classList.contains("circle-look-up-unit")) {
+          if (this.field[i-4].innerHTML && this.field[i-5].innerHTML && this.field[i-6].innerHTML) {
+
+            this.field[i-4].innerHTML = "";
+            this.field[i-4].classList.remove("pre-move");
+
+            this.field[i-5].innerHTML = "";
+            this.field[i-5].classList.remove("pre-move");
+
+            this.field[i-6].innerHTML = "";
+            this.field[i-6].classList.remove("pre-move");
+
+          } else {
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            this.field[i-6].append(preMovePoint);}
+
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            this.field[i-5].append(preMovePoint);}
+
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            this.field[i-4].append(preMovePoint);}
+
+            this.field[i-6].classList.add("pre-move");
+            this.field[i-5].classList.add("pre-move");
+            this.field[i-4].classList.add("pre-move");
+
+          }
+        }
+      })
+    }
   },
 
-
-
-
-  showUnits(index) {
-    let request = +prompt(`Какие юниты показать?
+  showUnits() {
+    let request = prompt(`Какие юниты показать?
     0 - Треугольники игрока 1;
     1 - Треугольники игрока 2;
     2 - Квадраты игрока 1;
@@ -144,19 +127,19 @@ const GAME = {
     5 - Круги игрока 2.
     6 - Показать в консоли`,);
 
-    if (request === 0) {
+    if (+request === 0) {
       alert(this.trianglePlayer1);
-    } else if (request === 1) {
+    } else if (+request === 1) {
       alert(this.trianglePlayer2);
-    } else if (request === 2) {
+    } else if (+request === 2) {
       alert(this.squarePlayer1);
-    } else if (request === 3) {
+    } else if (+request === 3) {
       alert(this.squarePlayer2);
-    } else if (request === 4) {
+    } else if (+request === 4) {
       alert(this.circlePlayer1);
-    } else if (request === 5) {
+    } else if (+request === 5) {
       alert(this.circlePlayer2);
-    } else if (request === 6) {
+    } else if (+request === 6) {
       let unitsArr = [
         this.trianglePlayer1,
         this.trianglePlayer1,
@@ -166,7 +149,7 @@ const GAME = {
         this.circlePlayer1,
         this.circlePlayer2,
       ]
-      let enteringConsole = +prompt(`Какие юниты показать в консоли?
+      let enteringConsole = prompt(`Какие юниты показать в консоли?
       0 - Треугольники игрока 1;
       1 - Треугольники игрока 2;
       2 - Квадраты игрока 1;
@@ -174,7 +157,7 @@ const GAME = {
       4 - Курги игрока 1;
       5 - Круги игрока 2.
       6 - Всех`,);
-      if (enteringConsole === 6) {
+      if (+enteringConsole === 6) {
         console.log(this.trianglePlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
         console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
         console.log(this.squarePlayer1); // Array [ span.square-look-up]
@@ -190,7 +173,7 @@ const GAME = {
       return
     } else {
       alert("Ошибка ввода, попробуй ещё раз");
-      showUnits(index);
+      this.showUnits();
     }
   }
 }
@@ -200,11 +183,16 @@ const startGameBTN = document.querySelector(".border-menu__item");
 startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
+  setTimeout(() => GAME.selectUnit(), 500);
+  setTimeout(() => console.log(GAME.field), 800);
 });
 
 showUnit.addEventListener("click", function () {
   GAME.showUnits();
 });
+
+
+
 
 
 
