@@ -74,10 +74,44 @@ const GAME = {
 
   selectUnit () {
     const cage = document.querySelectorAll(".cage");
+
+    /* TODO: make a separate method for active pressing
+      this.circlePlayer1[1].style.backgroundColor="rgb(0, 255, 0)" 
+      ↓↓↓↓↓↓↓↓↓↓
+    */
+
     for (let i = 0; i < cage.length; i++) {
-      cage[i].addEventListener("click", () => {
+      cage[i].addEventListener("click", (event) => {
         if (cage[i].classList.contains("circle-look-up-unit")) {
-          alert("Contain");
+          if (this.field[i-4].innerHTML && this.field[i-5].innerHTML && this.field[i-6].innerHTML) {
+
+            this.field[i-4].innerHTML = "";
+            this.field[i-4].classList.remove("pre-move");
+
+            this.field[i-5].innerHTML = "";
+            this.field[i-5].classList.remove("pre-move");
+
+            this.field[i-6].innerHTML = "";
+            this.field[i-6].classList.remove("pre-move");
+
+          } else {
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            this.field[i-6].append(preMovePoint);}
+
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            this.field[i-5].append(preMovePoint);}
+
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            this.field[i-4].append(preMovePoint);}
+
+            this.field[i-6].classList.add("pre-move");
+            this.field[i-5].classList.add("pre-move");
+            this.field[i-4].classList.add("pre-move");
+
+          }
         }
       })
     }
@@ -150,6 +184,7 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
+  setTimeout(() => console.log(GAME.field), 800);
 });
 
 showUnit.addEventListener("click", function () {

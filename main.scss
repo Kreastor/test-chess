@@ -56,10 +56,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid rgb(0, 255, 0);
-  background-color: rgb(0, 255, 0);
+  // background-color: rgb(0, 255, 0);
   border-radius: 100%;
   width: 40px;
   height: 40px;
+  transition: 0.4s;
 }
 
 .square-look-up {
@@ -68,9 +69,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid rgb(0, 255, 0);
-  background-color: rgb(0, 255, 0);
+  // background-color: rgb(0, 255, 0);
   width: 50px;
   height: 50px;
+  transition: 0.4s;
 }
 
 .triangle-look-up {
@@ -83,6 +85,7 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-bottom: 40px solid rgb(0, 255, 0);
+  transition: 0.4s;
 }
 
 .circle-look-down {
@@ -91,10 +94,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid rgb(255, 0, 0);
-  background-color: rgb(255, 0, 0);
+  // background-color: rgb(255, 0, 0);
   border-radius: 100%;
   width: 40px;
   height: 40px;
+  transition: 0.4s;
 }
 
 .square-look-down {
@@ -103,9 +107,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid rgb(255, 0, 0);
-  background-color: rgb(255, 0, 0);
+  // background-color: rgb(255, 0, 0);
   width: 50px;
   height: 50px;
+  transition: 0.4s;
 }
 
 .triangle-look-down {
@@ -118,7 +123,27 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-top: 40px solid rgb(255, 0, 0);
+  transition: 0.4s;
 }
+
+
+.circle-look-up:active,
+.square-look-up:active {
+  background-color: rgb(0, 255, 0);
+  transform: translate(-50%, -75%);
+}
+.triangle-look-up:active {
+  transform: translate(-50%, -75%);
+}
+.circle-look-down:active,
+.square-look-down:active {
+  background-color: rgb(255, 0, 0);
+  transform: translate(-50%, -25%);
+}
+.triangle-look-down:active {
+  transform: translate(-50%, -25%);
+}
+
 
 #showUnit {
   position: fixed;
@@ -142,24 +167,14 @@
   box-shadow: 7px 6px 9px 7px aquamarine;
 }
 
-
-
-
-
-
-
-  /* .pole {
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 10%;
-  }
-
-  .kletka {
-    position: relative;
-    border: 3px solid #fff;
-    width: 120px;
-    height: 120px;
-  }
- */
+.pre-move-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(173, 173, 173);
+  background-color: rgb(173, 173, 173);
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}

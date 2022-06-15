@@ -72,10 +72,11 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 1px solid lime;
-  background-color: lime;
   border-radius: 100%;
   width: 40px;
   height: 40px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .square-look-up {
@@ -85,9 +86,10 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 1px solid lime;
-  background-color: lime;
   width: 50px;
   height: 50px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .triangle-look-up {
@@ -101,6 +103,8 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-bottom: 40px solid lime;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .circle-look-down {
@@ -110,10 +114,11 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 1px solid red;
-  background-color: red;
   border-radius: 100%;
   width: 40px;
   height: 40px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .square-look-down {
@@ -123,9 +128,10 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 1px solid red;
-  background-color: red;
   width: 50px;
   height: 50px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .triangle-look-down {
@@ -139,6 +145,32 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-top: 40px solid red;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.circle-look-up:active,
+.square-look-up:active {
+  background-color: lime;
+  -webkit-transform: translate(-50%, -75%);
+          transform: translate(-50%, -75%);
+}
+
+.triangle-look-up:active {
+  -webkit-transform: translate(-50%, -75%);
+          transform: translate(-50%, -75%);
+}
+
+.circle-look-down:active,
+.square-look-down:active {
+  background-color: red;
+  -webkit-transform: translate(-50%, -25%);
+          transform: translate(-50%, -25%);
+}
+
+.triangle-look-down:active {
+  -webkit-transform: translate(-50%, -25%);
+          transform: translate(-50%, -25%);
 }
 
 #showUnit {
@@ -167,18 +199,15 @@
           box-shadow: 7px 6px 9px 7px aquamarine;
 }
 
-/* .pole {
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 10%;
-  }
-
-  .kletka {
-    position: relative;
-    border: 3px solid #fff;
-    width: 120px;
-    height: 120px;
-  }
- */
+.pre-move-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 1px solid #adadad;
+  background-color: #adadad;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}
