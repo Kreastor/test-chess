@@ -175,14 +175,16 @@
 
 #showUnit {
   position: fixed;
-  top: 47%;
-  left: 0;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
   color: #fff;
-  padding: 25px;
+  padding: 20px;
   background-color: #595754;
   -webkit-box-shadow: 3px 3px 14px 3px;
           box-shadow: 3px 3px 14px 3px;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 10px;
   -webkit-transition: 0.5s;
   transition: 0.5s;

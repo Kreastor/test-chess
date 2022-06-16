@@ -83,35 +83,53 @@ const GAME = {
     for (let i = 0; i < cage.length; i++) {
       cage[i].addEventListener("click", (event) => {
         if (cage[i].classList.contains("circle-look-up-unit")) {
-          if (this.field[i-4].innerHTML && this.field[i-5].innerHTML && this.field[i-6].innerHTML) {
+          this.field.find((item, index) => {
+            if (item.classList.contains("active")) {
+              this.field[index-4].innerHTML = "";
+              this.field[index-4].classList.remove("pre-move");
+    
+              this.field[index-5].innerHTML = "";
+              this.field[index-5].classList.remove("pre-move");
+    
+              this.field[index-6].innerHTML = "";
+              this.field[index-6].classList.remove("pre-move");
+  
+              cage[index].classList.remove("active");
+            }
+          }); 
 
-            this.field[i-4].innerHTML = "";
-            this.field[i-4].classList.remove("pre-move");
+          cage[i].classList.add("active");
+          {const preMovePoint = document.createElement("span");
+          preMovePoint.className = "pre-move-point";
+          this.field[i-6].append(preMovePoint);}
 
-            this.field[i-5].innerHTML = "";
-            this.field[i-5].classList.remove("pre-move");
+          {const preMovePoint = document.createElement("span");
+          preMovePoint.className = "pre-move-point";
+          this.field[i-5].append(preMovePoint);}
 
-            this.field[i-6].innerHTML = "";
-            this.field[i-6].classList.remove("pre-move");
+          {const preMovePoint = document.createElement("span");
+          preMovePoint.className = "pre-move-point";
+          this.field[i-4].append(preMovePoint);}
 
-          } else {
-            {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-6].append(preMovePoint);}
+          this.field[i-6].classList.add("pre-move");
+          this.field[i-5].classList.add("pre-move");
+          this.field[i-4].classList.add("pre-move");
+          
+        } else {
+          this.field.find((item, index) => {
+            if (item.classList.contains("active")) {
+              this.field[index-4].innerHTML = "";
+              this.field[index-4].classList.remove("pre-move");
+  
+              this.field[index-5].innerHTML = "";
+              this.field[index-5].classList.remove("pre-move");
+  
+              this.field[index-6].innerHTML = "";
+              this.field[index-6].classList.remove("pre-move");
 
-            {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-5].append(preMovePoint);}
-
-            {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-4].append(preMovePoint);}
-
-            this.field[i-6].classList.add("pre-move");
-            this.field[i-5].classList.add("pre-move");
-            this.field[i-4].classList.add("pre-move");
-
-          }
+              cage[index].classList.remove("active");
+            }
+          });       
         }
       })
     }
