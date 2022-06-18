@@ -88,64 +88,113 @@ const GAME = {
               let plugа = null;
             } else {
               if (item.classList.contains("active")) {
-                this.field[index-4].innerHTML = "";
-                this.field[index-4].classList.remove("pre-move");
-      
-                this.field[index-5].innerHTML = "";
-                this.field[index-5].classList.remove("pre-move");
-      
-                this.field[index-6].innerHTML = "";
-                this.field[index-6].classList.remove("pre-move");
-    
+                if (this.field[index-6].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+                } else {
+                  this.field[index-6].innerHTML = "";
+                  this.field[index-6].classList.remove("pre-move");
+                } 
+            
+                if (this.field[index-5].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+                } else {
+                  this.field[index-5].innerHTML = "";
+                  this.field[index-5].classList.remove("pre-move");
+                }
+
+                if (this.field[index-4].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+                } else {
+                  this.field[index-4].innerHTML = "";
+                  this.field[index-4].classList.remove("pre-move");
+                }
+
                 cage[index].classList.remove("active");
               }
             }
           }); 
 
           if (cage[i].classList.contains("active")) {
-            this.field[i-4].innerHTML = "";
-            this.field[i-4].classList.remove("pre-move");
-  
-            this.field[i-5].innerHTML = "";
-            this.field[i-5].classList.remove("pre-move");
-  
-            this.field[i-6].innerHTML = "";
-            this.field[i-6].classList.remove("pre-move");
 
+            if (this.field[i-6].classList.contains("circle-look-up-unit")) {
+              plugа = 0;
+            } else {
+              this.field[i-6].innerHTML = "";
+              this.field[i-6].classList.remove("pre-move");
+            } 
+        
+            if (this.field[i-5].classList.contains("circle-look-up-unit")) {
+              plugа = 0;
+            } else {
+              this.field[i-5].innerHTML = "";
+              this.field[i-5].classList.remove("pre-move");
+            }
+
+            if (this.field[i-4].classList.contains("circle-look-up-unit")) {
+              plugа = 0;
+            } else {
+              this.field[i-4].innerHTML = "";
+              this.field[i-4].classList.remove("pre-move");
+            }
             cage[i].classList.remove("active");
 
           } else {
             cage[i].classList.add("active");
             {const preMovePoint = document.createElement("span");
             preMovePoint.className = "pre-move-point";
-            this.field[i-6].append(preMovePoint);}
+            if (this.field[i-6].classList.contains("circle-look-up-unit")) {
+                plugа = 0;
+              } else {
+                this.field[i-6].append(preMovePoint);
+                this.field[i-6].classList.add("pre-move");
+              }
+            }
+            {const preMovePoint = document.createElement("span");
+            preMovePoint.className = "pre-move-point";
+            if (this.field[i-5].classList.contains("circle-look-up-unit")) {
+                plugа = 0;
+              } else {
+                this.field[i-5].append(preMovePoint);
+                this.field[i-5].classList.add("pre-move");
+              }
+            }
   
             {const preMovePoint = document.createElement("span");
             preMovePoint.className = "pre-move-point";
-            this.field[i-5].append(preMovePoint);}
-  
-            {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-4].append(preMovePoint);}
-  
-            this.field[i-6].classList.add("pre-move");
-            this.field[i-5].classList.add("pre-move");
-            this.field[i-4].classList.add("pre-move");
+            if (this.field[i-4].classList.contains("circle-look-up-unit")) {
+                plugа = 0;
+              } else {
+                this.field[i-4].append(preMovePoint);
+                this.field[i-4].classList.add("pre-move");
+              }
+            }     
           }
         } else {
           if (cage[i].classList.contains("pre-move")) {
-            this.moveUnit(i);
+            this.cicleMove(i);
           } else {
             this.field.find((item, index) => {
               if (item.classList.contains("active")) {
-                this.field[index-4].innerHTML = "";
-                this.field[index-4].classList.remove("pre-move");
-    
-                this.field[index-5].innerHTML = "";
-                this.field[index-5].classList.remove("pre-move");
-    
-                this.field[index-6].innerHTML = "";
-                this.field[index-6].classList.remove("pre-move");
+                if (this.field[index-6].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+                } else {
+                  this.field[index-6].innerHTML = "";
+                  this.field[index-6].classList.remove("pre-move");
+                } 
+            
+                if (this.field[index-5].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+                } else {
+                  this.field[index-5].innerHTML = "";
+                  this.field[index-5].classList.remove("pre-move");
+                }
+
+                if (this.field[index-4].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+                } else {
+                  this.field[index-4].innerHTML = "";
+                  this.field[index-4].classList.remove("pre-move");
+                }
 
                 cage[index].classList.remove("active");
               } 
@@ -156,26 +205,41 @@ const GAME = {
     }
   },
 
-  moveUnit(i) {
+  cicleMove(i) {
     const cage = document.querySelectorAll(".cage");
     this.field.find((item, index) => {
       if (item.classList.contains("active")) {
         cage[index].classList.remove("active");
         cage[index].innerHTML = "";
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
+        cage[index].className = "cage empty-cage"; 
+
+        if (this.field[index-6].classList.contains("circle-look-up-unit")) {
+          plugа = 0;
+        } else {
+          this.field[index-6].innerHTML = "";
+          this.field[index-6].classList.remove("pre-move");
+        } 
     
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-    
-        this.field[index-6].innerHTML = "";
-        this.field[index-6].classList.remove("pre-move");
+        if (this.field[index-5].classList.contains("circle-look-up-unit")) {
+          plugа = 0;
+        } else {
+          this.field[index-5].innerHTML = "";
+          this.field[index-5].classList.remove("pre-move");
+        }
+
+        if (this.field[index-4].classList.contains("circle-look-up-unit")) {
+          plugа = 0;
+        } else {
+          this.field[index-4].innerHTML = "";
+          this.field[index-4].classList.remove("pre-move");
+        }
       } 
     });  
     let circleLookUp = document.createElement("span");
     circleLookUp.className = "circle-look-up";
     cage[i].append(circleLookUp);
     cage[i].className = "cage circle-look-up-unit";
+    
   },
 
   showUnits() {
