@@ -72,7 +72,7 @@ const GAME = {
   circlePlayer1: [],
   circlePlayer2: [],
 
-  selectUnit () {
+  selectUnit() {
     const cage = document.querySelectorAll(".cage");
 
     /* TODO: make a separate method for active pressing
@@ -133,23 +133,49 @@ const GAME = {
             this.field[i-4].classList.add("pre-move");
           }
         } else {
-          this.field.find((item, index) => {
-            if (item.classList.contains("active")) {
-              this.field[index-4].innerHTML = "";
-              this.field[index-4].classList.remove("pre-move");
-  
-              this.field[index-5].innerHTML = "";
-              this.field[index-5].classList.remove("pre-move");
-  
-              this.field[index-6].innerHTML = "";
-              this.field[index-6].classList.remove("pre-move");
+          if (cage[i].classList.contains("pre-move")) {
+            this.moveUnit(i);
+          } else {
+            this.field.find((item, index) => {
+              if (item.classList.contains("active")) {
+                this.field[index-4].innerHTML = "";
+                this.field[index-4].classList.remove("pre-move");
+    
+                this.field[index-5].innerHTML = "";
+                this.field[index-5].classList.remove("pre-move");
+    
+                this.field[index-6].innerHTML = "";
+                this.field[index-6].classList.remove("pre-move");
 
-              cage[index].classList.remove("active");
-            }
-          });       
+                cage[index].classList.remove("active");
+              } 
+            });  
+          }      
         }
       })
     }
+  },
+
+  moveUnit(i) {
+    const cage = document.querySelectorAll(".cage");
+    this.field.find((item, index) => {
+      if (item.classList.contains("active")) {
+        cage[index].classList.remove("active");
+        cage[index].innerHTML = "";
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+    
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+    
+        this.field[index-6].innerHTML = "";
+        this.field[index-6].classList.remove("pre-move");
+      } 
+    });  
+    let circleLookUp = document.createElement("span");
+    circleLookUp.className = "circle-look-up";
+    cage[i].append(circleLookUp);
+    cage[i].className = "cage circle-look-up-unit";
   },
 
   showUnits() {
@@ -219,6 +245,7 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
+  // setTimeout(() => GAME.moveUnit(), 600);
   setTimeout(() => console.log(GAME.field), 800);
 });
 
