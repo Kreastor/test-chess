@@ -113,7 +113,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid #02ffe6;
+  border: 1px solid magenta;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -127,7 +127,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid #02ffe6;
+  border: 1px solid magenta;
   width: 50px;
   height: 50px;
   -webkit-transition: 0.4s;
@@ -144,7 +144,7 @@
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 40px solid #02ffe6;
+  border-top: 40px solid magenta;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -163,7 +163,7 @@
 
 .circle-look-down:active,
 .square-look-down:active {
-  background-color: #02ffe6;
+  background-color: magenta;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
 }
