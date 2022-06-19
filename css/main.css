@@ -213,3 +213,16 @@
   width: 20px;
   height: 20px;
 }
+
+.attack-move-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 1px solid red;
+  background-color: #ff0202;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}

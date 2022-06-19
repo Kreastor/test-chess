@@ -189,3 +189,15 @@ $color-player2: rgb(255, 0, 255);
   width: 20px;
   height: 20px;
 }
+
+.attack-move-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(255, 0, 0);
+  background-color: rgb(255, 2, 2);
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}
