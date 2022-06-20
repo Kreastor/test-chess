@@ -322,12 +322,16 @@ const GAME = {
         cage[index].className = "cage empty-cage"; 
 
         this.clearActive(index);
+        cage[i].innerHTML = "";
       } 
     });  
     let circleLookUp = document.createElement("span");
     circleLookUp.className = "circle-look-up";
     cage[i].append(circleLookUp);
     cage[i].className = "cage circle-look-up-unit";
+
+
+
   },
 
   // #1
@@ -375,7 +379,7 @@ const GAME = {
         circleLookDown.className = "circle-look-down";
         this.field[index-4].append(circleLookDown);
         this.field[index-4].className = "cage circle-look-down-unit"
-      } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
+      } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
         this.field[index-4].innerHTML = "";
         this.field[index-4].classList.remove("pre-move");
 
@@ -406,7 +410,7 @@ const GAME = {
         circleLookDown.className = "circle-look-down";
         this.field[index-6].append(circleLookDown);
         this.field[index-6].className = "cage circle-look-down-unit"
-      } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
+      } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
         this.field[index-6].innerHTML = "";
         this.field[index-6].classList.remove("pre-move");
 
@@ -437,7 +441,7 @@ const GAME = {
         circleLookDown.className = "circle-look-down";
         this.field[index-5].append(circleLookDown);
         this.field[index-5].className = "cage circle-look-down-unit"
-      } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
+      } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
         this.field[index-5].innerHTML = "";
         this.field[index-5].classList.remove("pre-move");
 
@@ -468,7 +472,7 @@ const GAME = {
         circleLookDown.className = "circle-look-down";
         this.field[index-4].append(circleLookDown);
         this.field[index-4].className = "cage circle-look-down-unit"
-      } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
+      } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
         this.field[index-4].innerHTML = "";
         this.field[index-4].classList.remove("pre-move");
 

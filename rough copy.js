@@ -113,3 +113,16 @@
       //   cage.className = "cage circle-look-up-unit";
       //   this.circlePlayer1.push(circleLookUp);
       // } 
+
+
+
+ /*    } else if (this.field[index-6].classList.contains("circle-look-down-unit") 
+    || this.field[index-6].classList.contains("triangle-look-down-unit")  
+    || this.field[index-6].classList.contains("square-look-down-unit")) {
+      // preMovePoint.className = "";
+      this.field[index-6].classList.remove("pre-move");
+      // preMovePoint.remove();
+    } else {
+      this.field[index-6].innerHTML = "";
+      this.field[index-6].classList.remove("pre-move");
+    }  */

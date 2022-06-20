@@ -71,7 +71,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid #09ff00;
+  border: 1px solid #e1ff00;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -85,7 +85,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid #09ff00;
+  border: 1px solid #e1ff00;
   width: 50px;
   height: 50px;
   -webkit-transition: 0.4s;
@@ -102,7 +102,7 @@
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-bottom: 40px solid #09ff00;
+  border-bottom: 40px solid #e1ff00;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -113,7 +113,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid magenta;
+  border: 1px solid #2200ff;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -127,7 +127,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid magenta;
+  border: 1px solid #2200ff;
   width: 50px;
   height: 50px;
   -webkit-transition: 0.4s;
@@ -144,14 +144,14 @@
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 40px solid magenta;
+  border-top: 40px solid #2200ff;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .circle-look-up:active,
 .square-look-up:active {
-  background-color: #09ff00;
+  background-color: #e1ff00;
   -webkit-transform: translate(-50%, -75%);
           transform: translate(-50%, -75%);
 }
@@ -163,7 +163,7 @@
 
 .circle-look-down:active,
 .square-look-down:active {
-  background-color: magenta;
+  background-color: #2200ff;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
 }
