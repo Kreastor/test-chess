@@ -20,43 +20,104 @@ const GAME = {
                               height: 120px;`
       field.append(cage);
       this.field.push(cage);
-      if (i === 2 || i === 4) {
-        let triangleLookDown = document.createElement("span");
-        triangleLookDown.className = "triangle-look-down";
-        cage.append(triangleLookDown);
-        cage.className = "cage triangle-look-down-unit";
-        this.trianglePlayer2.push(triangleLookDown);
-      } else if (i === 3) {
-        let squareLookDown = document.createElement("span");
-        squareLookDown.className = "square-look-down";
-        cage.append(squareLookDown);
-        cage.className = "cage square-look-down-unit";
-        this.squarePlayer2.push(squareLookDown);
-      } else if (i === 7 || i === 8 || i === 9) {
-        let circleLookDown = document.createElement("span");
-        circleLookDown.className = "circle-look-down";
-        cage.append(circleLookDown);
-        cage.className = "cage circle-look-down-unit";
-        this.circlePlayer2.push(circleLookDown);
-      } else if (i === 22 || i === 24) {
-        let triangleLookUp = document.createElement("span");
-        triangleLookUp.className = "triangle-look-up";
-        cage.append(triangleLookUp);
-        cage.className = "cage triangle-look-up-unit";
-        this.trianglePlayer1.push(triangleLookUp);
-      } else if (i === 23) {
-        let squareLookUp = document.createElement("span");
-        squareLookUp.className = "square-look-up";
-        cage.append(squareLookUp);
-        cage.className = "cage square-look-up-unit";
-        this.squarePlayer1.push(squareLookUp);
-      } else if (i === 17 || i === 18 || i === 19) {
-        let circleLookUp = document.createElement("span");
-        circleLookUp.className = "circle-look-up";
-        cage.append(circleLookUp);
-        cage.className = "cage circle-look-up-unit";
-        this.circlePlayer1.push(circleLookUp);
-      } 
+
+      switch(i) {
+        case 2: 
+          {let triangleLookDown = document.createElement("span");
+          triangleLookDown.className = "triangle-look-down";
+          cage.append(triangleLookDown);
+          cage.className = "cage triangle-look-down-unit";
+          this.trianglePlayer2.push(triangleLookDown);}
+          break;
+
+        case 4: 
+          {let triangleLookDown = document.createElement("span");
+          triangleLookDown.className = "triangle-look-down";
+          cage.append(triangleLookDown);
+          cage.className = "cage triangle-look-down-unit";
+          this.trianglePlayer2.push(triangleLookDown);}
+          break;
+
+        case 3: 
+          {let squareLookDown = document.createElement("span");
+          squareLookDown.className = "square-look-down";
+          cage.append(squareLookDown);
+          cage.className = "cage square-look-down-unit";
+          this.squarePlayer2.push(squareLookDown);}
+          break;
+
+        case 7: 
+          {let circleLookDown = document.createElement("span");
+          circleLookDown.className = "circle-look-down";
+          cage.append(circleLookDown);
+          cage.className = "cage circle-look-down-unit";
+          this.circlePlayer2.push(circleLookDown);}
+          break;
+        
+        case 8: 
+          {let circleLookDown = document.createElement("span");
+          circleLookDown.className = "circle-look-down";
+          cage.append(circleLookDown);
+          cage.className = "cage circle-look-down-unit";
+          this.circlePlayer2.push(circleLookDown);}
+          break;
+
+        case 9: 
+          {let circleLookDown = document.createElement("span");
+          circleLookDown.className = "circle-look-down";
+          cage.append(circleLookDown);
+          cage.className = "cage circle-look-down-unit";
+          this.circlePlayer2.push(circleLookDown);}
+          break;
+        
+        case 22:
+          {let triangleLookUp = document.createElement("span");
+          triangleLookUp.className = "triangle-look-up";
+          cage.append(triangleLookUp);
+          cage.className = "cage triangle-look-up-unit";
+          this.trianglePlayer1.push(triangleLookUp);}
+          break;
+
+        case 24:
+          {let triangleLookUp = document.createElement("span");
+          triangleLookUp.className = "triangle-look-up";
+          cage.append(triangleLookUp);
+          cage.className = "cage triangle-look-up-unit";
+          this.trianglePlayer1.push(triangleLookUp);}
+          break;
+
+        case 23: 
+          let squareLookUp = document.createElement("span");
+          squareLookUp.className = "square-look-up";
+          cage.append(squareLookUp);
+          cage.className = "cage square-look-up-unit";
+          this.squarePlayer1.push(squareLookUp);
+          break;
+
+        case 17: 
+          {let circleLookUp = document.createElement("span");
+          circleLookUp.className = "circle-look-up";
+          cage.append(circleLookUp);
+          cage.className = "cage circle-look-up-unit";
+          this.circlePlayer1.push(circleLookUp);}
+          break;
+
+        case 18: 
+          {let circleLookUp = document.createElement("span");
+          circleLookUp.className = "circle-look-up";
+          cage.append(circleLookUp);
+          cage.className = "cage circle-look-up-unit";
+          this.circlePlayer1.push(circleLookUp);}
+          break;
+        
+        case 19: 
+          {let circleLookUp = document.createElement("span");
+          circleLookUp.className = "circle-look-up";
+          cage.append(circleLookUp);
+          cage.className = "cage circle-look-up-unit";
+          this.circlePlayer1.push(circleLookUp);}
+          break;
+      }
     };
     return this;
   },
@@ -72,49 +133,364 @@ const GAME = {
   circlePlayer1: [],
   circlePlayer2: [],
 
-  selectUnit () {
+  selectUnit() {
     const cage = document.querySelectorAll(".cage");
-
-    /* TODO: make a separate method for active pressing
-      this.circlePlayer1[1].style.backgroundColor="rgb(0, 255, 0)" 
-      ↓↓↓↓↓↓↓↓↓↓
-    */
-
+    
     for (let i = 0; i < cage.length; i++) {
       cage[i].addEventListener("click", (event) => {
         if (cage[i].classList.contains("circle-look-up-unit")) {
-          if (this.field[i-4].innerHTML && this.field[i-5].innerHTML && this.field[i-6].innerHTML) {
+          this.field.find((item, index) => {
+            if (index === i) {
+              plugа = null;
+            } else {
+              if (item.classList.contains("active")) {
+                this.clearActive(index);
+                cage[index].classList.remove("active");
+              }
+            }
+          }); 
 
-            this.field[i-4].innerHTML = "";
-            this.field[i-4].classList.remove("pre-move");
-
-            this.field[i-5].innerHTML = "";
-            this.field[i-5].classList.remove("pre-move");
-
-            this.field[i-6].innerHTML = "";
-            this.field[i-6].classList.remove("pre-move");
+          if (cage[i].classList.contains("active")) {
+            this.clearActive(i);
+            cage[i].classList.remove("active");
 
           } else {
-            {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-6].append(preMovePoint);}
+            cage[i].classList.add("active");
+            if (i === 5 || i === 10 || i === 15 || i === 20) {
 
             {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-5].append(preMovePoint);}
+              
+              if (this.field[i-5].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-5].classList.contains("circle-look-down-unit") 
+                || this.field[i-5].classList.contains("triangle-look-down-unit")  
+                || this.field[i-5].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-5].classList.add("pre-move");
+                    this.field[i-5].append(preMovePoint);
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-5].append(preMovePoint);
+                  this.field[i-5].classList.add("pre-move");
+                }
+              }
+            }  
 
             {const preMovePoint = document.createElement("span");
-            preMovePoint.className = "pre-move-point";
-            this.field[i-4].append(preMovePoint);}
+              
+              if (this.field[i-4].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-4].classList.contains("circle-look-down-unit") 
+                || this.field[i-4].classList.contains("triangle-look-down-unit")  
+                || this.field[i-4].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-4].classList.add("pre-move");
+                    this.field[i-4].append(preMovePoint);             
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-4].append(preMovePoint);
+                  this.field[i-4].classList.add("pre-move");
+                }
+              }
+            }  
+            
+            } else if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4) {
+              cage[i].classList.remove("active");
+              alert("Дальше юнит не может пройти");
+            } else if (i === 9 || i === 14 || i === 19 || i === 24) {
+            
+            {const preMovePoint = document.createElement("span");
+              
+              if (this.field[i-6].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-6].classList.contains("circle-look-down-unit") 
+                || this.field[i-6].classList.contains("triangle-look-down-unit")  
+                || this.field[i-6].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-6].classList.add("pre-move");
+                    this.field[i-6].append(preMovePoint);     
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-6].append(preMovePoint);
+                  this.field[i-6].classList.add("pre-move");
+                }
+              }
+            }  
 
-            this.field[i-6].classList.add("pre-move");
-            this.field[i-5].classList.add("pre-move");
-            this.field[i-4].classList.add("pre-move");
+            {const preMovePoint = document.createElement("span");
+              
+              if (this.field[i-5].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-5].classList.contains("circle-look-down-unit") 
+                || this.field[i-5].classList.contains("triangle-look-down-unit")  
+                || this.field[i-5].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-5].classList.add("pre-move");
+                    this.field[i-5].append(preMovePoint);
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-5].append(preMovePoint);
+                  this.field[i-5].classList.add("pre-move");
+                }
+              }
+            }  
+            } else {
+              {const preMovePoint = document.createElement("span");
+              
+              if (this.field[i-6].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-6].classList.contains("circle-look-down-unit") 
+                || this.field[i-6].classList.contains("triangle-look-down-unit")  
+                || this.field[i-6].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-6].classList.add("pre-move");
+                    this.field[i-6].append(preMovePoint); 
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-6].append(preMovePoint);
+                  this.field[i-6].classList.add("pre-move");
+                }
+              }
+            }
 
+            {const preMovePoint = document.createElement("span");
+              
+              if (this.field[i-5].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-5].classList.contains("circle-look-down-unit") 
+                || this.field[i-5].classList.contains("triangle-look-down-unit")  
+                || this.field[i-5].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-5].classList.add("pre-move");
+                    this.field[i-5].append(preMovePoint);
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-5].append(preMovePoint);
+                  this.field[i-5].classList.add("pre-move");
+                }
+              }
+            }  
+
+            {const preMovePoint = document.createElement("span");
+              
+              if (this.field[i-4].classList.contains("circle-look-up-unit")) {
+                  plugа = 0;
+              } else {
+                if (this.field[i-4].classList.contains("circle-look-down-unit") 
+                || this.field[i-4].classList.contains("triangle-look-down-unit")  
+                || this.field[i-4].classList.contains("square-look-down-unit")) {
+                    preMovePoint.className = "attack-move-point";
+                    this.field[i-4].classList.add("pre-move");
+                    this.field[i-4].append(preMovePoint);
+                } else {
+                  preMovePoint.className = "pre-move-point";
+                  this.field[i-4].append(preMovePoint);
+                  this.field[i-4].classList.add("pre-move");
+                }
+              }
+            }  
+            }
           }
+        } else {
+          if (cage[i].classList.contains("pre-move")) {
+            this.cicleMove(i);
+          } else {
+            this.field.find((item, index) => {
+              if (item.classList.contains("active")) {
+                this.clearActive(index);
+                cage[index].classList.remove("active");
+              } 
+            });  
+          }      
         }
       })
     }
+  },
+
+  cicleMove(i) {
+    const cage = document.querySelectorAll(".cage");
+    this.field.find((item, index) => {
+      if (item.classList.contains("active")) {
+        cage[index].classList.remove("active");
+        cage[index].innerHTML = "";
+        cage[index].className = "cage empty-cage"; 
+
+        this.clearActive(index);
+        cage[i].innerHTML = "";
+      } 
+    });  
+    let circleLookUp = document.createElement("span");
+    circleLookUp.className = "circle-look-up";
+    cage[i].append(circleLookUp);
+    cage[i].className = "cage circle-look-up-unit";
+  },
+  
+  clearActive(index) {   
+    if (index === 5 || index === 10 || index === 15 || index === 20) {
+      if (this.field[index-5].classList.contains("circle-look-up-unit")) {
+        plugа = 0;
+      } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+
+        let circleLookDown = document.createElement("span");
+        circleLookDown.className = "circle-look-down";
+        this.field[index-5].append(circleLookDown);
+        this.field[index-5].className = "cage circle-look-down-unit";
+      } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+
+        let squareLookDown = document.createElement("span");
+        squareLookDown.className = "square-look-down";
+        this.field[index-5].append(squareLookDown);
+        this.field[index-5].className = "cage square-look-down-unit";
+      } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+
+        let triangleLookDown = document.createElement("span");
+        triangleLookDown.className = "triangle-look-down";
+        this.field[index-5].append(triangleLookDown);
+        this.field[index-5].className = "cage triangle-look-down-unit";
+      } else {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+      } 
+  
+      if (this.field[index-4].classList.contains("circle-look-up-unit")) {
+        plugа = 0;
+      } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+
+        let circleLookDown = document.createElement("span");
+        circleLookDown.className = "circle-look-down";
+        this.field[index-4].append(circleLookDown);
+        this.field[index-4].className = "cage circle-look-down-unit";
+      } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+
+        let squareLookDown = document.createElement("span");
+        squareLookDown.className = "square-look-down";
+        this.field[index-4].append(squareLookDown);
+        this.field[index-4].className = "cage square-look-down-unit";
+      } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+
+        let triangleLookDown = document.createElement("span");
+        triangleLookDown.className = "triangle-look-down";
+        this.field[index-4].append(triangleLookDown);
+        this.field[index-4].className = "cage triangle-look-down-unit";
+      } else {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+      } 
+      // __________________________
+    } else {
+
+      if (this.field[index-6].classList.contains("circle-look-up-unit")) {
+        plugа = 0;
+      } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
+        this.field[index-6].innerHTML = "";
+        this.field[index-6].classList.remove("pre-move");
+
+        let circleLookDown = document.createElement("span");
+        circleLookDown.className = "circle-look-down";
+        this.field[index-6].append(circleLookDown);
+        this.field[index-6].className = "cage circle-look-down-unit";
+      } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
+        this.field[index-6].innerHTML = "";
+        this.field[index-6].classList.remove("pre-move");
+
+        let squareLookDown = document.createElement("span");
+        squareLookDown.className = "square-look-down";
+        this.field[index-6].append(squareLookDown);
+        this.field[index-6].className = "cage square-look-down-unit";
+      } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
+        this.field[index-6].innerHTML = "";
+        this.field[index-6].classList.remove("pre-move");
+
+        let triangleLookDown = document.createElement("span");
+        triangleLookDown.className = "triangle-look-down";
+        this.field[index-6].append(triangleLookDown);
+        this.field[index-6].className = "cage triangle-look-down-unit";
+      } else {
+        this.field[index-6].innerHTML = "";
+        this.field[index-6].classList.remove("pre-move");
+      } 
+  
+      if (this.field[index-5].classList.contains("circle-look-up-unit")) {
+        plugа = 0;
+      } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+
+        let circleLookDown = document.createElement("span");
+        circleLookDown.className = "circle-look-down";
+        this.field[index-5].append(circleLookDown);
+        this.field[index-5].className = "cage circle-look-down-unit";
+      } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+
+        let squareLookDown = document.createElement("span");
+        squareLookDown.className = "square-look-down";
+        this.field[index-5].append(squareLookDown);
+        this.field[index-5].className = "cage square-look-down-unit";
+      } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+
+        let triangleLookDown = document.createElement("span");
+        triangleLookDown.className = "triangle-look-down";
+        this.field[index-5].append(triangleLookDown);
+        this.field[index-5].className = "cage triangle-look-down-unit";
+      } else {
+        this.field[index-5].innerHTML = "";
+        this.field[index-5].classList.remove("pre-move");
+      } 
+  
+      if (this.field[index-4].classList.contains("circle-look-up-unit")) {
+        plugа = 0;
+      } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+
+        let circleLookDown = document.createElement("span");
+        circleLookDown.className = "circle-look-down";
+        this.field[index-4].append(circleLookDown);
+        this.field[index-4].className = "cage circle-look-down-unit";
+      } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+
+        let squareLookDown = document.createElement("span");
+        squareLookDown.className = "square-look-down";
+        this.field[index-4].append(squareLookDown);
+        this.field[index-4].className = "cage square-look-down-unit";
+      } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+
+        let triangleLookDown = document.createElement("span");
+        triangleLookDown.className = "triangle-look-down";
+        this.field[index-4].append(triangleLookDown);
+        this.field[index-4].className = "cage triangle-look-down-unit";
+      } else {
+        this.field[index-4].innerHTML = "";
+        this.field[index-4].classList.remove("pre-move");
+      } 
+    }
+    return this
   },
 
   showUnits() {
@@ -184,6 +560,7 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
+  // setTimeout(() => GAME.moveUnit(), 600);
   setTimeout(() => console.log(GAME.field), 800);
 });
 
