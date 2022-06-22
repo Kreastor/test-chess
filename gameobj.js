@@ -652,29 +652,11 @@ const GAME = {
         || this.field[index-5].classList.contains("square-look-up-unit")) {
           plugа = 0;
         } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-
-          let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          this.field[index-5].append(circleLookDown);
-          this.field[index-5].className = "cage circle-look-down-unit";
+          this.Player1ClearEnemyCircle(index, 5);
         } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-
-          let squareLookDown = document.createElement("span");
-          squareLookDown.className = "square-look-down";
-          this.field[index-5].append(squareLookDown);
-          this.field[index-5].className = "cage square-look-down-unit";
+          this.Player1ClearEnemySquare(index, 5);
         } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-
-          let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          this.field[index-5].append(triangleLookDown);
-          this.field[index-5].className = "cage triangle-look-down-unit";
+          this.Player1ClearEnemyTriangle(index, 5);
         } else {
           this.field[index-5].innerHTML = "";
           this.field[index-5].classList.remove("pre-move");
@@ -685,29 +667,11 @@ const GAME = {
         || this.field[index-4].classList.contains("square-look-up-unit")) {
           plugа = 0;
         } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-
-          let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          this.field[index-4].append(circleLookDown);
-          this.field[index-4].className = "cage circle-look-down-unit";
+          this.Player1ClearEnemyCircle(index, 4);
         } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-
-          let squareLookDown = document.createElement("span");
-          squareLookDown.className = "square-look-down";
-          this.field[index-4].append(squareLookDown);
-          this.field[index-4].className = "cage square-look-down-unit";
+          this.Player1ClearEnemySquare(index, 4);
         } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-
-          let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          this.field[index-4].append(triangleLookDown);
-          this.field[index-4].className = "cage triangle-look-down-unit";
+          this.Player1ClearEnemyTriangle(index, 4);
         } else {
           this.field[index-4].innerHTML = "";
           this.field[index-4].classList.remove("pre-move");
@@ -719,29 +683,11 @@ const GAME = {
         || this.field[index-6].classList.contains("square-look-up-unit")) {
           plugа = 0;
         } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-          this.field[index-6].innerHTML = "";
-          this.field[index-6].classList.remove("pre-move");
-
-          let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          this.field[index-6].append(circleLookDown);
-          this.field[index-6].className = "cage circle-look-down-unit";
+          this.Player1ClearEnemyCircle(index, 6);
         } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-          this.field[index-6].innerHTML = "";
-          this.field[index-6].classList.remove("pre-move");
-
-          let squareLookDown = document.createElement("span");
-          squareLookDown.className = "square-look-down";
-          this.field[index-6].append(squareLookDown);
-          this.field[index-6].className = "cage square-look-down-unit";
+          this.Player1ClearEnemySquare(index, 6);
         } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-          this.field[index-6].innerHTML = "";
-          this.field[index-6].classList.remove("pre-move");
-
-          let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          this.field[index-6].append(triangleLookDown);
-          this.field[index-6].className = "cage triangle-look-down-unit";
+          this.Player1ClearEnemyTriangle(index, 6);
         } else {
           this.field[index-6].innerHTML = "";
           this.field[index-6].classList.remove("pre-move");
@@ -752,29 +698,11 @@ const GAME = {
         || this.field[index-5].classList.contains("square-look-up-unit")) {
           plugа = 0;
         } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-
-          let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          this.field[index-5].append(circleLookDown);
-          this.field[index-5].className = "cage circle-look-down-unit";
+          this.Player1ClearEnemyCircle(index, 5);
         } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-
-          let squareLookDown = document.createElement("span");
-          squareLookDown.className = "square-look-down";
-          this.field[index-5].append(squareLookDown);
-          this.field[index-5].className = "cage square-look-down-unit";
+          this.Player1ClearEnemySquare(index, 5);
         } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-
-          let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          this.field[index-5].append(triangleLookDown);
-          this.field[index-5].className = "cage triangle-look-down-unit";
+          this.Player1ClearEnemyTriangle(index, 5);
         } else {
           this.field[index-5].innerHTML = "";
           this.field[index-5].classList.remove("pre-move");
@@ -785,29 +713,11 @@ const GAME = {
         || this.field[index-4].classList.contains("square-look-up-unit")) {
           plugа = 0;
         } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-
-          let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          this.field[index-4].append(circleLookDown);
-          this.field[index-4].className = "cage circle-look-down-unit";
+          this.Player1ClearEnemyCircle(index, 4);
         } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-
-          let squareLookDown = document.createElement("span");
-          squareLookDown.className = "square-look-down";
-          this.field[index-4].append(squareLookDown);
-          this.field[index-4].className = "cage square-look-down-unit";
+          this.Player1ClearEnemySquare(index, 4);
         } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-
-          let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          this.field[index-4].append(triangleLookDown);
-          this.field[index-4].className = "cage triangle-look-down-unit";
+          this.Player1ClearEnemyTriangle(index, 4);
         } else {
           this.field[index-4].innerHTML = "";
           this.field[index-4].classList.remove("pre-move");
@@ -821,29 +731,11 @@ const GAME = {
           || this.field[index-4].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index-4].append(circleLookDown);
-            this.field[index-4].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, 4);
           } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index-4].append(squareLookDown);
-            this.field[index-4].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, 4);
           } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index-4].append(triangleLookDown);
-            this.field[index-4].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, 4);
           } else {
             this.field[index-4].innerHTML = "";
             this.field[index-4].classList.remove("pre-move");
@@ -854,29 +746,11 @@ const GAME = {
           || this.field[index+6].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index+6].classList.contains("circle-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index+6].append(circleLookDown);
-            this.field[index+6].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, -6);
           } else if (this.field[index+6].classList.contains("square-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index+6].append(squareLookDown);
-            this.field[index+6].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, -6);
           } else if (this.field[index+6].classList.contains("triangle-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index+6].append(triangleLookDown);
-            this.field[index+6].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, -6);
           } else {
             this.field[index+6].innerHTML = "";
             this.field[index+6].classList.remove("pre-move");
@@ -888,29 +762,11 @@ const GAME = {
           || this.field[index-6].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index-6].append(circleLookDown);
-            this.field[index-6].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, 6);
           } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index-6].append(squareLookDown);
-            this.field[index-6].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, 6);
           } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index-6].append(triangleLookDown);
-            this.field[index-6].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, 6);
           } else {
             this.field[index-6].innerHTML = "";
             this.field[index-6].classList.remove("pre-move");
@@ -921,29 +777,11 @@ const GAME = {
           || this.field[index-4].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index-4].append(circleLookDown);
-            this.field[index-4].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, 4);
           } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index-4].append(squareLookDown);
-            this.field[index-4].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, 4);
           } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index-4].append(triangleLookDown);
-            this.field[index-4].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, 4);
           } else {
             this.field[index-4].innerHTML = "";
             this.field[index-4].classList.remove("pre-move");
@@ -955,29 +793,11 @@ const GAME = {
           || this.field[index-6].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index-6].append(circleLookDown);
-            this.field[index-6].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, 6);
           } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index-6].append(squareLookDown);
-            this.field[index-6].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, 6);
           } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index-6].append(triangleLookDown);
-            this.field[index-6].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, 6);
           } else {
             this.field[index-6].innerHTML = "";
             this.field[index-6].classList.remove("pre-move");
@@ -987,30 +807,13 @@ const GAME = {
           || this.field[index+4].classList.contains("triangle-look-up-unit")
           || this.field[index+4].classList.contains("square-look-up-unit")) {
             plugа = 0;
-          } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index+4].append(circleLookDown);
-            this.field[index+4].className = "cage circle-look-down-unit";
-          } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index+4].append(squareLookDown);
-            this.field[index+4].className = "cage square-look-down-unit";
-          } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index+4].append(triangleLookDown);
-            this.field[index+4].className = "cage triangle-look-down-unit";
+            // Менял здесь код 
+          } else if (this.field[index+4].classList.contains("circle-look-down-unit")) {
+            this.Player1ClearEnemyCircle(index, -4);
+          } else if (this.field[index+4].classList.contains("square-look-down-unit")) {
+            this.Player1ClearEnemySquare(index, -4);
+          } else if (this.field[index+4].classList.contains("triangle-look-down-unit")) {
+            this.Player1ClearEnemyTriangle(index, -4);
           } else {
             this.field[index+4].innerHTML = "";
             this.field[index+4].classList.remove("pre-move");
@@ -1021,62 +824,26 @@ const GAME = {
           || this.field[index+6].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index+6].classList.contains("circle-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index+6].append(circleLookDown);
-            this.field[index+6].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, -6);
           } else if (this.field[index+6].classList.contains("square-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index+6].append(squareLookDown);
-            this.field[index+6].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, -6);
           } else if (this.field[index+6].classList.contains("triangle-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index+6].append(triangleLookDown);
-            this.field[index+6].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, -6);
           } else {
             this.field[index+6].innerHTML = "";
             this.field[index+6].classList.remove("pre-move");
           } 
-      
+          // здесь тоже менял код
           if (this.field[index+4].classList.contains("circle-look-up-unit")
           || this.field[index+4].classList.contains("triangle-look-up-unit")
           || this.field[index+4].classList.contains("square-look-up-unit")) {
             plugа = 0;
-          } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index+4].append(circleLookDown);
-            this.field[index+4].className = "cage circle-look-down-unit";
-          } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index+4].append(squareLookDown);
-            this.field[index+4].className = "cage square-look-down-unit";
-          } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index+4].append(triangleLookDown);
-            this.field[index+4].className = "cage triangle-look-down-unit";
+          } else if (this.field[index+4].classList.contains("circle-look-down-unit")) {
+            this.Player1ClearEnemyCircle(index, -4);
+          } else if (this.field[index+4].classList.contains("square-look-down-unit")) {
+            this.Player1ClearEnemySquare(index, -4);
+          } else if (this.field[index+4].classList.contains("triangle-look-down-unit")) {
+            this.Player1ClearEnemyTriangle(index, -4);
           } else {
             this.field[index+4].innerHTML = "";
             this.field[index+4].classList.remove("pre-move");
@@ -1087,33 +854,14 @@ const GAME = {
           || this.field[index-6].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index-6].append(circleLookDown);
-            this.field[index-6].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, 6);
           } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index-6].append(squareLookDown);
-            this.field[index-6].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, 6);
           } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index-6].append(triangleLookDown);
-            this.field[index-6].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, 6);
           } else {
             this.field[index-6].innerHTML = "";
             this.field[index-6].classList.remove("pre-move");
-
           } 
       
           if (this.field[index-4].classList.contains("circle-look-up-unit")
@@ -1121,29 +869,11 @@ const GAME = {
           || this.field[index-4].classList.contains("square-look-up-unit")) {
             plugа = 0;
           } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index-4].append(circleLookDown);
-            this.field[index-4].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, 4);
           } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index-4].append(squareLookDown);
-            this.field[index-4].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, 4);
           } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index-4].append(triangleLookDown);
-            this.field[index-4].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, 4);
           } else {
             this.field[index-4].innerHTML = "";
             this.field[index-4].classList.remove("pre-move");
@@ -1154,29 +884,11 @@ const GAME = {
           || this.field[index+4].classList.contains("square-look-up-unit")){
             plugа = 0;
           } else if (this.field[index+4].classList.contains("circle-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index+4].append(circleLookDown);
-            this.field[index+4].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, -4);
           } else if (this.field[index+4].classList.contains("square-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index+4].append(squareLookDown);
-            this.field[index+4].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, -4);
           } else if (this.field[index+4].classList.contains("triangle-look-down-unit")) {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index+4].append(triangleLookDown);
-            this.field[index+4].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, -4);
           } else {
             this.field[index+4].innerHTML = "";
             this.field[index+4].classList.remove("pre-move");
@@ -1187,29 +899,11 @@ const GAME = {
           || this.field[index+6].classList.contains("square-look-up-unit")){
             plugа = 0;
           } else if (this.field[index+6].classList.contains("circle-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let circleLookDown = document.createElement("span");
-            circleLookDown.className = "circle-look-down";
-            this.field[index+6].append(circleLookDown);
-            this.field[index+6].className = "cage circle-look-down-unit";
+            this.Player1ClearEnemyCircle(index, -6);
           } else if (this.field[index+6].classList.contains("square-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let squareLookDown = document.createElement("span");
-            squareLookDown.className = "square-look-down";
-            this.field[index+6].append(squareLookDown);
-            this.field[index+6].className = "cage square-look-down-unit";
+            this.Player1ClearEnemySquare(index, -6);
           } else if (this.field[index+6].classList.contains("triangle-look-down-unit")) {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-            let triangleLookDown = document.createElement("span");
-            triangleLookDown.className = "triangle-look-down";
-            this.field[index+6].append(triangleLookDown);
-            this.field[index+6].className = "cage triangle-look-down-unit";
+            this.Player1ClearEnemyTriangle(index, -6);
           } else {
             this.field[index+6].innerHTML = "";
             this.field[index+6].classList.remove("pre-move");
@@ -1218,6 +912,37 @@ const GAME = {
     }
     return this
   },
+
+  Player1ClearEnemyCircle(index, enemyLocation) {
+    this.field[index-enemyLocation].innerHTML = "";
+    this.field[index-enemyLocation].classList.remove("pre-move");
+
+    let circleLookDown = document.createElement("span");
+    circleLookDown.className = "circle-look-down";
+    this.field[index-enemyLocation].append(circleLookDown);
+    this.field[index-enemyLocation].className = "cage circle-look-down-unit";
+  },
+
+  Player1ClearEnemySquare(index, enemyLocation) {
+    this.field[index-enemyLocation].innerHTML = "";
+    this.field[index-enemyLocation].classList.remove("pre-move");
+
+    let squareLookDown = document.createElement("span");
+    squareLookDown.className = "square-look-down";
+    this.field[index-enemyLocation].append(squareLookDown);
+    this.field[index-enemyLocation].className = "cage square-look-down-unit";
+  },
+
+  Player1ClearEnemyTriangle(index, enemyLocation) {
+    this.field[index-enemyLocation].innerHTML = "";
+    this.field[index-enemyLocation].classList.remove("pre-move");
+
+    let triangleLookDown = document.createElement("span");
+    triangleLookDown.className = "triangle-look-down";
+    this.field[index-enemyLocation].append(triangleLookDown);
+    this.field[index-enemyLocation].className = "cage triangle-look-down-unit";
+  },
+
 
   showUnits() {
     let request = prompt(`Какие юниты показать?
