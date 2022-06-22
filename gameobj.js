@@ -275,273 +275,56 @@ const GAME = {
     cage[i].className = cageClassName;
   },
   
-  clearActive(index) {   
+  clearActive(index) { 
+      // circleLookUp  
     if (this.field[index].classList.contains("circle-look-up-unit")) {
       if (index === 5 || index === 10 || index === 15 || index === 20) {
-        if (this.field[index-5].classList.contains("circle-look-up-unit")
-        || this.field[index-5].classList.contains("triangle-look-up-unit")
-        || this.field[index-5].classList.contains("square-look-up-unit")) {
-          plugа = 0;
-        } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
-          this.Player1ClearEnemyCircle(index, 5);
-        } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
-          this.Player1ClearEnemySquare(index, 5);
-        } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
-          this.Player1ClearEnemyTriangle(index, 5);
-        } else {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-        } 
-    
-        if (this.field[index-4].classList.contains("circle-look-up-unit")
-        || this.field[index-4].classList.contains("triangle-look-up-unit")
-        || this.field[index-4].classList.contains("square-look-up-unit")) {
-          plugа = 0;
-        } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-          this.Player1ClearEnemyCircle(index, 4);
-        } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-          this.Player1ClearEnemySquare(index, 4);
-        } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-          this.Player1ClearEnemyTriangle(index, 4);
-        } else {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-        } 
+        this.clear(index, 5);
+        this.clear(index, 4);
       } else {
-
-        if (this.field[index-6].classList.contains("circle-look-up-unit")
-        || this.field[index-6].classList.contains("triangle-look-up-unit")
-        || this.field[index-6].classList.contains("square-look-up-unit")) {
-          plugа = 0;
-        } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-          this.Player1ClearEnemyCircle(index, 6);
-        } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-          this.Player1ClearEnemySquare(index, 6);
-        } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-          this.Player1ClearEnemyTriangle(index, 6);
-        } else {
-          this.field[index-6].innerHTML = "";
-          this.field[index-6].classList.remove("pre-move");
-        } 
-    
-        if (this.field[index-5].classList.contains("circle-look-up-unit")
-        || this.field[index-5].classList.contains("triangle-look-up-unit")
-        || this.field[index-5].classList.contains("square-look-up-unit")) {
-          plugа = 0;
-        } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
-          this.Player1ClearEnemyCircle(index, 5);
-        } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
-          this.Player1ClearEnemySquare(index, 5);
-        } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
-          this.Player1ClearEnemyTriangle(index, 5);
-        } else {
-          this.field[index-5].innerHTML = "";
-          this.field[index-5].classList.remove("pre-move");
-        } 
-    
-        if (this.field[index-4].classList.contains("circle-look-up-unit")
-        || this.field[index-4].classList.contains("triangle-look-up-unit")
-        || this.field[index-4].classList.contains("square-look-up-unit")) {
-          plugа = 0;
-        } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-          this.Player1ClearEnemyCircle(index, 4);
-        } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-          this.Player1ClearEnemySquare(index, 4);
-        } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-          this.Player1ClearEnemyTriangle(index, 4);
-        } else {
-          this.field[index-4].innerHTML = "";
-          this.field[index-4].classList.remove("pre-move");
-        } 
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 4);
       }
       // triangleLookUp
     } else if (this.field[index].classList.contains("triangle-look-up-unit")) {
         if (index === 5 || index === 15) {
-          if (this.field[index-4].classList.contains("circle-look-up-unit")
-          || this.field[index-4].classList.contains("triangle-look-up-unit")
-          || this.field[index-4].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, 4);
-          } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, 4);
-          } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, 4);
-          } else {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-          } 
-      
-          if (this.field[index+6].classList.contains("circle-look-up-unit")
-          || this.field[index+6].classList.contains("triangle-look-up-unit")
-          || this.field[index+6].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index+6].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, -6);
-          } else if (this.field[index+6].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, -6);
-          } else if (this.field[index+6].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, -6);
-          } else {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-    
-          } 
+          this.clear(index, 4);
+          this.clear(index, -6);
         } else if (index === 21 || index === 23) {
-          if (this.field[index-6].classList.contains("circle-look-up-unit")
-          || this.field[index-6].classList.contains("triangle-look-up-unit")
-          || this.field[index-6].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, 6);
-          } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, 6);
-          } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, 6);
-          } else {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-          } 
-      
-          if (this.field[index-4].classList.contains("circle-look-up-unit")
-          || this.field[index-4].classList.contains("triangle-look-up-unit")
-          || this.field[index-4].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, 4);
-          } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, 4);
-          } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, 4);
-          } else {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-          }
-
+          this.clear(index, 6);
+          this.clear(index, 4);
         } else if (index === 9 || index === 19) {
-          if (this.field[index-6].classList.contains("circle-look-up-unit")
-          || this.field[index-6].classList.contains("triangle-look-up-unit")
-          || this.field[index-6].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, 6);
-          } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, 6);
-          } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, 6);
-          } else {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-          } 
-      
-          if (this.field[index+4].classList.contains("circle-look-up-unit")
-          || this.field[index+4].classList.contains("triangle-look-up-unit")
-          || this.field[index+4].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-            // Менял здесь код 
-          } else if (this.field[index+4].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, -4);
-          } else if (this.field[index+4].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, -4);
-          } else if (this.field[index+4].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, -4);
-          } else {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-          }
+          this.clear(index, 6);
+          this.clear(index, -4);
         } else if (index === 1 || index === 3) {
-          if (this.field[index+6].classList.contains("circle-look-up-unit")
-          || this.field[index+6].classList.contains("triangle-look-up-unit")
-          || this.field[index+6].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index+6].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, -6);
-          } else if (this.field[index+6].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, -6);
-          } else if (this.field[index+6].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, -6);
-          } else {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-          } 
-          // здесь тоже менял код
-          if (this.field[index+4].classList.contains("circle-look-up-unit")
-          || this.field[index+4].classList.contains("triangle-look-up-unit")
-          || this.field[index+4].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index+4].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, -4);
-          } else if (this.field[index+4].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, -4);
-          } else if (this.field[index+4].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, -4);
-          } else {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-          }
+          this.clear(index, -6); 
+          this.clear(index, -4);
         } else {
-          if (this.field[index-6].classList.contains("circle-look-up-unit")
-          || this.field[index-6].classList.contains("triangle-look-up-unit")
-          || this.field[index-6].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, 6);
-          } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, 6);
-          } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, 6);
-          } else {
-            this.field[index-6].innerHTML = "";
-            this.field[index-6].classList.remove("pre-move");
-          } 
-      
-          if (this.field[index-4].classList.contains("circle-look-up-unit")
-          || this.field[index-4].classList.contains("triangle-look-up-unit")
-          || this.field[index-4].classList.contains("square-look-up-unit")) {
-            plugа = 0;
-          } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, 4);
-          } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, 4);
-          } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, 4);
-          } else {
-            this.field[index-4].innerHTML = "";
-            this.field[index-4].classList.remove("pre-move");
-          }
-          
-          if (this.field[index+4].classList.contains("circle-look-up-unit")
-          || this.field[index+4].classList.contains("triangle-look-up-unit")
-          || this.field[index+4].classList.contains("square-look-up-unit")){
-            plugа = 0;
-          } else if (this.field[index+4].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, -4);
-          } else if (this.field[index+4].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, -4);
-          } else if (this.field[index+4].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, -4);
-          } else {
-            this.field[index+4].innerHTML = "";
-            this.field[index+4].classList.remove("pre-move");
-          } 
-
-          if (this.field[index+6].classList.contains("circle-look-up-unit")
-          || this.field[index+6].classList.contains("triangle-look-up-unit")
-          || this.field[index+6].classList.contains("square-look-up-unit")){
-            plugа = 0;
-          } else if (this.field[index+6].classList.contains("circle-look-down-unit")) {
-            this.Player1ClearEnemyCircle(index, -6);
-          } else if (this.field[index+6].classList.contains("square-look-down-unit")) {
-            this.Player1ClearEnemySquare(index, -6);
-          } else if (this.field[index+6].classList.contains("triangle-look-down-unit")) {
-            this.Player1ClearEnemyTriangle(index, -6);
-          } else {
-            this.field[index+6].innerHTML = "";
-            this.field[index+6].classList.remove("pre-move");
-          } 
+          this.clear(index, 6);
+          this.clear(index, 4);
+          this.clear(index, -4);
+          this.clear(index, -6);
         } 
     }
     return this
+  },
+
+  clear(index, clearLocation) {
+    if (this.field[index-clearLocation].classList.contains("circle-look-up-unit")
+    || this.field[index-clearLocation].classList.contains("triangle-look-up-unit")
+    || this.field[index-clearLocation].classList.contains("square-look-up-unit")) {
+      plugа = 0;
+    } else if (this.field[index-clearLocation].classList.contains("circle-look-down-unit")) {
+      this.Player1ClearEnemyCircle(index, clearLocation);
+    } else if (this.field[index-clearLocation].classList.contains("square-look-down-unit")) {
+      this.Player1ClearEnemySquare(index, clearLocation);
+    } else if (this.field[index-clearLocation].classList.contains("triangle-look-down-unit")) {
+      this.Player1ClearEnemyTriangle(index, clearLocation);
+    } else {
+      this.field[index-clearLocation].innerHTML = "";
+      this.field[index-clearLocation].classList.remove("pre-move");
+    } 
   },
 
   Player1ClearEnemyCircle(index, enemyLocation) {
