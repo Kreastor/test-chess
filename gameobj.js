@@ -204,6 +204,73 @@ const GAME = {
               this.createPremoves(i, -4);
             }
           }
+        } else if (cage[i].classList.contains("square-look-up-unit")) {
+          this.field.find((item, index) => {
+            if (index === i) {
+              plugа = null;
+            } else {
+              if (item.classList.contains("active")) {
+                this.clearActive(index);
+                cage[index].classList.remove("active");
+              }
+            }
+          }); 
+          if (cage[i].classList.contains("active")) {
+            this.clearActive(i);
+            cage[i].classList.remove("active");
+          } else {
+            cage[i].classList.add("active");
+            if (i === 5 || i === 10 || i === 15) {
+              this.createPremoves(i, 5);
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            } else if (i === 0) {
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            } else if (i === 20) {
+              this.createPremoves(i, 5);
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, -1);
+            } else if (i === 1 || i === 2 || i === 3) {
+              this.createPremoves(i, 1); 
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            } else if (i === 4) {
+              this.createPremoves(i, 1)
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -5); 
+            } else if (i === 24) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 1);
+            } else if (i === 9 || i === 14 || i === 19) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 1);
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -5);
+            } else if (i === 21 || i === 22 || i === 23) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, 1);
+              this.createPremoves(i, -1);
+            } else {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, 1);
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -4); 
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            }
+          }
         } else {
           if (cage[i].classList.contains("pre-move")) {
             this.player1Move(i); 
@@ -259,6 +326,18 @@ const GAME = {
             item.classList.remove("pre-move");
           }
         })
+      } else if (item.classList.contains("active") && item.classList.contains("square-look-up-unit")) {
+        this.clearActive(index);
+        this.player1Step(cage, index, i, "square-look-up", "cage square-look-up-unit");
+        // this.field.filter((item, index) => {
+        //   if (item.classList.contains("pre-move") 
+        //   && !item.classList.contains("circle-look-down-unit")
+        //   && !item.classList.contains("triangle-look-down-unit")
+        //   && !item.classList.contains("square-look-down-unit")) {
+        //     item.innerHTML="";
+        //     item.classList.remove("pre-move");
+        //   }
+        // })
       }
     });  
   },
@@ -306,6 +385,58 @@ const GAME = {
           this.clear(index, -4);
           this.clear(index, -6);
         } 
+      // squareLookUp
+    } else if (this.field[index].classList.contains("square-look-up-unit")) {
+      if (index === 5 || index === 5 || index === 15) {
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, -1);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } else if (index === 0) {
+        this.clear(index, -1);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } else if (index === 20) {
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, -1);
+      } else if (index === 1 || index === 2 || index === 3) {
+        this.clear(index, 1);
+        this.clear(index, -1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } else if (index === 4) {
+        this.clear(index, 1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+      } else if (index === 24) {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 1);
+      } else if (index === 9 || index === 14 || index === 19) {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+      } else if (index === 21 || index === 22 || index === 23) {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, 1);
+        this.clear(index, -1);
+      } else {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, 1);
+        this.clear(index, -1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } 
     }
     return this
   },
@@ -356,7 +487,6 @@ const GAME = {
     this.field[index-enemyLocation].append(triangleLookDown);
     this.field[index-enemyLocation].className = "cage triangle-look-down-unit";
   },
-
 
   showUnits() {
     let request = prompt(`Какие юниты показать?
@@ -426,7 +556,7 @@ startGameBTN.addEventListener("click", () => {
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
   // setTimeout(() => GAME.moveUnit(), 600);
-  setTimeout(() => console.log(GAME.field), 800);
+  // setTimeout(() => console.log(GAME.field), 800);
 });
 
 showUnit.addEventListener("click", function () {
