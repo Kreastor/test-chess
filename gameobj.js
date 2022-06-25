@@ -4,10 +4,12 @@ const GAME = {
     const field = document.createElement("div");
     field.className = "field";
     field.style.cssText = `width: 600px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
                         display: flex;
-                        flex-wrap: wrap;
-                        margin: 0 auto;
-                        margin-top: 10%;`
+                        flex-wrap: wrap;`
     document.body.append(field);
 
     for (let i = 1; i < 26; i++) {
@@ -483,6 +485,48 @@ const GAME = {
     this.field[index-enemyLocation].className = "cage triangle-look-down-unit";
   },
 
+  Player1RoyalAbilities() {
+    const cage = document.querySelectorAll(".cage");
+    
+    for (let i = 0; i < cage.length; i++) {
+      cage[i].addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        if (cage[i].classList.contains("square-look-up-unit")) {
+          let abilitiesWindow = document.createElement("div");
+          abilitiesWindow.className = "abilities-window";
+          abilitiesWindow.style.cssText = `width: 200px;
+                              height: 200px; 
+                              position: absolute;
+                              top: 50%;
+                              left: 80%;
+                              display: flex;
+                              align-items: center;
+                              flex-direction: column;
+                              margin: 0 auto;
+                              border: 3px solid red;`
+
+          let abilityBTN = document.createElement("button");
+          abilityBTN.className = "ability-BTN";
+          abilityBTN.innerHTML = "Луч";
+          abilityBTN.style.cssText = `width: 150px;
+                              height: 50px; 
+                              color: orange;
+                              font-size: 20px;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              margin-top: 10%;
+                              border: 3px solid orange;`
+
+          abilitiesWindow.append(abilityBTN);           
+          document.body.append(abilitiesWindow);
+        } else {
+          plugа = 0;
+        }
+      });
+    };
+  },
+
   showUnits() {
     let request = prompt(`Какие юниты показать?
     0 - Треугольники игрока 1;
@@ -550,6 +594,7 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
+  setTimeout(() => GAME.Player1RoyalAbilities(), 600);
   // setTimeout(() => GAME.moveUnit(), 600);
   // setTimeout(() => console.log(GAME.field), 800);
 });
