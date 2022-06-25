@@ -297,9 +297,13 @@ const GAME = {
       if (this.field[i-premoveLocation].classList.contains("circle-look-down-unit") 
       || this.field[i-premoveLocation].classList.contains("triangle-look-down-unit")  
       || this.field[i-premoveLocation].classList.contains("square-look-down-unit")) {
+        if (this.field[i].classList.contains("square-look-up-unit")) {
+          plugа = 0;
+        } else {
           preMovePoint.className = "attack-move-point";
           this.field[i-premoveLocation].classList.add("pre-move");
           this.field[i-premoveLocation].append(preMovePoint);
+        }
       } else {
         preMovePoint.className = "pre-move-point";
         this.field[i-premoveLocation].append(preMovePoint);
@@ -329,15 +333,6 @@ const GAME = {
       } else if (item.classList.contains("active") && item.classList.contains("square-look-up-unit")) {
         this.clearActive(index);
         this.player1Step(cage, index, i, "square-look-up", "cage square-look-up-unit");
-        // this.field.filter((item, index) => {
-        //   if (item.classList.contains("pre-move") 
-        //   && !item.classList.contains("circle-look-down-unit")
-        //   && !item.classList.contains("triangle-look-down-unit")
-        //   && !item.classList.contains("square-look-down-unit")) {
-        //     item.innerHTML="";
-        //     item.classList.remove("pre-move");
-        //   }
-        // })
       }
     });  
   },
