@@ -142,6 +142,14 @@ const GAME = {
       cage[i].addEventListener("click", (event) => {
         if (cage[i].classList.contains("circle-look-up-unit")) {
           this.field.find((item, index) => {
+            if (item.classList.contains("ability-table-on")) {
+              cage[index].classList.remove("ability-table-on");
+              let abilityWindow = document.querySelector(".abilities-window");
+              abilityWindow.remove();
+            }
+          });
+
+          this.field.find((item, index) => {
             if (index === i) {
               plugа = null;
             } else {
@@ -172,6 +180,14 @@ const GAME = {
             }
           }
         } else if (cage[i].classList.contains("triangle-look-up-unit")) {
+          this.field.find((item, index) => {
+            if (item.classList.contains("ability-table-on")) {
+              cage[index].classList.remove("ability-table-on");
+              let abilityWindow = document.querySelector(".abilities-window");
+              abilityWindow.remove();
+            }
+          });
+
           this.field.find((item, index) => {
             if (index === i) {
               plugа = null;
@@ -207,6 +223,14 @@ const GAME = {
             }
           }
         } else if (cage[i].classList.contains("square-look-up-unit")) {
+          this.field.find((item, index) => {
+            if (item.classList.contains("ability-table-on")) {
+              cage[index].classList.remove("ability-table-on");
+              let abilityWindow = document.querySelector(".abilities-window");
+              abilityWindow.remove();
+            }
+          });
+
           this.field.find((item, index) => {
             if (index === i) {
               plugа = null;
@@ -277,6 +301,13 @@ const GAME = {
           if (cage[i].classList.contains("pre-move")) {
             this.player1Move(i); 
           } else {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
             this.field.find((item, index) => {
               if (item.classList.contains("active")) {
                 this.clearActive(index);
@@ -485,41 +516,38 @@ const GAME = {
     this.field[index-enemyLocation].className = "cage triangle-look-down-unit";
   },
 
-  Player1RoyalAbilities() {
+  Player1CallRoyalAbilities() {
     const cage = document.querySelectorAll(".cage");
-    
+
     for (let i = 0; i < cage.length; i++) {
       cage[i].addEventListener("contextmenu", (event) => {
         event.preventDefault();
-        if (cage[i].classList.contains("square-look-up-unit")) {
+        if (cage[i].classList.contains("ability-table-on")) {
+          cage[i].classList.remove("ability-table-on");
+          cage[i].classList.remove("active");
+          let abilityWindow = document.querySelector(".abilities-window");
+          abilityWindow.remove();
+        } else if (cage[i].classList.contains("square-look-up-unit")) {
+          this.field.filter((item, index) => {
+            if (item.classList.contains("pre-move") 
+            && !item.classList.contains("circle-look-down-unit")
+            && !item.classList.contains("triangle-look-down-unit")
+            && !item.classList.contains("square-look-down-unit")) {
+              item.innerHTML="";
+              item.classList.remove("pre-move");
+            }
+          });
+
           let abilitiesWindow = document.createElement("div");
           abilitiesWindow.className = "abilities-window";
-          abilitiesWindow.style.cssText = `width: 200px;
-                              height: 200px; 
-                              position: absolute;
-                              top: 50%;
-                              left: 80%;
-                              display: flex;
-                              align-items: center;
-                              flex-direction: column;
-                              margin: 0 auto;
-                              border: 3px solid red;`
-
           let abilityBTN = document.createElement("button");
           abilityBTN.className = "ability-BTN";
           abilityBTN.innerHTML = "Луч";
-          abilityBTN.style.cssText = `width: 150px;
-                              height: 50px; 
-                              color: orange;
-                              font-size: 20px;
-                              display: flex;
-                              justify-content: center;
-                              align-items: center;
-                              margin-top: 10%;
-                              border: 3px solid orange;`
 
           abilitiesWindow.append(abilityBTN);           
           document.body.append(abilitiesWindow);
+          cage[i].classList.add("ability-table-on");
+          cage[i].classList.add("active");
         } else {
           plugа = 0;
         }
@@ -594,7 +622,7 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
-  setTimeout(() => GAME.Player1RoyalAbilities(), 600);
+  setTimeout(() => GAME.Player1CallRoyalAbilities(), 600);
   // setTimeout(() => GAME.moveUnit(), 600);
   // setTimeout(() => console.log(GAME.field), 800);
 });
