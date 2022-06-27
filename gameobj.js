@@ -4,10 +4,10 @@ const GAME = {
     const field = document.createElement("div");
     field.className = "field";
     field.style.cssText = `width: 600px;
-                        display: flex;
-                        flex-wrap: wrap;
-                        margin: 0 auto;
-                        margin-top: 10%;`
+                          margin: 10% auto 0;
+                          display: flex;
+                          flex-wrap: wrap;
+                          overflow: hidden;`
     document.body.append(field);
 
     for (let i = 1; i < 26; i++) {
@@ -17,7 +17,10 @@ const GAME = {
       cage.style.cssText = `position: relative;
                               border: 3px solid #fff;
                               width: 120px;
-                              height: 120px;`
+                              height: 120px;
+                              display: flex;
+                              align-items: center;
+                              justify-content: flex-start`
       field.append(cage);
       this.field.push(cage);
 
@@ -140,6 +143,13 @@ const GAME = {
       cage[i].addEventListener("click", (event) => {
         if (cage[i].classList.contains("circle-look-up-unit")) {
           this.field.find((item, index) => {
+            if (item.classList.contains("ability-table-on")) {
+              cage[index].classList.remove("ability-table-on");
+              let abilityWindow = document.querySelector(".abilities-window");
+              abilityWindow.remove();
+            }
+          });
+          this.field.find((item, index) => {
             if (index === i) {
               plugа = null;
             } else {
@@ -149,158 +159,155 @@ const GAME = {
               }
             }
           }); 
-
           if (cage[i].classList.contains("active")) {
             this.clearActive(i);
             cage[i].classList.remove("active");
-
           } else {
             cage[i].classList.add("active");
             if (i === 5 || i === 10 || i === 15 || i === 20) {
-
-            {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-5].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-5].classList.contains("circle-look-down-unit") 
-                || this.field[i-5].classList.contains("triangle-look-down-unit")  
-                || this.field[i-5].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-5].classList.add("pre-move");
-                    this.field[i-5].append(preMovePoint);
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-5].append(preMovePoint);
-                  this.field[i-5].classList.add("pre-move");
-                }
-              }
-            }  
-
-            {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-4].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-4].classList.contains("circle-look-down-unit") 
-                || this.field[i-4].classList.contains("triangle-look-down-unit")  
-                || this.field[i-4].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-4].classList.add("pre-move");
-                    this.field[i-4].append(preMovePoint);             
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-4].append(preMovePoint);
-                  this.field[i-4].classList.add("pre-move");
-                }
-              }
-            }  
-            
+              this.createPremoves(i, 5);
+              this.createPremoves(i, 4); 
             } else if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4) {
               cage[i].classList.remove("active");
               alert("Дальше юнит не может пройти");
             } else if (i === 9 || i === 14 || i === 19 || i === 24) {
-            
-            {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-6].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-6].classList.contains("circle-look-down-unit") 
-                || this.field[i-6].classList.contains("triangle-look-down-unit")  
-                || this.field[i-6].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-6].classList.add("pre-move");
-                    this.field[i-6].append(preMovePoint);     
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-6].append(preMovePoint);
-                  this.field[i-6].classList.add("pre-move");
-                }
-              }
-            }  
-
-            {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-5].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-5].classList.contains("circle-look-down-unit") 
-                || this.field[i-5].classList.contains("triangle-look-down-unit")  
-                || this.field[i-5].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-5].classList.add("pre-move");
-                    this.field[i-5].append(preMovePoint);
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-5].append(preMovePoint);
-                  this.field[i-5].classList.add("pre-move");
-                }
-              }
-            }  
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5);
             } else {
-              {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-6].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-6].classList.contains("circle-look-down-unit") 
-                || this.field[i-6].classList.contains("triangle-look-down-unit")  
-                || this.field[i-6].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-6].classList.add("pre-move");
-                    this.field[i-6].append(preMovePoint); 
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-6].append(preMovePoint);
-                  this.field[i-6].classList.add("pre-move");
-                }
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5);
+              this.createPremoves(i, 4);
+            }
+          }
+        } else if (cage[i].classList.contains("triangle-look-up-unit")) {
+          this.field.find((item, index) => {
+            if (item.classList.contains("ability-table-on")) {
+              cage[index].classList.remove("ability-table-on");
+              let abilityWindow = document.querySelector(".abilities-window");
+              abilityWindow.remove();
+            }
+          });
+
+          this.field.find((item, index) => {
+            if (index === i) {
+              plugа = null;
+            } else {
+              if (item.classList.contains("active")) {
+                this.clearActive(index); 
+                cage[index].classList.remove("active");
               }
             }
+          }); 
+          if (cage[i].classList.contains("active")) {
+            this.clearActive(i);
+            cage[i].classList.remove("active");
+          } else {
+            cage[i].classList.add("active");
+            if (i === 5 || i === 15) {
+              this.createPremoves(i, 4);
+              this.createPremoves(i, -6); 
+            } else if (i === 1 || i === 3) {
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -6);
+            } else if (i === 9 || i === 19) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, -4);
+            } else if (i === 21 || i === 23) {
+              this.createPremoves(i, 6); 
+              this.createPremoves(i, 4);  
+            } else {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, -6);  
+              this.createPremoves(i, -4);
+            }
+          }
+        } else if (cage[i].classList.contains("square-look-up-unit")) {
+          this.field.find((item, index) => {
+            if (item.classList.contains("ability-table-on")) {
+              cage[index].classList.remove("ability-table-on");
+              let abilityWindow = document.querySelector(".abilities-window");
+              abilityWindow.remove();
+            }
+          });
 
-            {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-5].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-5].classList.contains("circle-look-down-unit") 
-                || this.field[i-5].classList.contains("triangle-look-down-unit")  
-                || this.field[i-5].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-5].classList.add("pre-move");
-                    this.field[i-5].append(preMovePoint);
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-5].append(preMovePoint);
-                  this.field[i-5].classList.add("pre-move");
-                }
+          this.field.find((item, index) => {
+            if (index === i) {
+              plugа = null;
+            } else {
+              if (item.classList.contains("active")) {
+                this.clearActive(index);
+                cage[index].classList.remove("active");
               }
-            }  
-
-            {const preMovePoint = document.createElement("span");
-              
-              if (this.field[i-4].classList.contains("circle-look-up-unit")) {
-                  plugа = 0;
-              } else {
-                if (this.field[i-4].classList.contains("circle-look-down-unit") 
-                || this.field[i-4].classList.contains("triangle-look-down-unit")  
-                || this.field[i-4].classList.contains("square-look-down-unit")) {
-                    preMovePoint.className = "attack-move-point";
-                    this.field[i-4].classList.add("pre-move");
-                    this.field[i-4].append(preMovePoint);
-                } else {
-                  preMovePoint.className = "pre-move-point";
-                  this.field[i-4].append(preMovePoint);
-                  this.field[i-4].classList.add("pre-move");
-                }
-              }
-            }  
+            }
+          }); 
+          if (cage[i].classList.contains("active")) {
+            this.clearActive(i);
+            cage[i].classList.remove("active");
+          } else {
+            cage[i].classList.add("active");
+            if (i === 5 || i === 10 || i === 15) {
+              this.createPremoves(i, 5);
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            } else if (i === 0) {
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            } else if (i === 20) {
+              this.createPremoves(i, 5);
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, -1);
+            } else if (i === 1 || i === 2 || i === 3) {
+              this.createPremoves(i, 1); 
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
+            } else if (i === 4) {
+              this.createPremoves(i, 1)
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -5); 
+            } else if (i === 24) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 1);
+            } else if (i === 9 || i === 14 || i === 19) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 1);
+              this.createPremoves(i, -4);
+              this.createPremoves(i, -5);
+            } else if (i === 21 || i === 22 || i === 23) {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, 1);
+              this.createPremoves(i, -1);
+            } else {
+              this.createPremoves(i, 6);
+              this.createPremoves(i, 5); 
+              this.createPremoves(i, 4); 
+              this.createPremoves(i, 1);
+              this.createPremoves(i, -1);
+              this.createPremoves(i, -4); 
+              this.createPremoves(i, -5); 
+              this.createPremoves(i, -6);
             }
           }
         } else {
           if (cage[i].classList.contains("pre-move")) {
-            this.cicleMove(i);
+            this.player1Move(i); 
           } else {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
             this.field.find((item, index) => {
               if (item.classList.contains("active")) {
                 this.clearActive(index);
@@ -313,184 +320,319 @@ const GAME = {
     }
   },
 
-  cicleMove(i) {
+  createPremoves(i, premoveLocation) {
+    let preMovePoint = document.createElement("span");         
+    if (this.field[i-premoveLocation].classList.contains("circle-look-up-unit")
+    || this.field[i-premoveLocation].classList.contains("triangle-look-up-unit")
+    || this.field[i-premoveLocation].classList.contains("square-look-up-unit")) {
+      plugа = 0;
+    } else {
+      if (this.field[i-premoveLocation].classList.contains("circle-look-down-unit") 
+      || this.field[i-premoveLocation].classList.contains("triangle-look-down-unit")  
+      || this.field[i-premoveLocation].classList.contains("square-look-down-unit")) {
+        if (this.field[i].classList.contains("square-look-up-unit")) {
+          plugа = 0;
+        } else {
+          preMovePoint.className = "attack-move-point";
+          this.field[i-premoveLocation].classList.add("pre-move");
+          this.field[i-premoveLocation].append(preMovePoint);
+        }
+      } else {
+        preMovePoint.className = "pre-move-point";
+        this.field[i-premoveLocation].append(preMovePoint);
+        this.field[i-premoveLocation].classList.add("pre-move");
+      }
+    }
+  },
+
+  player1Move(i) {
     const cage = document.querySelectorAll(".cage");
     this.field.find((item, index) => {
-      if (item.classList.contains("active")) {
-        cage[index].classList.remove("active");
-        cage[index].innerHTML = "";
-        cage[index].className = "cage empty-cage"; 
-
+      if (item.classList.contains("active") && item.classList.contains("circle-look-up-unit")) {
         this.clearActive(index);
-        cage[i].innerHTML = "";
-      } 
+        this.player1Step(cage, index, i, "circle-look-up", "cage circle-look-up-unit");
+      } else if (item.classList.contains("active") && item.classList.contains("triangle-look-up-unit")) {
+        this.clearActive(index);
+        this.player1Step(cage, index, i, "triangle-look-up", "cage triangle-look-up-unit");
+        this.field.filter((item, index) => {
+          if (item.classList.contains("pre-move") 
+          && !item.classList.contains("circle-look-down-unit")
+          && !item.classList.contains("triangle-look-down-unit")
+          && !item.classList.contains("square-look-down-unit")) {
+            item.innerHTML="";
+            item.classList.remove("pre-move");
+          }
+        })
+      } else if (item.classList.contains("active") && item.classList.contains("square-look-up-unit")) {
+        this.clearActive(index);
+        this.player1Step(cage, index, i, "square-look-up", "cage square-look-up-unit");
+      }
     });  
-    let circleLookUp = document.createElement("span");
-    circleLookUp.className = "circle-look-up";
-    cage[i].append(circleLookUp);
-    cage[i].className = "cage circle-look-up-unit";
+  },
+
+  player1Step(cage, index, i, unitClassName, cageClassName) {
+    cage[index].classList.remove("active");
+    cage[index].innerHTML = "";
+    cage[index].className = "cage empty-cage"; 
+    cage[i].innerHTML = "";
+
+    let newSpan = document.createElement("span");
+    newSpan.className = unitClassName;
+    cage[i].append(newSpan);
+    cage[i].className = cageClassName;
   },
   
-  clearActive(index) {   
-    if (index === 5 || index === 10 || index === 15 || index === 20) {
-      if (this.field[index-5].classList.contains("circle-look-up-unit")) {
-        plugа = 0;
-      } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-
-        let circleLookDown = document.createElement("span");
-        circleLookDown.className = "circle-look-down";
-        this.field[index-5].append(circleLookDown);
-        this.field[index-5].className = "cage circle-look-down-unit";
-      } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-
-        let squareLookDown = document.createElement("span");
-        squareLookDown.className = "square-look-down";
-        this.field[index-5].append(squareLookDown);
-        this.field[index-5].className = "cage square-look-down-unit";
-      } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-
-        let triangleLookDown = document.createElement("span");
-        triangleLookDown.className = "triangle-look-down";
-        this.field[index-5].append(triangleLookDown);
-        this.field[index-5].className = "cage triangle-look-down-unit";
+  clearActive(index) { 
+      // circleLookUp  
+    if (this.field[index].classList.contains("circle-look-up-unit")) {
+      if (index === 5 || index === 10 || index === 15 || index === 20) {
+        this.clear(index, 5);
+        this.clear(index, 4);
       } else {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-      } 
-  
-      if (this.field[index-4].classList.contains("circle-look-up-unit")) {
-        plugа = 0;
-      } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-
-        let circleLookDown = document.createElement("span");
-        circleLookDown.className = "circle-look-down";
-        this.field[index-4].append(circleLookDown);
-        this.field[index-4].className = "cage circle-look-down-unit";
-      } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-
-        let squareLookDown = document.createElement("span");
-        squareLookDown.className = "square-look-down";
-        this.field[index-4].append(squareLookDown);
-        this.field[index-4].className = "cage square-look-down-unit";
-      } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-
-        let triangleLookDown = document.createElement("span");
-        triangleLookDown.className = "triangle-look-down";
-        this.field[index-4].append(triangleLookDown);
-        this.field[index-4].className = "cage triangle-look-down-unit";
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 4);
+      }
+      // triangleLookUp
+    } else if (this.field[index].classList.contains("triangle-look-up-unit")) {
+        if (index === 5 || index === 15) {
+          this.clear(index, 4);
+          this.clear(index, -6);
+        } else if (index === 21 || index === 23) {
+          this.clear(index, 6);
+          this.clear(index, 4);
+        } else if (index === 9 || index === 19) {
+          this.clear(index, 6);
+          this.clear(index, -4);
+        } else if (index === 1 || index === 3) {
+          this.clear(index, -6); 
+          this.clear(index, -4);
+        } else {
+          this.clear(index, 6);
+          this.clear(index, 4);
+          this.clear(index, -4);
+          this.clear(index, -6);
+        } 
+      // squareLookUp
+    } else if (this.field[index].classList.contains("square-look-up-unit")) {
+      if (index === 5 || index === 5 || index === 15) {
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, -1);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } else if (index === 0) {
+        this.clear(index, -1);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } else if (index === 20) {
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, -1);
+      } else if (index === 1 || index === 2 || index === 3) {
+        this.clear(index, 1);
+        this.clear(index, -1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+        this.clear(index, -6);
+      } else if (index === 4) {
+        this.clear(index, 1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+      } else if (index === 24) {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 1);
+      } else if (index === 9 || index === 14 || index === 19) {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+      } else if (index === 21 || index === 22 || index === 23) {
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, 1);
+        this.clear(index, -1);
       } else {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-      } 
-      // __________________________
-    } else {
-
-      if (this.field[index-6].classList.contains("circle-look-up-unit")) {
-        plugа = 0;
-      } else if (this.field[index-6].classList.contains("circle-look-down-unit")) {
-        this.field[index-6].innerHTML = "";
-        this.field[index-6].classList.remove("pre-move");
-
-        let circleLookDown = document.createElement("span");
-        circleLookDown.className = "circle-look-down";
-        this.field[index-6].append(circleLookDown);
-        this.field[index-6].className = "cage circle-look-down-unit";
-      } else if (this.field[index-6].classList.contains("square-look-down-unit")) {
-        this.field[index-6].innerHTML = "";
-        this.field[index-6].classList.remove("pre-move");
-
-        let squareLookDown = document.createElement("span");
-        squareLookDown.className = "square-look-down";
-        this.field[index-6].append(squareLookDown);
-        this.field[index-6].className = "cage square-look-down-unit";
-      } else if (this.field[index-6].classList.contains("triangle-look-down-unit")) {
-        this.field[index-6].innerHTML = "";
-        this.field[index-6].classList.remove("pre-move");
-
-        let triangleLookDown = document.createElement("span");
-        triangleLookDown.className = "triangle-look-down";
-        this.field[index-6].append(triangleLookDown);
-        this.field[index-6].className = "cage triangle-look-down-unit";
-      } else {
-        this.field[index-6].innerHTML = "";
-        this.field[index-6].classList.remove("pre-move");
-      } 
-  
-      if (this.field[index-5].classList.contains("circle-look-up-unit")) {
-        plugа = 0;
-      } else if (this.field[index-5].classList.contains("circle-look-down-unit")) {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-
-        let circleLookDown = document.createElement("span");
-        circleLookDown.className = "circle-look-down";
-        this.field[index-5].append(circleLookDown);
-        this.field[index-5].className = "cage circle-look-down-unit";
-      } else if (this.field[index-5].classList.contains("square-look-down-unit")) {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-
-        let squareLookDown = document.createElement("span");
-        squareLookDown.className = "square-look-down";
-        this.field[index-5].append(squareLookDown);
-        this.field[index-5].className = "cage square-look-down-unit";
-      } else if (this.field[index-5].classList.contains("triangle-look-down-unit")) {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-
-        let triangleLookDown = document.createElement("span");
-        triangleLookDown.className = "triangle-look-down";
-        this.field[index-5].append(triangleLookDown);
-        this.field[index-5].className = "cage triangle-look-down-unit";
-      } else {
-        this.field[index-5].innerHTML = "";
-        this.field[index-5].classList.remove("pre-move");
-      } 
-  
-      if (this.field[index-4].classList.contains("circle-look-up-unit")) {
-        plugа = 0;
-      } else if (this.field[index-4].classList.contains("circle-look-down-unit")) {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-
-        let circleLookDown = document.createElement("span");
-        circleLookDown.className = "circle-look-down";
-        this.field[index-4].append(circleLookDown);
-        this.field[index-4].className = "cage circle-look-down-unit";
-      } else if (this.field[index-4].classList.contains("square-look-down-unit")) {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-
-        let squareLookDown = document.createElement("span");
-        squareLookDown.className = "square-look-down";
-        this.field[index-4].append(squareLookDown);
-        this.field[index-4].className = "cage square-look-down-unit";
-      } else if (this.field[index-4].classList.contains("triangle-look-down-unit")) {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
-
-        let triangleLookDown = document.createElement("span");
-        triangleLookDown.className = "triangle-look-down";
-        this.field[index-4].append(triangleLookDown);
-        this.field[index-4].className = "cage triangle-look-down-unit";
-      } else {
-        this.field[index-4].innerHTML = "";
-        this.field[index-4].classList.remove("pre-move");
+        this.clear(index, 6);
+        this.clear(index, 5);
+        this.clear(index, 4);
+        this.clear(index, 1);
+        this.clear(index, -1);
+        this.clear(index, -4);
+        this.clear(index, -5);
+        this.clear(index, -6);
       } 
     }
     return this
+  },
+
+  clear(index, clearLocation) {
+    if (this.field[index-clearLocation].classList.contains("circle-look-up-unit")
+    || this.field[index-clearLocation].classList.contains("triangle-look-up-unit")
+    || this.field[index-clearLocation].classList.contains("square-look-up-unit")) {
+      plugа = 0;
+    } else if (this.field[index-clearLocation].classList.contains("circle-look-down-unit")) {
+      this.Player1ClearEnemyCircle(index, clearLocation);
+    } else if (this.field[index-clearLocation].classList.contains("square-look-down-unit")) {
+      this.Player1ClearEnemySquare(index, clearLocation);
+    } else if (this.field[index-clearLocation].classList.contains("triangle-look-down-unit")) {
+      this.Player1ClearEnemyTriangle(index, clearLocation);
+    } else {
+      this.field[index-clearLocation].innerHTML = "";
+      this.field[index-clearLocation].classList.remove("pre-move");
+    } 
+  },
+
+  Player1ClearEnemyCircle(index, enemyLocation) {
+    this.field[index-enemyLocation].innerHTML = "";
+    this.field[index-enemyLocation].classList.remove("pre-move");
+
+    let circleLookDown = document.createElement("span");
+    circleLookDown.className = "circle-look-down";
+    this.field[index-enemyLocation].append(circleLookDown);
+    this.field[index-enemyLocation].className = "cage circle-look-down-unit";
+  },
+
+  Player1ClearEnemySquare(index, enemyLocation) {
+    this.field[index-enemyLocation].innerHTML = "";
+    this.field[index-enemyLocation].classList.remove("pre-move");
+
+    let squareLookDown = document.createElement("span");
+    squareLookDown.className = "square-look-down";
+    this.field[index-enemyLocation].append(squareLookDown);
+    this.field[index-enemyLocation].className = "cage square-look-down-unit";
+  },
+
+  Player1ClearEnemyTriangle(index, enemyLocation) {
+    this.field[index-enemyLocation].innerHTML = "";
+    this.field[index-enemyLocation].classList.remove("pre-move");
+
+    let triangleLookDown = document.createElement("span");
+    triangleLookDown.className = "triangle-look-down";
+    this.field[index-enemyLocation].append(triangleLookDown);
+    this.field[index-enemyLocation].className = "cage triangle-look-down-unit";
+  },
+
+  Player1CallRoyalAbilities() {
+    const cage = document.querySelectorAll(".cage");
+
+    for (let i = 0; i < cage.length; i++) {
+      cage[i].addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        this.field.find((item, index) => {
+          if (item.classList.contains("active")) {
+            this.clearActive(index);
+            cage[index].classList.remove("active");
+          }
+        });
+        if (cage[i].classList.contains("active")) {
+          this.clearActive(i);
+          cage[i].classList.remove("active");
+        }
+        if (cage[i].classList.contains("ability-table-on")) {
+          cage[i].classList.remove("ability-table-on");
+          cage[i].classList.remove("active");
+          let abilityWindow = document.querySelector(".abilities-window");
+          abilityWindow.remove();
+        } else if (cage[i].classList.contains("square-look-up-unit")) {
+          this.field.filter((item, index) => {
+            if (item.classList.contains("pre-move") 
+            && !item.classList.contains("circle-look-down-unit")
+            && !item.classList.contains("triangle-look-down-unit")
+            && !item.classList.contains("square-look-down-unit")) {
+              item.innerHTML = "";
+              item.classList.remove("pre-move");
+            }
+          });
+
+          let abilitiesWindow = document.createElement("div");
+          abilitiesWindow.className = "abilities-window";
+      
+
+          let headerAbilitiesWindow = document.createElement("h1");
+          headerAbilitiesWindow.className = "header-abilities-window";
+          headerAbilitiesWindow.innerHTML = "Выберите способ атаки";
+          abilitiesWindow.prepend(headerAbilitiesWindow);
+
+
+          let abilityBTN1 = document.createElement("button");
+          abilityBTN1.className = "ability-BTN1";
+          abilityBTN1.innerHTML = "ЛУЧ 1";
+
+          abilitiesWindow.append(abilityBTN1);           
+          cage[i].classList.add("ability-table-on");
+          cage[i].classList.add("active");
+
+          let abilityBTN2 = document.createElement("button");
+          abilityBTN2.className = "ability-BTN2";
+          abilityBTN2.innerHTML = "ЛУЧ 2";
+
+          abilitiesWindow.append(abilityBTN2);           
+          cage[i].classList.add("ability-table-on");
+          cage[i].classList.add("active");
+
+          document.body.append(abilitiesWindow);
+          this.Player1TargetingAbilities(i);
+        } else {
+          plugа = 0;
+        }
+      });
+    };
+  },
+
+  Player1TargetingAbilities(index) {
+    const cage = document.querySelectorAll(".cage");
+    let BTN1 = document.querySelector(".ability-BTN1");
+    let BTN2 = document.querySelector(".ability-BTN2");
+
+    BTN1.addEventListener("mouseover", (event) => {
+      event.preventDefault();
+      let laserLine1 = document.createElement("span");
+      laserLine1.className = "laser1";
+      cage[index-6].append(laserLine1);
+      cage[index-6].classList.add("laser-start");
+    });
+
+    BTN1.addEventListener("mouseout", (event) => {
+      event.preventDefault();
+      this.field.find((item) => {
+        if (item.classList.contains("laser-start")) {
+          console.log(item.childNodes);
+          for (let i = 0; i < item.childNodes.length; i++) {
+            if (item.childNodes[i].classList.contains("laser1")) {
+              item.childNodes[i].remove();
+            }
+          }
+          console.log(item.childNodes);
+        }
+      })
+    })
+
+    BTN2.addEventListener("mouseover", (event) => {
+      event.preventDefault();
+      let laserLine2 = document.createElement("span");
+      laserLine2.className = "laser2";
+      cage[index-4].append(laserLine2);
+      cage[index-4].classList.add("laser-start");
+    });
+
+    BTN2.addEventListener("mouseout", (event) => {
+      event.preventDefault();
+      this.field.find((item) => {
+        if (item.classList.contains("laser-start")) {
+          console.log(item.childNodes);
+          for (let i = 0; i < item.childNodes.length; i++) {
+            if (item.childNodes[i].classList.contains("laser2")) {
+              item.childNodes[i].remove();
+            }
+          }
+          console.log(item.childNodes);
+        }
+      })
+    })
   },
 
   showUnits() {
@@ -560,8 +702,9 @@ startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
+  setTimeout(() => GAME.Player1CallRoyalAbilities(), 600);
   // setTimeout(() => GAME.moveUnit(), 600);
-  setTimeout(() => console.log(GAME.field), 800);
+  // setTimeout(() => console.log(GAME.field), 800);
 });
 
 showUnit.addEventListener("click", function () {
