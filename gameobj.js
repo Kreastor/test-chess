@@ -6,7 +6,8 @@ const GAME = {
     field.style.cssText = `width: 600px;
                           margin: 10% auto 0;
                           display: flex;
-                          flex-wrap: wrap;`
+                          flex-wrap: wrap;
+                          overflow: hidden;`
     document.body.append(field);
 
     for (let i = 1; i < 26; i++) {
@@ -542,21 +543,38 @@ const GAME = {
             && !item.classList.contains("circle-look-down-unit")
             && !item.classList.contains("triangle-look-down-unit")
             && !item.classList.contains("square-look-down-unit")) {
-              item.innerHTML="";
+              item.innerHTML = "";
               item.classList.remove("pre-move");
             }
           });
 
           let abilitiesWindow = document.createElement("div");
           abilitiesWindow.className = "abilities-window";
-          let abilityBTN = document.createElement("button");
-          abilityBTN.className = "ability-BTN";
-          abilityBTN.innerHTML = "Луч";
+      
 
-          abilitiesWindow.append(abilityBTN);           
-          document.body.append(abilitiesWindow);
+          let headerAbilitiesWindow = document.createElement("h1");
+          headerAbilitiesWindow.className = "header-abilities-window";
+          headerAbilitiesWindow.innerHTML = "Выберите способ атаки";
+          abilitiesWindow.prepend(headerAbilitiesWindow);
+
+
+          let abilityBTN1 = document.createElement("button");
+          abilityBTN1.className = "ability-BTN1";
+          abilityBTN1.innerHTML = "ЛУЧ 1";
+
+          abilitiesWindow.append(abilityBTN1);           
           cage[i].classList.add("ability-table-on");
           cage[i].classList.add("active");
+
+          let abilityBTN2 = document.createElement("button");
+          abilityBTN2.className = "ability-BTN2";
+          abilityBTN2.innerHTML = "ЛУЧ 2";
+
+          abilitiesWindow.append(abilityBTN2);           
+          cage[i].classList.add("ability-table-on");
+          cage[i].classList.add("active");
+
+          document.body.append(abilitiesWindow);
           this.Player1TargetingAbilities(i);
         } else {
           plugа = 0;
@@ -567,9 +585,10 @@ const GAME = {
 
   Player1TargetingAbilities(index) {
     const cage = document.querySelectorAll(".cage");
-    let BNT1 = document.querySelector(".ability-BTN");
+    let BTN1 = document.querySelector(".ability-BTN1");
+    let BTN2 = document.querySelector(".ability-BTN2");
 
-    BNT1.addEventListener("mouseover", (event) => {
+    BTN1.addEventListener("mouseover", (event) => {
       event.preventDefault();
       let laserLine1 = document.createElement("span");
       laserLine1.className = "laser1";
@@ -577,13 +596,36 @@ const GAME = {
       cage[index-6].classList.add("laser-start");
     });
 
-    BNT1.addEventListener("mouseout", (event) => {
+    BTN1.addEventListener("mouseout", (event) => {
       event.preventDefault();
       this.field.find((item) => {
         if (item.classList.contains("laser-start")) {
           console.log(item.childNodes);
           for (let i = 0; i < item.childNodes.length; i++) {
             if (item.childNodes[i].classList.contains("laser1")) {
+              item.childNodes[i].remove();
+            }
+          }
+          console.log(item.childNodes);
+        }
+      })
+    })
+
+    BTN2.addEventListener("mouseover", (event) => {
+      event.preventDefault();
+      let laserLine2 = document.createElement("span");
+      laserLine2.className = "laser2";
+      cage[index-4].append(laserLine2);
+      cage[index-4].classList.add("laser-start");
+    });
+
+    BTN2.addEventListener("mouseout", (event) => {
+      event.preventDefault();
+      this.field.find((item) => {
+        if (item.classList.contains("laser-start")) {
+          console.log(item.childNodes);
+          for (let i = 0; i < item.childNodes.length; i++) {
+            if (item.childNodes[i].classList.contains("laser2")) {
               item.childNodes[i].remove();
             }
           }

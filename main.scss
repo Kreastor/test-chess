@@ -217,7 +217,21 @@ $laserWidth: 120 * 3 + px;
   border: 3px solid red;
 }
 
-.ability-BTN {
+.header-abilities-window {
+  width: 100%;
+  height: 50px; 
+  color: orange;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: orange;
+  transition: 0.4s;
+  text-align: center;
+}
+
+.ability-BTN1,
+.ability-BTN2 {
   width: 150px;
   height: 50px; 
   color: orange;
@@ -225,18 +239,20 @@ $laserWidth: 120 * 3 + px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
   border-color: orange;
   transition: 0.4s;
 }
 
-.ability-BTN:hover {
+.ability-BTN1:hover,
+.ability-BTN2:hover  {
   color: red;
   border: 3px solid red;
   box-shadow: 2px 2px 4px 6px red;
 }
 
-.ability-BTN:active {
+.ability-BTN1:active,
+.ability-BTN2:active {
   transform: translateY(5%);
   color: orange;
   border-color: orange;
@@ -248,10 +264,45 @@ background-color: $color-player1;
 }
 
 .laser1 {
-  border: 5px solid red;
-  width: $laserWidth;
+  width: 230px;
+  height: 5px;
+  border: 1px solid red;
+  background: red;
+  border-radius: 18px;
+  box-shadow: 2px 2px 10px 1px #f4dede;
   display: block;
   position: absolute;
   z-index: 5;
   transition: 3s;
+  transform: translateY(-60px) rotate(-45deg);
+  animation: luch1;
+}
+
+@keyframes luch1 {
+  0%   {width: 57.5px}
+  25%  {width: 115px}
+  50%  {width: 172.5px}
+  100% {width: 230px}
+}
+
+.laser2 {
+  width: 230px;
+  height: 5px;
+  border: 1px solid red;
+  background: red;
+  border-radius: 18px;
+  box-shadow: 2px 2px 10px 1px #f4dede;
+  display: block;
+  position: absolute;
+  z-index: 5;
+  transition: 3s;
+  transform: translate(-115px,-60px) rotate(45deg);
+  animation: luch2;
+}
+
+@keyframes luch2{
+  0%   {width: 57.5px}
+  25%  {width: 115px}
+  50%  {width: 172.5px}
+  100% {width: 230px}
 }
