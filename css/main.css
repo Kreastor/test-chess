@@ -279,8 +279,20 @@
           transform: translateY(5%);
   color: orange;
   border-color: orange;
+  -webkit-transition: all 3s ease 0s;
+  transition: all 3s ease 0s;
 }
 
 .ability-table-on .square-look-up {
   background-color: red;
+}
+
+.laser1 {
+  border: 5px solid red;
+  width: 360px;
+  display: block;
+  position: absolute;
+  z-index: 5;
+  -webkit-transition: 3s;
+  transition: 3s;
 }

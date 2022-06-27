@@ -8,6 +8,8 @@ $color-pink: rgb(255, 0, 255);
 $color-player1:rgb(255, 0, 0);
 $color-player2: rgb(0, 0, 255);
 
+$laserWidth: 120 * 3 + px;
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -238,8 +240,18 @@ $color-player2: rgb(0, 0, 255);
   transform: translateY(5%);
   color: orange;
   border-color: orange;
+  transition: all 3s ease 0s;
 }
 
 .ability-table-on .square-look-up {
 background-color: $color-player1;
+}
+
+.laser1 {
+  border: 5px solid red;
+  width: $laserWidth;
+  display: block;
+  position: absolute;
+  z-index: 5;
+  transition: 3s;
 }

@@ -126,3 +126,4 @@
       this.field[index-6].innerHTML = "";
       this.field[index-6].classList.remove("pre-move");
     }  */
+

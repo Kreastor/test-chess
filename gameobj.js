@@ -4,12 +4,9 @@ const GAME = {
     const field = document.createElement("div");
     field.className = "field";
     field.style.cssText = `width: 600px;
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        display: flex;
-                        flex-wrap: wrap;`
+                          margin: 10% auto 0;
+                          display: flex;
+                          flex-wrap: wrap;`
     document.body.append(field);
 
     for (let i = 1; i < 26; i++) {
@@ -19,7 +16,10 @@ const GAME = {
       cage.style.cssText = `position: relative;
                               border: 3px solid #fff;
                               width: 120px;
-                              height: 120px;`
+                              height: 120px;
+                              display: flex;
+                              align-items: center;
+                              justify-content: flex-start`
       field.append(cage);
       this.field.push(cage);
 
@@ -148,7 +148,6 @@ const GAME = {
               abilityWindow.remove();
             }
           });
-
           this.field.find((item, index) => {
             if (index === i) {
               plugа = null;
@@ -522,6 +521,16 @@ const GAME = {
     for (let i = 0; i < cage.length; i++) {
       cage[i].addEventListener("contextmenu", (event) => {
         event.preventDefault();
+        this.field.find((item, index) => {
+          if (item.classList.contains("active")) {
+            this.clearActive(index);
+            cage[index].classList.remove("active");
+          }
+        });
+        if (cage[i].classList.contains("active")) {
+          this.clearActive(i);
+          cage[i].classList.remove("active");
+        }
         if (cage[i].classList.contains("ability-table-on")) {
           cage[i].classList.remove("ability-table-on");
           cage[i].classList.remove("active");
@@ -548,11 +557,40 @@ const GAME = {
           document.body.append(abilitiesWindow);
           cage[i].classList.add("ability-table-on");
           cage[i].classList.add("active");
+          this.Player1TargetingAbilities(i);
         } else {
           plugа = 0;
         }
       });
     };
+  },
+
+  Player1TargetingAbilities(index) {
+    const cage = document.querySelectorAll(".cage");
+    let BNT1 = document.querySelector(".ability-BTN");
+
+    BNT1.addEventListener("mouseover", (event) => {
+      event.preventDefault();
+      let laserLine1 = document.createElement("span");
+      laserLine1.className = "laser1";
+      cage[index-6].append(laserLine1);
+      cage[index-6].classList.add("laser-start");
+    });
+
+    BNT1.addEventListener("mouseout", (event) => {
+      event.preventDefault();
+      this.field.find((item) => {
+        if (item.classList.contains("laser-start")) {
+          console.log(item.childNodes);
+          for (let i = 0; i < item.childNodes.length; i++) {
+            if (item.childNodes[i].classList.contains("laser1")) {
+              item.childNodes[i].remove();
+            }
+          }
+          console.log(item.childNodes);
+        }
+      })
+    })
   },
 
   showUnits() {
