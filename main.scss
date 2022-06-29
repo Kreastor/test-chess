@@ -266,8 +266,8 @@ background-color: $color-player1;
 .laser1 {
   width: 230px;
   height: 5px;
-  border: 1px solid red;
-  background: red;
+  border: 1px solid $color-player1;
+  background: $color-player1;
   border-radius: 18px;
   box-shadow: 2px 2px 10px 1px #f4dede;
   display: block;
@@ -288,8 +288,8 @@ background-color: $color-player1;
 .laser2 {
   width: 230px;
   height: 5px;
-  border: 1px solid red;
-  background: red;
+  border: 1px solid $color-player1;
+  background: $color-player1;
   border-radius: 18px;
   box-shadow: 2px 2px 10px 1px #f4dede;
   display: block;

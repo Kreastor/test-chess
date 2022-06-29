@@ -590,47 +590,119 @@ const GAME = {
 
     BTN1.addEventListener("mouseover", (event) => {
       event.preventDefault();
-      let laserLine1 = document.createElement("span");
-      laserLine1.className = "laser1";
-      cage[index-6].append(laserLine1);
-      cage[index-6].classList.add("laser-start");
+      if (index === 0
+        || index === 1
+        || index === 2
+        || index === 3
+        || index === 4) {
+        alert("Атака лучом не доступна");
+      } else if (index === 5
+        || index === 10
+        || index === 15
+        || index === 20) {
+          alert("Атака лучом 1 недоступна");
+        } else {
+        let laserLine1 = document.createElement("span");
+        laserLine1.className = "laser1";
+        cage[index-6].append(laserLine1);
+        cage[index-6].classList.add("laser-start");
+        this.Player1UsingAbilities();
+      }
     });
 
     BTN1.addEventListener("mouseout", (event) => {
       event.preventDefault();
       this.field.find((item) => {
         if (item.classList.contains("laser-start")) {
-          console.log(item.childNodes);
           for (let i = 0; i < item.childNodes.length; i++) {
             if (item.childNodes[i].classList.contains("laser1")) {
               item.childNodes[i].remove();
+              item.classList.remove("laser-start");
             }
           }
-          console.log(item.childNodes);
         }
       })
-    })
+    });
 
     BTN2.addEventListener("mouseover", (event) => {
       event.preventDefault();
+      if (index === 0
+        || index === 1
+        || index === 2
+        || index === 3
+        || index === 4) {
+        alert("Атака лучом не доступна");
+      } else if (index === 9
+        || index === 14
+        || index === 19
+        || index === 24) {
+          alert("Атака лучом 2 недоступна");
+        } else {
       let laserLine2 = document.createElement("span");
       laserLine2.className = "laser2";
       cage[index-4].append(laserLine2);
       cage[index-4].classList.add("laser-start");
+      this.Player1UsingAbilities();
+      }
     });
 
     BTN2.addEventListener("mouseout", (event) => {
       event.preventDefault();
       this.field.find((item) => {
         if (item.classList.contains("laser-start")) {
-          console.log(item.childNodes);
           for (let i = 0; i < item.childNodes.length; i++) {
             if (item.childNodes[i].classList.contains("laser2")) {
               item.childNodes[i].remove();
+              item.classList.remove("laser-start");
             }
           }
-          console.log(item.childNodes);
         }
+      })
+    })
+  },
+
+  Player1UsingAbilities() {
+    const cage = document.querySelectorAll(".cage");
+    const abilityBTN1 = document.querySelector(".ability-BTN1");
+    const abilityBTN2 = document.querySelector(".ability-BTN2");  
+
+    abilityBTN1.addEventListener("click", (event) => {
+      this.field.find((item, index) => {
+        if (item.classList.contains("laser-start")) {
+          if (index === 0
+          || index === 1
+          || index === 2
+          || index === 3
+          || index === 4) {
+            item.innerHTML = "";
+            item.className = "cage empty-cage";
+          } else {
+            item.innerHTML = "";
+            item.className = "cage empty-cage";
+            cage[index-4].innerHTML = "";
+            cage[index-4].className = "cage empty-cage";
+          }
+        } 
+      })
+    })
+
+    abilityBTN2.addEventListener("click", (event) => {
+      this.field.find((item, index) => {
+        if (item.classList.contains("laser-start")) {
+          if (index === 0
+          || index === 1
+          || index === 2
+          || index === 3
+          || index === 4) {
+            item.innerHTML = "";
+            item.className = "cage empty-cage";
+          } else {
+            item.innerHTML = "";
+            item.className = "cage empty-cage";
+            cage[index-6].innerHTML = "";
+            cage[index-6].className = "cage empty-cage";
+          }
+        } 
       })
     })
   },
