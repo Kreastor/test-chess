@@ -127,3 +127,64 @@
       this.field[index-6].classList.remove("pre-move");
     }  */
 
+
+
+   /*  showUnits() {
+      let request = prompt(`Какие юниты показать?
+      0 - Треугольники игрока 1;
+      1 - Треугольники игрока 2;
+      2 - Квадраты игрока 1;
+      3 - Квадраты игрока 2;
+      4 - Курги игрока 1;
+      5 - Круги игрока 2.
+      6 - Показать в консоли`,);
+  
+      if (+request === 0) {
+        alert(this.trianglePlayer1);
+      } else if (+request === 1) {
+        alert(this.trianglePlayer2);
+      } else if (+request === 2) {
+        alert(this.squarePlayer1);
+      } else if (+request === 3) {
+        alert(this.squarePlayer2);
+      } else if (+request === 4) {
+        alert(this.circlePlayer1);
+      } else if (+request === 5) {
+        alert(this.circlePlayer2);
+      } else if (+request === 6) {
+        let unitsArr = [
+          this.trianglePlayer1,
+          this.trianglePlayer1,
+          this.trianglePlayer2,
+          this.squarePlayer1,
+          this.squarePlayer2,
+          this.circlePlayer1,
+          this.circlePlayer2,
+        ]
+        let enteringConsole = prompt(`Какие юниты показать в консоли?
+        0 - Треугольники игрока 1;
+        1 - Треугольники игрока 2;
+        2 - Квадраты игрока 1;
+        3 - Квадраты игрока 2;
+        4 - Курги игрока 1;
+        5 - Круги игрока 2.
+        6 - Всех`,);
+        if (+enteringConsole === 6) {
+          console.log(this.trianglePlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
+          console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
+          console.log(this.squarePlayer1); // Array [ span.square-look-up]
+          console.log(this.squarePlayer2); // Array [ span.square-look-down]
+          console.log(this.circlePlayer1); // Array(3) [ span.circle-look-up, span.circle-look-up, span.circle-look-up]
+          console.log(this.circlePlayer2); // Array(3) [ span.circle-look-down, span.circle-look-down, span.circle-look-down]
+        } else if (typeof enteringConsole === null) {
+          return
+        } else
+          console.log(unitsArr[enteringConsole]);
+  
+      } else if (typeof request === null) {
+        return
+      } else {
+        alert("Ошибка ввода, попробуй ещё раз");
+        this.showUnits();
+      }
+    } */

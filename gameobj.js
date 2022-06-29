@@ -3,126 +3,44 @@ const GAME = {
   createGame(p1, p2,) {
     const field = document.createElement("div");
     field.className = "field";
-    field.style.cssText = `width: 600px;
-                          margin: 10% auto 0;
-                          display: flex;
-                          flex-wrap: wrap;
-                          overflow: hidden;`
     document.body.append(field);
 
     for (let i = 1; i < 26; i++) {
       let cage = document.createElement("div");
       cage.className = "cage empty-cage"; 
       cage.id = `cage${i}`;
-      cage.style.cssText = `position: relative;
-                              border: 3px solid #fff;
-                              width: 120px;
-                              height: 120px;
-                              display: flex;
-                              align-items: center;
-                              justify-content: flex-start`
       field.append(cage);
       this.field.push(cage);
 
-      switch(i) {
-        case 2: 
-          {let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          cage.append(triangleLookDown);
-          cage.className = "cage triangle-look-down-unit";
-          this.trianglePlayer2.push(triangleLookDown);}
-          break;
-
-        case 4: 
-          {let triangleLookDown = document.createElement("span");
-          triangleLookDown.className = "triangle-look-down";
-          cage.append(triangleLookDown);
-          cage.className = "cage triangle-look-down-unit";
-          this.trianglePlayer2.push(triangleLookDown);}
-          break;
-
-        case 3: 
-          {let squareLookDown = document.createElement("span");
-          squareLookDown.className = "square-look-down";
-          cage.append(squareLookDown);
-          cage.className = "cage square-look-down-unit";
-          this.squarePlayer2.push(squareLookDown);}
-          break;
-
-        case 7: 
-          {let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          cage.append(circleLookDown);
-          cage.className = "cage circle-look-down-unit";
-          this.circlePlayer2.push(circleLookDown);}
-          break;
-        
-        case 8: 
-          {let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          cage.append(circleLookDown);
-          cage.className = "cage circle-look-down-unit";
-          this.circlePlayer2.push(circleLookDown);}
-          break;
-
-        case 9: 
-          {let circleLookDown = document.createElement("span");
-          circleLookDown.className = "circle-look-down";
-          cage.append(circleLookDown);
-          cage.className = "cage circle-look-down-unit";
-          this.circlePlayer2.push(circleLookDown);}
-          break;
-        
-        case 22:
-          {let triangleLookUp = document.createElement("span");
-          triangleLookUp.className = "triangle-look-up";
-          cage.append(triangleLookUp);
-          cage.className = "cage triangle-look-up-unit";
-          this.trianglePlayer1.push(triangleLookUp);}
-          break;
-
-        case 24:
-          {let triangleLookUp = document.createElement("span");
-          triangleLookUp.className = "triangle-look-up";
-          cage.append(triangleLookUp);
-          cage.className = "cage triangle-look-up-unit";
-          this.trianglePlayer1.push(triangleLookUp);}
-          break;
-
-        case 23: 
-          let squareLookUp = document.createElement("span");
-          squareLookUp.className = "square-look-up";
-          cage.append(squareLookUp);
-          cage.className = "cage square-look-up-unit";
-          this.squarePlayer1.push(squareLookUp);
-          break;
-
-        case 17: 
-          {let circleLookUp = document.createElement("span");
-          circleLookUp.className = "circle-look-up";
-          cage.append(circleLookUp);
-          cage.className = "cage circle-look-up-unit";
-          this.circlePlayer1.push(circleLookUp);}
-          break;
-
-        case 18: 
-          {let circleLookUp = document.createElement("span");
-          circleLookUp.className = "circle-look-up";
-          cage.append(circleLookUp);
-          cage.className = "cage circle-look-up-unit";
-          this.circlePlayer1.push(circleLookUp);}
-          break;
-        
-        case 19: 
-          {let circleLookUp = document.createElement("span");
-          circleLookUp.className = "circle-look-up";
-          cage.append(circleLookUp);
-          cage.className = "cage circle-look-up-unit";
-          this.circlePlayer1.push(circleLookUp);}
-          break;
+      if (i === 2 || i === 4) {
+        this.createUnit("triangle-look-down", "cage triangle-look-down-unit", cage);
+      } else if (i === 3) {
+        this.createUnit("square-look-down", "cage square-look-down-unit", cage);
+      } else if (i === 7 || i === 8 || i === 9) {
+        this.createUnit("circle-look-down", "cage circle-look-down-unit", cage);
+      } else if (i === 22 || i === 24) {
+        this.createUnit("triangle-look-up", "cage triangle-look-up-unit", cage);
+      } else if (i === 23) {
+        this.createUnit("square-look-up", "cage square-look-up-unit", cage);
+      } else if (i === 17 || i === 18 || i === 19 ) {
+        this.createUnit("circle-look-up", "cage circle-look-up-unit", cage);
       }
     };
     return this;
+  },
+
+  createUnit(unitClassName, cageClassName, cage) {
+    let unit = document.createElement("span");
+    unit.className = unitClassName;
+    cage.append(unit);
+    cage.className = cageClassName;
+
+    unitClassName === "triangle-look-down" ? this.trianglePlayer2.push(unit) : false;
+    unitClassName === "square-look-down" ? this.squarePlayer2.push(unit) : false;
+    unitClassName === "circle-look-down" ? this.circlePlayer2.push(unit) : false;
+    unitClassName === "triangle-look-up" ? this.trianglePlayer1.push(unit) : false;
+    unitClassName === "square-look-up" ? this.squarePlayer1.push(unit) : false;
+    unitClassName === "circle-look-up" ? this.circlePlayer1.push(unit) : false;
   },
 
   player1: true,
@@ -677,10 +595,15 @@ const GAME = {
             item.innerHTML = "";
             item.className = "cage empty-cage";
           } else {
-            item.innerHTML = "";
-            item.className = "cage empty-cage";
-            cage[index-4].innerHTML = "";
-            cage[index-4].className = "cage empty-cage";
+            setTimeout(() => {
+              item.innerHTML = "";
+              item.className = "cage empty-cage";
+            }, 300);
+      
+            setTimeout(() => {
+              cage[index-4].innerHTML = "";
+              cage[index-4].className = "cage empty-cage";
+            }, 500);
           }
         } 
       })
@@ -697,10 +620,15 @@ const GAME = {
             item.innerHTML = "";
             item.className = "cage empty-cage";
           } else {
-            item.innerHTML = "";
-            item.className = "cage empty-cage";
-            cage[index-6].innerHTML = "";
-            cage[index-6].className = "cage empty-cage";
+            setTimeout(() => {
+              item.innerHTML = "";
+              item.className = "cage empty-cage";
+            }, 300);
+      
+            setTimeout(() => {
+              cage[index-6].innerHTML = "";
+              cage[index-6].className = "cage empty-cage";
+            }, 500);
           }
         } 
       })
@@ -708,64 +636,14 @@ const GAME = {
   },
 
   showUnits() {
-    let request = prompt(`Какие юниты показать?
-    0 - Треугольники игрока 1;
-    1 - Треугольники игрока 2;
-    2 - Квадраты игрока 1;
-    3 - Квадраты игрока 2;
-    4 - Курги игрока 1;
-    5 - Круги игрока 2.
-    6 - Показать в консоли`,);
-
-    if (+request === 0) {
-      alert(this.trianglePlayer1);
-    } else if (+request === 1) {
-      alert(this.trianglePlayer2);
-    } else if (+request === 2) {
-      alert(this.squarePlayer1);
-    } else if (+request === 3) {
-      alert(this.squarePlayer2);
-    } else if (+request === 4) {
-      alert(this.circlePlayer1);
-    } else if (+request === 5) {
-      alert(this.circlePlayer2);
-    } else if (+request === 6) {
-      let unitsArr = [
-        this.trianglePlayer1,
-        this.trianglePlayer1,
-        this.trianglePlayer2,
-        this.squarePlayer1,
-        this.squarePlayer2,
-        this.circlePlayer1,
-        this.circlePlayer2,
-      ]
-      let enteringConsole = prompt(`Какие юниты показать в консоли?
-      0 - Треугольники игрока 1;
-      1 - Треугольники игрока 2;
-      2 - Квадраты игрока 1;
-      3 - Квадраты игрока 2;
-      4 - Курги игрока 1;
-      5 - Круги игрока 2.
-      6 - Всех`,);
-      if (+enteringConsole === 6) {
-        console.log(this.trianglePlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
-        console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
-        console.log(this.squarePlayer1); // Array [ span.square-look-up]
-        console.log(this.squarePlayer2); // Array [ span.square-look-down]
-        console.log(this.circlePlayer1); // Array(3) [ span.circle-look-up, span.circle-look-up, span.circle-look-up]
-        console.log(this.circlePlayer2); // Array(3) [ span.circle-look-down, span.circle-look-down, span.circle-look-down]
-      } else if (typeof enteringConsole === null) {
-        return
-      } else
-        console.log(unitsArr[enteringConsole]);
-
-    } else if (typeof request === null) {
-      return
-    } else {
-      alert("Ошибка ввода, попробуй ещё раз");
-      this.showUnits();
-    }
+    console.log(this.trianglePlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
+    console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
+    console.log(this.squarePlayer1); // Array [ span.square-look-up]
+    console.log(this.squarePlayer2); // Array [ span.square-look-down]
+    console.log(this.circlePlayer1); // Array(3) [ span.circle-look-up, span.circle-look-up, span.circle-look-up]
+    console.log(this.circlePlayer2); // Array(3) [ span.circle-look-down, span.circle-look-down, span.circle-look-down]
   }
+  
 }
 
 const startGameBTN = document.querySelector(".border-menu__item");

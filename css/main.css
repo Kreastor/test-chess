@@ -65,6 +65,33 @@
   font-size: 30px;
 }
 
+.field {
+  width: 600px;
+  margin: 10% auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.cage {
+  position: relative;
+  border: 3px solid #fff;
+  width: 120px;
+  height: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
 .circle-look-up {
   position: absolute;
   top: 50%;
