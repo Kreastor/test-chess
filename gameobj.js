@@ -1219,7 +1219,6 @@ startGameBTN.addEventListener("click", () => {
 });
 
 
-
 showUnit.addEventListener("click", function () {
   GAME.showUnits();
 });
