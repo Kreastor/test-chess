@@ -188,3 +188,8 @@
         this.showUnits();
       }
     } */
+
+    const whoseMove = document.querySelector("#whose-move");
+    whoseMove.style.cssText =  `display: block;
+                              color: rgb(255, 0, 0);
+                              border-color: rgb(255, 0, 0);`

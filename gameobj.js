@@ -43,7 +43,7 @@ const GAME = {
     unitClassName === "circle-look-up" ? this.circlePlayer1.push(unit) : false;
   },
 
-  player1: false,
+  player1: true,
   player2: false,
 
   field: [],
@@ -54,6 +54,8 @@ const GAME = {
   circlePlayer1: [],
   circlePlayer2: [],
 
+  whoseMove: document.querySelector("#whose-move"),
+
   selectUnit() {
     const cage = document.querySelectorAll(".cage");
     
@@ -62,9 +64,9 @@ const GAME = {
         if (this.player1) {
           if (cage[i].classList.contains("circle-look-up-unit")) {
             this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
+              if (item.classList.contains("player1-ability-table-on")) {
+                cage[index].classList.remove("player1-ability-table-on");
+                let abilityWindow = document.querySelector(".player1-abilities-window");
                 abilityWindow.remove();
               }
             });
@@ -100,9 +102,9 @@ const GAME = {
             }
           } else if (cage[i].classList.contains("triangle-look-up-unit")) {
             this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
+              if (item.classList.contains("player1-ability-table-on")) {
+                cage[index].classList.remove("player1-ability-table-on");
+                let abilityWindow = document.querySelector(".player1-abilities-window");
                 abilityWindow.remove();
               }
             });
@@ -142,9 +144,9 @@ const GAME = {
             }
           } else if (cage[i].classList.contains("square-look-up-unit")) {
             this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
+              if (item.classList.contains("player1-ability-table-on")) {
+                cage[index].classList.remove("player1-ability-table-on");
+                let abilityWindow = document.querySelector(".player1-abilities-window");
                 abilityWindow.remove();
               }
             });
@@ -217,14 +219,16 @@ const GAME = {
           } else {
             if (cage[i].classList.contains("pre-move")) {
               this.move(i); 
-              // this.player2SelectUnit();
               this.player1 = false;
-              // return;
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(0, 0, 255);
+                                              border-color: rgb(0, 0, 255);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 2";
             } else {
               this.field.find((item, index) => {
-                if (item.classList.contains("ability-table-on")) {
-                  cage[index].classList.remove("ability-table-on");
-                  let abilityWindow = document.querySelector(".abilities-window");
+                if (item.classList.contains("player1-ability-table-on")) {
+                  cage[index].classList.remove("player1-ability-table-on");
+                  let abilityWindow = document.querySelector(".player1-abilities-window");
                   abilityWindow.remove();
                 }
               });
@@ -236,12 +240,13 @@ const GAME = {
               });  
             }      
           }
+
         } else {
           if (cage[i].classList.contains("circle-look-down-unit")) {
             this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
+              if (item.classList.contains("player2-ability-table-on")) {
+                cage[index].classList.remove("player2-ability-table-on");
+                let abilityWindow = document.querySelector(".player2-abilities-window");
                 abilityWindow.remove();
               }
             });
@@ -277,9 +282,9 @@ const GAME = {
             }
           } else if (cage[i].classList.contains("triangle-look-down-unit")) {
             this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
+              if (item.classList.contains("player2-ability-table-on")) {
+                cage[index].classList.remove("player2-ability-table-on");
+                let abilityWindow = document.querySelector(".player2-abilities-window");
                 abilityWindow.remove();
               }
             });
@@ -320,9 +325,9 @@ const GAME = {
             }
           } else if (cage[i].classList.contains("square-look-down-unit")) {
             this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
+              if (item.classList.contains("player2-ability-table-on")) {
+                cage[index].classList.remove("player2-ability-table-on");
+                let abilityWindow = document.querySelector(".player2-abilities-window");
                 abilityWindow.remove();
               }
             });
@@ -395,14 +400,16 @@ const GAME = {
           } else {
             if (cage[i].classList.contains("pre-move")) {
               this.move(i);
-              // this.player1SelectUnit();
               this.player1 = true;
-              // return;
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(255, 0, 0);
+                                              border-color: rgb(255, 0, 0);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 1";
             } else {
               this.field.find((item, index) => {
-                if (item.classList.contains("ability-table-on")) {
-                  cage[index].classList.remove("ability-table-on");
-                  let abilityWindow = document.querySelector(".abilities-window");
+                if (item.classList.contains("player2-ability-table-on")) {
+                  cage[index].classList.remove("player2-ability-table-on");
+                  let abilityWindow = document.querySelector(".player2-abilities-window");
                   abilityWindow.remove();
                 }
               });
@@ -745,205 +752,446 @@ const GAME = {
     this.field[index-enemyLocation].className = cageClassName;
   },
 
-  player1CallRoyalAbilities() {
+  callRoyalAbilities() {
     const cage = document.querySelectorAll(".cage");
 
-    for (let i = 0; i < cage.length; i++) {
-      cage[i].addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        this.field.find((item, index) => {
-          if (item.classList.contains("active")) {
-            this.clearActive(index);
-            cage[index].classList.remove("active");
-          }
-        });
-        if (cage[i].classList.contains("active")) {
-          this.clearActive(i);
-          cage[i].classList.remove("active");
-        }
-        if (cage[i].classList.contains("ability-table-on")) {
-          cage[i].classList.remove("ability-table-on");
-          cage[i].classList.remove("active");
-          let abilityWindow = document.querySelector(".abilities-window");
-          abilityWindow.remove();
-        } else if (cage[i].classList.contains("square-look-up-unit")) {
-          this.field.filter((item, index) => {
-            if (item.classList.contains("pre-move") 
-            && !item.classList.contains("circle-look-down-unit")
-            && !item.classList.contains("triangle-look-down-unit")
-            && !item.classList.contains("square-look-down-unit")) {
-              item.innerHTML = "";
-              item.classList.remove("pre-move");
+      for (let i = 0; i < cage.length; i++) {
+        cage[i].addEventListener("contextmenu", (event) => {
+          event.preventDefault();
+          if (this.player1) {
+            this.field.find((item, index) => {
+              if (item.classList.contains("active")) {
+                this.clearActive(index);
+                cage[index].classList.remove("active");
+              }
+            });
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
             }
-          });
-
-          let abilitiesWindow = document.createElement("div");
-          abilitiesWindow.className = "abilities-window";
-      
-
-          let headerAbilitiesWindow = document.createElement("h1");
-          headerAbilitiesWindow.className = "header-abilities-window";
-          headerAbilitiesWindow.innerHTML = "Выберите способ атаки";
-          abilitiesWindow.prepend(headerAbilitiesWindow);
-
-
-          let abilityBTN1 = document.createElement("button");
-          abilityBTN1.className = "ability-BTN1";
-          abilityBTN1.innerHTML = "ЛУЧ 1";
-
-          abilitiesWindow.append(abilityBTN1);           
-          cage[i].classList.add("ability-table-on");
-          cage[i].classList.add("active");
-
-          let abilityBTN2 = document.createElement("button");
-          abilityBTN2.className = "ability-BTN2";
-          abilityBTN2.innerHTML = "ЛУЧ 2";
-
-          abilitiesWindow.append(abilityBTN2);           
-          cage[i].classList.add("ability-table-on");
-          cage[i].classList.add("active");
-
-          document.body.append(abilitiesWindow);
-          this.player1TargetingAbilities(i);
-        } else {
-          plugа = 0;
-        }
+            if (cage[i].classList.contains("player1-ability-table-on")) {
+              cage[i].classList.remove("player1-ability-table-on");
+              cage[i].classList.remove("active");
+              let abilityWindow = document.querySelector(".player1-abilities-window");
+              abilityWindow.remove();
+            } else if (cage[i].classList.contains("square-look-up-unit")) {
+              this.field.filter((item, index) => {
+                if (item.classList.contains("pre-move") 
+                && !item.classList.contains("circle-look-down-unit")
+                && !item.classList.contains("triangle-look-down-unit")
+                && !item.classList.contains("square-look-down-unit")) {
+                  item.innerHTML = "";
+                  item.classList.remove("pre-move");
+                }
+              });
+    
+            let abilitiesWindow = document.createElement("div");
+            abilitiesWindow.className = "player1-abilities-window";
+          
+            let headerAbilitiesWindow = document.createElement("h1");
+            headerAbilitiesWindow.className = "header-player1-abilities-window";
+            headerAbilitiesWindow.innerHTML = "Выберите способ атаки";
+            abilitiesWindow.prepend(headerAbilitiesWindow);
+    
+    
+            let abilityBTN1 = document.createElement("button");
+            abilityBTN1.className = "player1-ability-BTN1";
+            abilityBTN1.innerHTML = "ЛУЧ 1";
+            abilitiesWindow.append(abilityBTN1);           
+            cage[i].classList.add("player1-ability-table-on");
+            cage[i].classList.add("active");
+    
+            let abilityBTN2 = document.createElement("button");
+            abilityBTN2.className = "player1-ability-BTN2";
+            abilityBTN2.innerHTML = "ЛУЧ 2";
+            abilitiesWindow.append(abilityBTN2);           
+            cage[i].classList.add("player1-ability-table-on");
+            cage[i].classList.add("active");
+    
+            document.body.append(abilitiesWindow);
+            this.targetingAbilities(i);
+            } else plugа = 0;
+          } else {
+            this.field.find((item, index) => {
+              if (item.classList.contains("active")) {
+                this.clearActive(index);
+                cage[index].classList.remove("active");
+              }
+            });
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            }
+            if (cage[i].classList.contains("player2-ability-table-on")) {
+              cage[i].classList.remove("player2-ability-table-on");
+              cage[i].classList.remove("active");
+              let abilityWindow = document.querySelector(".player2-abilities-window");
+              abilityWindow.remove();
+            } else if (cage[i].classList.contains("square-look-down-unit")) {
+              this.field.filter((item, index) => {
+                if (item.classList.contains("pre-move") 
+                && !item.classList.contains("circle-look-down-unit")
+                && !item.classList.contains("triangle-look-down-unit")
+                && !item.classList.contains("square-look-down-unit")) {
+                  item.innerHTML = "";
+                  item.classList.remove("pre-move");
+                }
+              });
+    
+            let abilitiesWindow = document.createElement("div");
+            abilitiesWindow.className = "player2-abilities-window";
+          
+            let headerAbilitiesWindow = document.createElement("h1");
+            headerAbilitiesWindow.className = "header-player2-abilities-window";
+            headerAbilitiesWindow.innerHTML = "Выберите способ атаки";
+            abilitiesWindow.prepend(headerAbilitiesWindow);
+    
+            let abilityBTN1 = document.createElement("button");
+            abilityBTN1.className = "player2-ability-BTN1";
+            abilityBTN1.innerHTML = "ЛУЧ 1";
+    
+            abilitiesWindow.append(abilityBTN1);           
+            cage[i].classList.add("player2-ability-table-on");
+            cage[i].classList.add("active");
+    
+            let abilityBTN2 = document.createElement("button");
+            abilityBTN2.className = "player2-ability-BTN2";
+            abilityBTN2.innerHTML = "ЛУЧ 2";
+    
+            abilitiesWindow.append(abilityBTN2);           
+            cage[i].classList.add("player2-ability-table-on");
+            cage[i].classList.add("active");
+    
+            document.body.append(abilitiesWindow);
+            this.targetingAbilities(i);
+            } else plugа = 0;
+          }
       });
     };
   },
 
-  player1TargetingAbilities(index) {
+  targetingAbilities(index) {
+
     const cage = document.querySelectorAll(".cage");
-    let BTN1 = document.querySelector(".ability-BTN1");
-    let BTN2 = document.querySelector(".ability-BTN2");
+    const player1BTN1 = document.querySelector(".player1-ability-BTN1");
+    const player1BTN2 = document.querySelector(".player1-ability-BTN2");
+    const player2BTN1 = document.querySelector(".player2-ability-BTN1");
+    const player2BTN2 = document.querySelector(".player2-ability-BTN2");
 
-    BTN1.addEventListener("mouseover", (event) => {
-      event.preventDefault();
-      if (index === 0
-        || index === 1
-        || index === 2
-        || index === 3
-        || index === 4) {
-        alert("Атака лучом не доступна");
-      } else if (index === 5
-        || index === 10
-        || index === 15
-        || index === 20) {
-          alert("Атака лучом 1 недоступна");
-        } else {
-        let laserLine1 = document.createElement("span");
-        laserLine1.className = "laser1";
-        cage[index-6].append(laserLine1);
-        cage[index-6].classList.add("laser-start");
-        this.player1UsingAbilities();
-      }
-    });
+    if (this.player1) {
+      player1BTN1.addEventListener("mouseover", (event) => {
+        event.preventDefault();
+        if (index === 0
+          || index === 1
+          || index === 2
+          || index === 3
+          || index === 4) {
+          alert("Атака лучом не доступна");
+        } else if (index === 5
+          || index === 10
+          || index === 15
+          || index === 20) {
+            alert("Атака лучом 1 недоступна");
+          } else {
+          let laserLine1 = document.createElement("span");
+          laserLine1.className = "player1-laser1";
+          cage[index-6].append(laserLine1);
+          cage[index-6].classList.add("laser-start");
+          this.usingAbilities();
+        }
+      });
 
-    BTN1.addEventListener("mouseout", (event) => {
-      event.preventDefault();
-      this.field.find((item) => {
-        if (item.classList.contains("laser-start")) {
-          for (let i = 0; i < item.childNodes.length; i++) {
-            if (item.childNodes[i].classList.contains("laser1")) {
-              item.childNodes[i].remove();
-              item.classList.remove("laser-start");
+      player1BTN1.addEventListener("mouseout", (event) => {
+        event.preventDefault();
+        this.field.find((item) => {
+          if (item.classList.contains("laser-start")) {
+            for (let i = 0; i < item.childNodes.length; i++) {
+              if (item.childNodes[i].classList.contains("player1-laser1")) {
+                item.childNodes[i].remove();
+                item.classList.remove("laser-start");
+              }
             }
           }
+        })
+      });
+
+      player1BTN2.addEventListener("mouseover", (event) => {
+        event.preventDefault();
+        if (index === 0
+          || index === 1
+          || index === 2
+          || index === 3
+          || index === 4) {
+          alert("Атака лучом не доступна");
+        } else if (index === 9
+          || index === 14
+          || index === 19
+          || index === 24) {
+            alert("Атака лучом 2 недоступна");
+          } else {
+        let laserLine2 = document.createElement("span");
+        laserLine2.className = "player1-laser2";
+        cage[index-4].append(laserLine2);
+        cage[index-4].classList.add("laser-start");
+        this.usingAbilities();
         }
-      })
-    });
+      });
 
-    BTN2.addEventListener("mouseover", (event) => {
-      event.preventDefault();
-      if (index === 0
-        || index === 1
-        || index === 2
-        || index === 3
-        || index === 4) {
-        alert("Атака лучом не доступна");
-      } else if (index === 9
-        || index === 14
-        || index === 19
-        || index === 24) {
-          alert("Атака лучом 2 недоступна");
-        } else {
-      let laserLine2 = document.createElement("span");
-      laserLine2.className = "laser2";
-      cage[index-4].append(laserLine2);
-      cage[index-4].classList.add("laser-start");
-      this.player1UsingAbilities();
-      }
-    });
-
-    BTN2.addEventListener("mouseout", (event) => {
-      event.preventDefault();
-      this.field.find((item) => {
-        if (item.classList.contains("laser-start")) {
-          for (let i = 0; i < item.childNodes.length; i++) {
-            if (item.childNodes[i].classList.contains("laser2")) {
-              item.childNodes[i].remove();
-              item.classList.remove("laser-start");
+      player1BTN2.addEventListener("mouseout", (event) => {
+        event.preventDefault();
+        this.field.find((item) => {
+          if (item.classList.contains("laser-start")) {
+            for (let i = 0; i < item.childNodes.length; i++) {
+              if (item.childNodes[i].classList.contains("player1-laser2")) {
+                item.childNodes[i].remove();
+                item.classList.remove("laser-start");
+              }
             }
           }
-        }
+        })
       })
-    })
+
+    } else {
+      player2BTN1.addEventListener("mouseover", (event) => {
+        event.preventDefault();
+        if (index === 20
+          || index === 21
+          || index === 22
+          || index === 23
+          || index === 24) {
+          alert("Атака лучом не доступна");
+        } else if (index === 0
+          || index === 5
+          || index === 10
+          || index === 25) {
+            alert("Атака лучом 1 недоступна");
+          } else {
+          let laserLine1 = document.createElement("span");
+          laserLine1.className = "player2-laser1";
+          cage[index+4].append(laserLine1);
+          cage[index+4].classList.add("laser-start");
+          this.usingAbilities();
+        }
+      });
+      
+      player2BTN1.addEventListener("mouseout", (event) => {
+        event.preventDefault();
+        this.field.find((item) => {
+          if (item.classList.contains("laser-start")) {
+            for (let i = 0; i < item.childNodes.length; i++) {
+              if (item.childNodes[i].classList.contains("player2-laser1")) {
+                item.childNodes[i].remove();
+                item.classList.remove("laser-start");
+              }
+            }
+          }
+        })
+      });
+  
+      player2BTN2.addEventListener("mouseover", (event) => {
+        event.preventDefault();
+        if (index === 20
+          || index === 21
+          || index === 22
+          || index === 23
+          || index === 24) {
+          alert("Атака лучом не доступна");
+        } else if (index === 4
+          || index === 9
+          || index === 14
+          || index === 19) {
+            alert("Атака лучом 2 недоступна");
+          } else {
+        let laserLine2 = document.createElement("span");
+        laserLine2.className = "player2-laser2";
+        cage[index+6].append(laserLine2);
+        cage[index+6].classList.add("laser-start");
+        this.usingAbilities();
+        }
+      });
+  
+      player2BTN2.addEventListener("mouseout", (event) => {
+        event.preventDefault();
+        this.field.find((item) => {
+          if (item.classList.contains("laser-start")) {
+            for (let i = 0; i < item.childNodes.length; i++) {
+              if (item.childNodes[i].classList.contains("player2-laser2")) {
+                item.childNodes[i].remove();
+                item.classList.remove("laser-start");
+              }
+            }
+          }
+        })
+      })
+    }
   },
 
-  player1UsingAbilities() {
+  usingAbilities() {
     const cage = document.querySelectorAll(".cage");
-    const abilityBTN1 = document.querySelector(".ability-BTN1");
-    const abilityBTN2 = document.querySelector(".ability-BTN2");  
+    const player1AbilityBTN1 = document.querySelector(".player1-ability-BTN1");
+    const player1AbilityBTN2 = document.querySelector(".player1-ability-BTN2");  
+    const player2AbilityBTN1 = document.querySelector(".player2-ability-BTN1");
+    const player2AbilityBTN2 = document.querySelector(".player2-ability-BTN2"); 
 
-    abilityBTN1.addEventListener("click", (event) => {
-      this.field.find((item, index) => {
-        if (item.classList.contains("laser-start")) {
-          if (index === 0
-          || index === 1
-          || index === 2
-          || index === 3
-          || index === 4) {
-            item.innerHTML = "";
-            item.className = "cage empty-cage";
-          } else {
-            setTimeout(() => {
+    if (this.player1) {
+      player1AbilityBTN1.addEventListener("click", (event) => {
+        this.field.find((item, index) => {
+          if (item.classList.contains("laser-start")) {
+            if (index === 0
+            || index === 1
+            || index === 2
+            || index === 3
+            || index === 4) {
               item.innerHTML = "";
               item.className = "cage empty-cage";
-            }, 300);
-      
-            setTimeout(() => {
-              cage[index-4].innerHTML = "";
-              cage[index-4].className = "cage empty-cage";
-            }, 500);
-          }
-        } 
-      })
-    })
+            } else {
+              setTimeout(() => {
+                item.innerHTML = "";
+                item.className = "cage empty-cage";
+              }, 300);
+          
+              setTimeout(() => {
+                cage[index-4].innerHTML = "";
+                cage[index-4].className = "cage empty-cage";
+              }, 500);
 
-    abilityBTN2.addEventListener("click", (event) => {
-      this.field.find((item, index) => {
-        if (item.classList.contains("laser-start")) {
-          if (index === 0
-          || index === 1
-          || index === 2
-          || index === 3
-          || index === 4) {
-            item.innerHTML = "";
-            item.className = "cage empty-cage";
-          } else {
-            setTimeout(() => {
+              this.player1 = false;
+              this.field.find((item, index) => {
+                if (cage[index].classList.contains("player1-ability-table-on")) {
+                  cage[index].classList.remove("player1-ability-table-on");
+                  cage[index].classList.remove("active");
+                  let abilityWindow = document.querySelector(".player1-abilities-window");
+                  abilityWindow.remove();
+                }
+              });
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(0, 0, 255);
+                                              border-color: rgb(0, 0, 255);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 2";
+                                            }
+          } 
+        })
+
+      })
+
+      player1AbilityBTN2.addEventListener("click", (event) => {
+        this.field.find((item, index) => {
+          if (item.classList.contains("laser-start")) {
+            if (index === 0
+            || index === 1
+            || index === 2
+            || index === 3
+            || index === 4) {
               item.innerHTML = "";
               item.className = "cage empty-cage";
-            }, 300);
-      
-            setTimeout(() => {
-              cage[index-6].innerHTML = "";
-              cage[index-6].className = "cage empty-cage";
-            }, 500);
-          }
-        } 
+            } else {
+              setTimeout(() => {
+                item.innerHTML = "";
+                item.className = "cage empty-cage";
+              }, 300);
+        
+              setTimeout(() => {
+                cage[index-6].innerHTML = "";
+                cage[index-6].className = "cage empty-cage";
+              }, 500);
+
+              this.player1 = false;
+              this.field.find((item, index) => {
+                if (cage[index].classList.contains("player1-ability-table-on")) {
+                  cage[index].classList.remove("player1-ability-table-on");
+                  cage[index].classList.remove("active");
+                  let abilityWindow = document.querySelector(".player1-abilities-window");
+                  abilityWindow.remove();
+                }
+              });
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(0, 0, 255);
+                                              border-color: rgb(0, 0, 255);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 2";
+            }
+          } 
+        })
       })
-    })
+
+    } else {
+      player2AbilityBTN1.addEventListener("click", (event) => {
+        this.field.find((item, index) => {
+          if (item.classList.contains("laser-start")) {
+            if (index === 20
+            || index === 21
+            || index === 22
+            || index === 23
+            || index === 24) {
+              item.innerHTML = "";
+              item.className = "cage empty-cage";
+            } else {
+              setTimeout(() => {
+                item.innerHTML = "";
+                item.className = "cage empty-cage";
+              }, 300);
+        
+              setTimeout(() => {
+                cage[index+6].innerHTML = "";
+                cage[index+6].className = "cage empty-cage";
+              }, 500);
+
+              this.player1 = true;
+              this.field.find((item, index) => {
+                if (cage[index].classList.contains("player2-ability-table-on")) {
+                  cage[index].classList.remove("player2-ability-table-on");
+                  cage[index].classList.remove("active");
+                  let abilityWindow = document.querySelector(".player2-abilities-window");
+                  abilityWindow.remove();
+                }
+              });
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(255, 0, 0);
+                                              border-color: rgb(255, 0, 0);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 1";
+            }
+          } 
+        })
+      })
+  
+      player2AbilityBTN2.addEventListener("click", (event) => {
+        this.field.find((item, index) => {
+          if (item.classList.contains("laser-start")) {
+            if (index === 20
+            || index === 21
+            || index === 22
+            || index === 23
+            || index === 24) {
+              item.innerHTML = "";
+              item.className = "cage empty-cage";
+            } else {
+              setTimeout(() => {
+                item.innerHTML = "";
+                item.className = "cage empty-cage";
+              }, 300);
+        
+              setTimeout(() => {
+                cage[index+4].innerHTML = "";
+                cage[index+4].className = "cage empty-cage";
+              }, 500);
+
+              this.player1 = true;
+              this.field.find((item, index) => {
+                if (cage[index].classList.contains("player2-ability-table-on")) {
+                  cage[index].classList.remove("player2-ability-table-on");
+                  cage[index].classList.remove("active");
+                  let abilityWindow = document.querySelector(".player2-abilities-window");
+                  abilityWindow.remove();
+                }
+              });
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(255, 0, 0);
+                                              border-color: rgb(255, 0, 0);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 1";
+            }
+          } 
+        })
+      })
+    }
   },
 
   showUnits() {
@@ -957,15 +1205,20 @@ const GAME = {
 }
 
 const startGameBTN = document.querySelector(".border-menu__item");
+const whoseMove = document.querySelector("#whose-move");
 
 startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
+  whoseMove.style.cssText =  `display: block;
+                            color: rgb(255, 0, 0);
+                            border-color: rgb(255, 0, 0);`
+  whoseMove.innerHTML = "ХОД ИГРОКА 1";
   setTimeout(() => GAME.createGame(), 100); 
   setTimeout(() => GAME.selectUnit(), 500);
-  setTimeout(() => GAME.player1CallRoyalAbilities(), 600);
-  // setTimeout(() => GAME.moveUnit(), 600);
-  // setTimeout(() => console.log(GAME.field), 800);
+  setTimeout(() => GAME.callRoyalAbilities(), 600);
 });
+
+
 
 showUnit.addEventListener("click", function () {
   GAME.showUnits();
