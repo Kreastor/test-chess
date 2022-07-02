@@ -54,172 +54,13 @@ const GAME = {
   circlePlayer1: [],
   circlePlayer2: [],
 
-  player1SelectUnit() {
+  selectUnit() {
     const cage = document.querySelectorAll(".cage");
     
     for (let i = 0; i < cage.length; i++) {
       cage[i].addEventListener("click", (event) => {
-        if (cage[i].classList.contains("circle-look-up-unit")) {
-          this.field.find((item, index) => {
-            if (item.classList.contains("ability-table-on")) {
-              cage[index].classList.remove("ability-table-on");
-              let abilityWindow = document.querySelector(".abilities-window");
-              abilityWindow.remove();
-            }
-          });
-          this.field.find((item, index) => {
-            if (index === i) {
-              plugа = null;
-            } else {
-              if (item.classList.contains("active")) {
-                this.clearActive(index);
-                cage[index].classList.remove("active");
-              }
-            }
-          }); 
-          if (cage[i].classList.contains("active")) {
-            this.clearActive(i);
-            cage[i].classList.remove("active");
-          } else {
-            cage[i].classList.add("active");
-            if (i === 5 || i === 10 || i === 15 || i === 20) {
-              this.createPremoves(i, 5);
-              this.createPremoves(i, 4); 
-            } else if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4) {
-              cage[i].classList.remove("active");
-              alert("Дальше юнит не может пройти");
-            } else if (i === 9 || i === 14 || i === 19 || i === 24) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5);
-            } else {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5);
-              this.createPremoves(i, 4);
-            }
-          }
-        } else if (cage[i].classList.contains("triangle-look-up-unit")) {
-          this.field.find((item, index) => {
-            if (item.classList.contains("ability-table-on")) {
-              cage[index].classList.remove("ability-table-on");
-              let abilityWindow = document.querySelector(".abilities-window");
-              abilityWindow.remove();
-            }
-          });
-          this.field.find((item, index) => {
-            if (index === i) {
-              plugа = null;
-            } else {
-              if (item.classList.contains("active")) {
-                this.clearActive(index); 
-                cage[index].classList.remove("active");
-              }
-            }
-          }); 
-          if (cage[i].classList.contains("active")) {
-            this.clearActive(i);
-            cage[i].classList.remove("active");
-          } else {
-            cage[i].classList.add("active");
-            if (i === 5 || i === 15) {
-              this.createPremoves(i, 4);
-              this.createPremoves(i, -6); 
-            } else if (i === 1 || i === 3) {
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -6);
-            } else if (i === 9 || i === 19) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, -4);
-            } else if (i === 21 || i === 23) {
-              this.createPremoves(i, 6); 
-              this.createPremoves(i, 4);  
-            } else {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, -6);  
-              this.createPremoves(i, -4);
-            }
-          }
-        } else if (cage[i].classList.contains("square-look-up-unit")) {
-          this.field.find((item, index) => {
-            if (item.classList.contains("ability-table-on")) {
-              cage[index].classList.remove("ability-table-on");
-              let abilityWindow = document.querySelector(".abilities-window");
-              abilityWindow.remove();
-            }
-          });
-          this.field.find((item, index) => {
-            if (index === i) {
-              plugа = null;
-            } else {
-              if (item.classList.contains("active")) {
-                this.clearActive(index);
-                cage[index].classList.remove("active");
-              }
-            }
-          }); 
-          if (cage[i].classList.contains("active")) {
-            this.clearActive(i);
-            cage[i].classList.remove("active");
-          } else {
-            cage[i].classList.add("active");
-            if (i === 5 || i === 10 || i === 15) {
-              this.createPremoves(i, 5);
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            } else if (i === 0) {
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            } else if (i === 20) {
-              this.createPremoves(i, 5);
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, -1);
-            } else if (i === 1 || i === 2 || i === 3) {
-              this.createPremoves(i, 1); 
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            } else if (i === 4) {
-              this.createPremoves(i, 1)
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5); 
-            } else if (i === 24) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 1);
-            } else if (i === 9 || i === 14 || i === 19) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 1);
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5);
-            } else if (i === 21 || i === 22 || i === 23) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, 1);
-              this.createPremoves(i, -1);
-            } else {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, 1);
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -4); 
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            }
-          }
-        } else {
-          if (cage[i].classList.contains("pre-move")) {
-            this.move(i); 
-            // this.player2SelectUnit();
-            // this.player1 = false;
-            // return this;
-          } else {
+        if (this.player1) {
+          if (cage[i].classList.contains("circle-look-up-unit")) {
             this.field.find((item, index) => {
               if (item.classList.contains("ability-table-on")) {
                 cage[index].classList.remove("ability-table-on");
@@ -228,12 +69,351 @@ const GAME = {
               }
             });
             this.field.find((item, index) => {
-              if (item.classList.contains("active")) {
-                this.clearActive(index);
-                cage[index].classList.remove("active");
-              } 
-            });  
-          }      
+              if (index === i) {
+                plugа = null;
+              } else {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index);
+                  cage[index].classList.remove("active");
+                }
+              }
+            }); 
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            } else {
+              cage[i].classList.add("active");
+              if (i === 5 || i === 10 || i === 15 || i === 20) {
+                this.createPremoves(i, 5);
+                this.createPremoves(i, 4); 
+              } else if (i === 0 || i === 1 || i === 2 || i === 3 || i === 4) {
+                cage[i].classList.remove("active");
+                alert("Дальше юнит не может пройти");
+              } else if (i === 9 || i === 14 || i === 19 || i === 24) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5);
+              } else {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5);
+                this.createPremoves(i, 4);
+              }
+            }
+          } else if (cage[i].classList.contains("triangle-look-up-unit")) {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
+            this.field.find((item, index) => {
+              if (index === i) {
+                plugа = null;
+              } else {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index); 
+                  cage[index].classList.remove("active");
+                }
+              }
+            }); 
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            } else {
+              cage[i].classList.add("active");
+              if (i === 5 || i === 15) {
+                this.createPremoves(i, 4);
+                this.createPremoves(i, -6); 
+              } else if (i === 1 || i === 3) {
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -6);
+              } else if (i === 9 || i === 19) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, -4);
+              } else if (i === 21 || i === 23) {
+                this.createPremoves(i, 6); 
+                this.createPremoves(i, 4);  
+              } else {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, -6);  
+                this.createPremoves(i, -4);
+              }
+            }
+          } else if (cage[i].classList.contains("square-look-up-unit")) {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
+            this.field.find((item, index) => {
+              if (index === i) {
+                plugа = null;
+              } else {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index);
+                  cage[index].classList.remove("active");
+                }
+              }
+            }); 
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            } else {
+              cage[i].classList.add("active");
+              if (i === 5 || i === 10 || i === 15) {
+                this.createPremoves(i, 5);
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              } else if (i === 0) {
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              } else if (i === 20) {
+                this.createPremoves(i, 5);
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, -1);
+              } else if (i === 1 || i === 2 || i === 3) {
+                this.createPremoves(i, 1); 
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              } else if (i === 4) {
+                this.createPremoves(i, 1)
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5); 
+              } else if (i === 24) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 1);
+              } else if (i === 9 || i === 14 || i === 19) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 1);
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5);
+              } else if (i === 21 || i === 22 || i === 23) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, 1);
+                this.createPremoves(i, -1);
+              } else {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, 1);
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -4); 
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              }
+            }
+          } else {
+            if (cage[i].classList.contains("pre-move")) {
+              this.move(i); 
+              // this.player2SelectUnit();
+              this.player1 = false;
+              // return;
+            } else {
+              this.field.find((item, index) => {
+                if (item.classList.contains("ability-table-on")) {
+                  cage[index].classList.remove("ability-table-on");
+                  let abilityWindow = document.querySelector(".abilities-window");
+                  abilityWindow.remove();
+                }
+              });
+              this.field.find((item, index) => {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index);
+                  cage[index].classList.remove("active");
+                } 
+              });  
+            }      
+          }
+        } else {
+          if (cage[i].classList.contains("circle-look-down-unit")) {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
+            this.field.find((item, index) => {
+              if (index === i) {
+                plugа = null;
+              } else {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index);
+                  cage[index].classList.remove("active");
+                }
+              }
+            }); 
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            } else {
+              cage[i].classList.add("active");
+              if (i === 10 || i === 15) {
+                this.createPremoves(i, -5);
+                this.createPremoves(i, -6); 
+              } else if (i === 20 || i === 21 || i === 22 || i === 23 || i === 24) {
+                cage[i].classList.remove("active");
+                alert("Дальше юнит не может пройти");
+              } else if (i === 14 || i === 19) {
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5);
+              } else {
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5);
+                this.createPremoves(i, -6);
+              }
+            }
+          } else if (cage[i].classList.contains("triangle-look-down-unit")) {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
+  
+            this.field.find((item, index) => {
+              if (index === i) {
+                plugа = null;
+              } else {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index); 
+                  cage[index].classList.remove("active");
+                }
+              }
+            }); 
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            } else {
+              cage[i].classList.add("active");
+              if (i === 5 || i === 15) {
+                this.createPremoves(i, 4);
+                this.createPremoves(i, -6); 
+              } else if (i === 1 || i === 3) {
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -6);
+              } else if (i === 9 || i === 19) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, -4);
+              } else if (i === 21 || i === 23) {
+                this.createPremoves(i, 6); 
+                this.createPremoves(i, 4);  
+              } else {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, -6);  
+                this.createPremoves(i, -4);
+              }
+            }
+          } else if (cage[i].classList.contains("square-look-down-unit")) {
+            this.field.find((item, index) => {
+              if (item.classList.contains("ability-table-on")) {
+                cage[index].classList.remove("ability-table-on");
+                let abilityWindow = document.querySelector(".abilities-window");
+                abilityWindow.remove();
+              }
+            });
+            this.field.find((item, index) => {
+              if (index === i) {
+                plugа = null;
+              } else {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index);
+                  cage[index].classList.remove("active");
+                }
+              }
+            }); 
+            if (cage[i].classList.contains("active")) {
+              this.clearActive(i);
+              cage[i].classList.remove("active");
+            } else {
+              cage[i].classList.add("active");
+              if (i === 5 || i === 10 || i === 15) {
+                this.createPremoves(i, 5);
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              } else if (i === 0) {
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              } else if (i === 20) {
+                this.createPremoves(i, 5);
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, -1);
+              } else if (i === 1 || i === 2 || i === 3) {
+                this.createPremoves(i, 1); 
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              } else if (i === 4) {
+                this.createPremoves(i, 1)
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5); 
+              } else if (i === 24) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 1);
+              } else if (i === 9 || i === 14 || i === 19) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 1);
+                this.createPremoves(i, -4);
+                this.createPremoves(i, -5);
+              } else if (i === 21 || i === 22 || i === 23) {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, 1);
+                this.createPremoves(i, -1);
+              } else {
+                this.createPremoves(i, 6);
+                this.createPremoves(i, 5); 
+                this.createPremoves(i, 4); 
+                this.createPremoves(i, 1);
+                this.createPremoves(i, -1);
+                this.createPremoves(i, -4); 
+                this.createPremoves(i, -5); 
+                this.createPremoves(i, -6);
+              }
+            }
+          } else {
+            if (cage[i].classList.contains("pre-move")) {
+              this.move(i);
+              // this.player1SelectUnit();
+              this.player1 = true;
+              // return;
+            } else {
+              this.field.find((item, index) => {
+                if (item.classList.contains("ability-table-on")) {
+                  cage[index].classList.remove("ability-table-on");
+                  let abilityWindow = document.querySelector(".abilities-window");
+                  abilityWindow.remove();
+                }
+              });
+              this.field.find((item, index) => {
+                if (item.classList.contains("active")) {
+                  this.clearActive(index);
+                  cage[index].classList.remove("active");
+                } 
+              });  
+            }      
+          }
         }
       })
     }
@@ -241,7 +421,7 @@ const GAME = {
 
   createPremoves(i, premoveLocation) {
     let preMovePoint = document.createElement("span");
-/*     if (this.player1) {
+    if (this.player1) {
       if (this.field[i-premoveLocation].classList.contains("circle-look-up-unit")
       || this.field[i-premoveLocation].classList.contains("triangle-look-up-unit")
       || this.field[i-premoveLocation].classList.contains("square-look-up-unit")) {
@@ -263,7 +443,7 @@ const GAME = {
           this.field[i-premoveLocation].classList.add("pre-move");
         }
       }
-    } else { */
+    } else {
       if (this.field[i-premoveLocation].classList.contains("circle-look-down-unit")
       || this.field[i-premoveLocation].classList.contains("triangle-look-down-unit")
       || this.field[i-premoveLocation].classList.contains("square-look-down-unit")) {
@@ -285,12 +465,12 @@ const GAME = {
           this.field[i-premoveLocation].classList.add("pre-move");
         }
       }
-   /*  } */      
+    }      
   },
 
   move(i) {
     const cage = document.querySelectorAll(".cage");
-    /* if (this.player1) {
+    if (this.player1) {
       this.field.find((item, index) => {
         if (item.classList.contains("active") && item.classList.contains("circle-look-up-unit")) {
           this.clearActive(index);
@@ -312,7 +492,7 @@ const GAME = {
           this.step(cage, index, i, "square-look-up", "cage square-look-up-unit");
         }
       });  
-    } else { */
+    } else {
       this.field.find((item, index) => {
         if (item.classList.contains("active") && item.classList.contains("circle-look-down-unit")) {
           this.clearActive(index);
@@ -334,7 +514,7 @@ const GAME = {
           this.step(cage, index, i, "square-look-down", "cage square-look-down-unit");
         }
       });  
-    /* } */
+    }
   },
 
   step(cage, indexOfUnite, indexOfPremove, unitClassName, cageClassName) {
@@ -350,7 +530,7 @@ const GAME = {
   },
   
   clearActive(index) { 
-    /* if (this.player1) {
+    if (this.player1) {
       // circleLookUp  
       if (this.field[index].classList.contains("circle-look-up-unit")) {
         if (index === 5 || index === 10 || index === 15 || index === 20) {
@@ -434,7 +614,7 @@ const GAME = {
           this.clear(index, -6);
         }
       }
-    } else { */
+    } else {
       // circleLookDown 
       if (this.field[index].classList.contains("circle-look-down-unit")) {
         if (index === 10 || index === 15) {
@@ -518,11 +698,11 @@ const GAME = {
           this.clear(index, -6);
         }
       }
-    /* } */
+    }
   },
 
   clear(index, clearLocation) {
-    /* if (this.player1) {
+    if (this.player1) {
       if (this.field[index-clearLocation].classList.contains("circle-look-up-unit")
       || this.field[index-clearLocation].classList.contains("triangle-look-up-unit")
       || this.field[index-clearLocation].classList.contains("square-look-up-unit")) {
@@ -537,7 +717,7 @@ const GAME = {
         this.field[index-clearLocation].innerHTML = "";
         this.field[index-clearLocation].classList.remove("pre-move");
       } 
-    } else { */
+    } else {
       if (this.field[index-clearLocation].classList.contains("circle-look-down-unit")
       || this.field[index-clearLocation].classList.contains("triangle-look-down-unit")
       || this.field[index-clearLocation].classList.contains("square-look-down-unit")) {
@@ -552,7 +732,7 @@ const GAME = {
         this.field[index-clearLocation].innerHTML = "";
         this.field[index-clearLocation].classList.remove("pre-move");
       } 
-    /* } */
+    }
   },
 
   clearEnemy(index, enemyLocation, unitClassName, cageClassName) {
@@ -766,192 +946,6 @@ const GAME = {
     })
   },
 
-  player2SelectUnit() {
-    const cage = document.querySelectorAll(".cage");
-    
-    for (let i = 0; i < cage.length; i++) {
-      cage[i].addEventListener("click", (event) => {
-        if (cage[i].classList.contains("circle-look-down-unit")) {
-          this.field.find((item, index) => {
-            if (item.classList.contains("ability-table-on")) {
-              cage[index].classList.remove("ability-table-on");
-              let abilityWindow = document.querySelector(".abilities-window");
-              abilityWindow.remove();
-            }
-          });
-          this.field.find((item, index) => {
-            if (index === i) {
-              plugа = null;
-            } else {
-              if (item.classList.contains("active")) {
-                this.clearActive(index);
-                cage[index].classList.remove("active");
-              }
-            }
-          }); 
-          if (cage[i].classList.contains("active")) {
-            this.clearActive(i);
-            cage[i].classList.remove("active");
-          } else {
-            cage[i].classList.add("active");
-            if (i === 10 || i === 15) {
-              this.createPremoves(i, -5);
-              this.createPremoves(i, -6); 
-            } else if (i === 20 || i === 21 || i === 22 || i === 23 || i === 24) {
-              cage[i].classList.remove("active");
-              alert("Дальше юнит не может пройти");
-            } else if (i === 14 || i === 19) {
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5);
-            } else {
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5);
-              this.createPremoves(i, -6);
-            }
-          }
-        } else if (cage[i].classList.contains("triangle-look-down-unit")) {
-          this.field.find((item, index) => {
-            if (item.classList.contains("ability-table-on")) {
-              cage[index].classList.remove("ability-table-on");
-              let abilityWindow = document.querySelector(".abilities-window");
-              abilityWindow.remove();
-            }
-          });
-
-          this.field.find((item, index) => {
-            if (index === i) {
-              plugа = null;
-            } else {
-              if (item.classList.contains("active")) {
-                this.clearActive(index); 
-                cage[index].classList.remove("active");
-              }
-            }
-          }); 
-          if (cage[i].classList.contains("active")) {
-            this.clearActive(i);
-            cage[i].classList.remove("active");
-          } else {
-            cage[i].classList.add("active");
-            if (i === 5 || i === 15) {
-              this.createPremoves(i, 4);
-              this.createPremoves(i, -6); 
-            } else if (i === 1 || i === 3) {
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -6);
-            } else if (i === 9 || i === 19) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, -4);
-            } else if (i === 21 || i === 23) {
-              this.createPremoves(i, 6); 
-              this.createPremoves(i, 4);  
-            } else {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, -6);  
-              this.createPremoves(i, -4);
-            }
-          }
-        } else if (cage[i].classList.contains("square-look-down-unit")) {
-          this.field.find((item, index) => {
-            if (item.classList.contains("ability-table-on")) {
-              cage[index].classList.remove("ability-table-on");
-              let abilityWindow = document.querySelector(".abilities-window");
-              abilityWindow.remove();
-            }
-          });
-          this.field.find((item, index) => {
-            if (index === i) {
-              plugа = null;
-            } else {
-              if (item.classList.contains("active")) {
-                this.clearActive(index);
-                cage[index].classList.remove("active");
-              }
-            }
-          }); 
-          if (cage[i].classList.contains("active")) {
-            this.clearActive(i);
-            cage[i].classList.remove("active");
-          } else {
-            cage[i].classList.add("active");
-            if (i === 5 || i === 10 || i === 15) {
-              this.createPremoves(i, 5);
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            } else if (i === 0) {
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            } else if (i === 20) {
-              this.createPremoves(i, 5);
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, -1);
-            } else if (i === 1 || i === 2 || i === 3) {
-              this.createPremoves(i, 1); 
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            } else if (i === 4) {
-              this.createPremoves(i, 1)
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5); 
-            } else if (i === 24) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 1);
-            } else if (i === 9 || i === 14 || i === 19) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 1);
-              this.createPremoves(i, -4);
-              this.createPremoves(i, -5);
-            } else if (i === 21 || i === 22 || i === 23) {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, 1);
-              this.createPremoves(i, -1);
-            } else {
-              this.createPremoves(i, 6);
-              this.createPremoves(i, 5); 
-              this.createPremoves(i, 4); 
-              this.createPremoves(i, 1);
-              this.createPremoves(i, -1);
-              this.createPremoves(i, -4); 
-              this.createPremoves(i, -5); 
-              this.createPremoves(i, -6);
-            }
-          }
-        } else {
-          if (cage[i].classList.contains("pre-move")) {
-            this.move(i);
-/*             this.player1SelectUnit();
-            this.player1 = true;
-            return this; */
-          } else {
-            this.field.find((item, index) => {
-              if (item.classList.contains("ability-table-on")) {
-                cage[index].classList.remove("ability-table-on");
-                let abilityWindow = document.querySelector(".abilities-window");
-                abilityWindow.remove();
-              }
-            });
-            this.field.find((item, index) => {
-              if (item.classList.contains("active")) {
-                this.clearActive(index);
-                cage[index].classList.remove("active");
-              } 
-            });  
-          }      
-        }
-      })
-    } 
-  },
-
   showUnits() {
     console.log(this.trianglelPlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
     console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
@@ -967,7 +961,7 @@ const startGameBTN = document.querySelector(".border-menu__item");
 startGameBTN.addEventListener("click", () => {
   document.querySelector(".border-menu").style = "display:none";
   setTimeout(() => GAME.createGame(), 100); 
-  setTimeout(() => GAME.player2SelectUnit(), 500);
+  setTimeout(() => GAME.selectUnit(), 500);
   setTimeout(() => GAME.player1CallRoyalAbilities(), 600);
   // setTimeout(() => GAME.moveUnit(), 600);
   // setTimeout(() => console.log(GAME.field), 800);
