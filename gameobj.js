@@ -75,13 +75,13 @@ const GAME = {
                 plugа = null;
               } else {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index);
+                  this.clearActive(index, false);
                   cage[index].classList.remove("active");
                 }
               }
             }); 
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             } else {
               cage[i].classList.add("active");
@@ -113,13 +113,13 @@ const GAME = {
                 plugа = null;
               } else {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index); 
+                  this.clearActive(index, false); 
                   cage[index].classList.remove("active");
                 }
               }
             }); 
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             } else {
               cage[i].classList.add("active");
@@ -155,13 +155,13 @@ const GAME = {
                 plugа = null;
               } else {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index);
+                  this.clearActive(index, false);
                   cage[index].classList.remove("active");
                 }
               }
             }); 
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             } else {
               cage[i].classList.add("active");
@@ -217,8 +217,19 @@ const GAME = {
               }
             }
           } else {
-            if (cage[i].classList.contains("pre-move")) {
-              this.move(i); 
+            if (cage[i].classList.contains("pre-move") && cage[i].classList.contains("circle-look-down-unit")
+            || cage[i].classList.contains("pre-move") && cage[i].classList.contains("triangle-look-down-unit")
+            || cage[i].classList.contains("pre-move") && cage[i].classList.contains("square-look-down-unit")) {
+              // console.log("work attack");
+              this.move(i, true);
+              this.player1 = false;
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(0, 0, 255);
+                                              border-color: rgb(0, 0, 255);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 2";
+            } else if (cage[i].classList.contains("pre-move")) {
+              // console.log("work move");
+              this.move(i, false); 
               this.player1 = false;
               this.whoseMove.style.cssText = `display: block;
                                               color: rgb(0, 0, 255);
@@ -234,7 +245,7 @@ const GAME = {
               });
               this.field.find((item, index) => {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index);
+                  this.clearActive(index, false);
                   cage[index].classList.remove("active");
                 } 
               });  
@@ -255,13 +266,13 @@ const GAME = {
                 plugа = null;
               } else {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index);
+                  this.clearActive(index, false);
                   cage[index].classList.remove("active");
                 }
               }
             }); 
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             } else {
               cage[i].classList.add("active");
@@ -288,19 +299,18 @@ const GAME = {
                 abilityWindow.remove();
               }
             });
-  
             this.field.find((item, index) => {
               if (index === i) {
                 plugа = null;
               } else {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index); 
+                  this.clearActive(index, false); 
                   cage[index].classList.remove("active");
                 }
               }
             }); 
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             } else {
               cage[i].classList.add("active");
@@ -336,13 +346,13 @@ const GAME = {
                 plugа = null;
               } else {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index);
+                  this.clearActive(index, false);
                   cage[index].classList.remove("active");
                 }
               }
             }); 
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             } else {
               cage[i].classList.add("active");
@@ -398,8 +408,19 @@ const GAME = {
               }
             }
           } else {
-            if (cage[i].classList.contains("pre-move")) {
-              this.move(i);
+            if (cage[i].classList.contains("pre-move") && cage[i].classList.contains("circle-look-up-unit")
+            || cage[i].classList.contains("pre-move") && cage[i].classList.contains("triangle-look-up-unit")
+            || cage[i].classList.contains("pre-move") && cage[i].classList.contains("square-look-up-unit")) {
+              // console.log("work attack");
+              this.move(i, true);
+              this.player1 = true;
+              this.whoseMove.style.cssText = `display: block;
+                                              color: rgb(255, 0, 0);
+                                              border-color: rgb(255, 0, 0);`
+              this.whoseMove.innerHTML = "ХОД ИГРОКА 1";
+            } else if (cage[i].classList.contains("pre-move")) {
+              // console.log("work move");
+              this.move(i, false);
               this.player1 = true;
               this.whoseMove.style.cssText = `display: block;
                                               color: rgb(255, 0, 0);
@@ -415,7 +436,7 @@ const GAME = {
               });
               this.field.find((item, index) => {
                 if (item.classList.contains("active")) {
-                  this.clearActive(index);
+                  this.clearActive(index, false);
                   cage[index].classList.remove("active");
                 } 
               });  
@@ -475,15 +496,15 @@ const GAME = {
     }      
   },
 
-  move(i) {
+  move(i, booleanDeleteUnite) {
     const cage = document.querySelectorAll(".cage");
     if (this.player1) {
       this.field.find((item, index) => {
         if (item.classList.contains("active") && item.classList.contains("circle-look-up-unit")) {
-          this.clearActive(index);
+          this.clearActive(index, booleanDeleteUnite);
           this.step(cage, index, i, "circle-look-up", "cage circle-look-up-unit");
         } else if (item.classList.contains("active") && item.classList.contains("triangle-look-up-unit")) {
-          this.clearActive(index);
+          this.clearActive(index, booleanDeleteUnite);
           this.step(cage, index, i, "triangle-look-up", "cage triangle-look-up-unit");
           this.field.filter((item) => {
             if (item.classList.contains("pre-move") 
@@ -495,17 +516,17 @@ const GAME = {
             }
           })
         } else if (item.classList.contains("active") && item.classList.contains("square-look-up-unit")) {
-          this.clearActive(index);
+          this.clearActive(index, booleanDeleteUnite);
           this.step(cage, index, i, "square-look-up", "cage square-look-up-unit");
         }
       });  
     } else {
       this.field.find((item, index) => {
         if (item.classList.contains("active") && item.classList.contains("circle-look-down-unit")) {
-          this.clearActive(index);
+          this.clearActive(index, booleanDeleteUnite);
           this.step(cage, index, i, "circle-look-down", "cage circle-look-down-unit");
         } else if (item.classList.contains("active") && item.classList.contains("triangle-look-down-unit")) {
-          this.clearActive(index);
+          this.clearActive(index, booleanDeleteUnite);
           this.step(cage, index, i, "triangle-look-down", "cage triangle-look-down-unit");
           this.field.filter((item) => {
             if (item.classList.contains("pre-move") 
@@ -517,7 +538,7 @@ const GAME = {
             }
           })
         } else if (item.classList.contains("active") && item.classList.contains("square-look-down-unit")) {
-          this.clearActive(index);
+          this.clearActive(index, booleanDeleteUnite);
           this.step(cage, index, i, "square-look-down", "cage square-look-down-unit");
         }
       });  
@@ -536,189 +557,207 @@ const GAME = {
     cage[indexOfPremove].className = cageClassName;
   },
   
-  clearActive(index) { 
+  clearActive(index, booleanDeleteUnite) { 
     if (this.player1) {
       // circleLookUp  
       if (this.field[index].classList.contains("circle-look-up-unit")) {
         if (index === 5 || index === 10 || index === 15 || index === 20) {
-          this.clear(index, 5);
-          this.clear(index, 4);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
         } else {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 4);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
         }
         // triangleLookUp
       } else if (this.field[index].classList.contains("triangle-look-up-unit")) {
           if (index === 5 || index === 15) {
-            this.clear(index, 4);
-            this.clear(index, -6);
+            this.clear(index, 4, booleanDeleteUnite);
+            this.clear(index, -6, booleanDeleteUnite);
           } else if (index === 21 || index === 23) {
-            this.clear(index, 6);
-            this.clear(index, 4);
+            this.clear(index, 6, booleanDeleteUnite);
+            this.clear(index, 4, booleanDeleteUnite);
           } else if (index === 9 || index === 19) {
-            this.clear(index, 6);
-            this.clear(index, -4);
+            this.clear(index, 6, booleanDeleteUnite);
+            this.clear(index, -4, booleanDeleteUnite);
           } else if (index === 1 || index === 3) {
-            this.clear(index, -6); 
-            this.clear(index, -4);
+            this.clear(index, -6, booleanDeleteUnite); 
+            this.clear(index, -4, booleanDeleteUnite);
           } else {
-            this.clear(index, 6);
-            this.clear(index, 4);
-            this.clear(index, -4);
-            this.clear(index, -6);
+            this.clear(index, 6, booleanDeleteUnite);
+            this.clear(index, 4, booleanDeleteUnite);
+            this.clear(index, -4, booleanDeleteUnite);
+            this.clear(index, -6, booleanDeleteUnite);
           } 
         // squareLookUp 
       } else if (this.field[index].classList.contains("square-look-up-unit")) {
         if (index === 5 || index === 5 || index === 15) {
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, -1);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 0) {
-          this.clear(index, -1);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 20) {
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, -1);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite); 
+          this.clear(index, -1, booleanDeleteUnite);
         } else if (index === 1 || index === 2 || index === 3) {
-          this.clear(index, 1);
-          this.clear(index, -1);
-          this.clear(index, -4);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 4) {
-          this.clear(index, 1);
-          this.clear(index, -4);
-          this.clear(index, -5);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
         } else if (index === 24) {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 1);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
         } else if (index === 9 || index === 14 || index === 19) {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 1);
-          this.clear(index, -4);
-          this.clear(index, -5);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
         } else if (index === 21 || index === 22 || index === 23) {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, 1);
-          this.clear(index, -1);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
         } else {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, 1);
-          this.clear(index, -1);
-          this.clear(index, -4);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         }
       }
     } else {
       // circleLookDown 
       if (this.field[index].classList.contains("circle-look-down-unit")) {
         if (index === 10 || index === 15) {
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else {
-          this.clear(index, -4);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         }
       // triangleLookDown
       } else if (this.field[index].classList.contains("triangle-look-down-unit")) {
         if (index === 5 || index === 15) {
-          this.clear(index, 4);
-          this.clear(index, -6);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 21 || index === 23) {
-          this.clear(index, 6);
-          this.clear(index, 4);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
         } else if (index === 9 || index === 19) {
-          this.clear(index, 6);
-          this.clear(index, -4);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
         } else if (index === 1 || index === 3) {
-          this.clear(index, -6); 
-          this.clear(index, -4);
+          this.clear(index, -6, booleanDeleteUnite); 
+          this.clear(index, -4, booleanDeleteUnite);
         } else {
-          this.clear(index, 6);
-          this.clear(index, 4);
-          this.clear(index, -4);
-          this.clear(index, -6);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } 
       // squareLookDown
       } else if (this.field[index].classList.contains("square-look-down-unit")) {
         if (index === 5 || index === 5 || index === 15) {
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, -1);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 0) {
-          this.clear(index, -1);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 20) {
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, -1);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
         } else if (index === 1 || index === 2 || index === 3) {
-          this.clear(index, 1);
-          this.clear(index, -1);
-          this.clear(index, -4);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         } else if (index === 4) {
-          this.clear(index, 1);
-          this.clear(index, -4);
-          this.clear(index, -5);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
         } else if (index === 24) {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 1);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
         } else if (index === 9 || index === 14 || index === 19) {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 1);
-          this.clear(index, -4);
-          this.clear(index, -5);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
         } else if (index === 21 || index === 22 || index === 23) {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, 1);
-          this.clear(index, -1);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
         } else {
-          this.clear(index, 6);
-          this.clear(index, 5);
-          this.clear(index, 4);
-          this.clear(index, 1);
-          this.clear(index, -1);
-          this.clear(index, -4);
-          this.clear(index, -5);
-          this.clear(index, -6);
+          this.clear(index, 6, booleanDeleteUnite);
+          this.clear(index, 5, booleanDeleteUnite);
+          this.clear(index, 4, booleanDeleteUnite);
+          this.clear(index, 1, booleanDeleteUnite);
+          this.clear(index, -1, booleanDeleteUnite);
+          this.clear(index, -4, booleanDeleteUnite);
+          this.clear(index, -5, booleanDeleteUnite);
+          this.clear(index, -6, booleanDeleteUnite);
         }
       }
     }
   },
 
-  clear(index, clearLocation) {
+  clear(index, clearLocation, booleanDeleteUnite) {
     if (this.player1) {
       if (this.field[index-clearLocation].classList.contains("circle-look-up-unit")
       || this.field[index-clearLocation].classList.contains("triangle-look-up-unit")
       || this.field[index-clearLocation].classList.contains("square-look-up-unit")) {
         plugа = 0;
       } else if (this.field[index-clearLocation].classList.contains("circle-look-down-unit")) {
+        if (booleanDeleteUnite) {
+          this.circlePlayer2.pop();
+        }
+        if (this.circlePlayer2.length === 0 && this.squarePlayer2.length === 0 && this.trianglePlayer2.length === 0) {
+          alert("Игрок 1 Победил");
+        }
         this.clearEnemy(index, clearLocation, "circle-look-down", "cage circle-look-down-unit");
       } else if (this.field[index-clearLocation].classList.contains("square-look-down-unit")) {
+        if (booleanDeleteUnite) {
+          this.squarePlayer2.pop();
+        }
+        if (this.circlePlayer2.length === 0 && this.squarePlayer2.length === 0 && this.trianglePlayer2.length === 0) {
+          alert("Игрок 1 Победил");
+        }
         this.clearEnemy(index, clearLocation, "square-look-down", "cage square-look-down-unit");
       } else if (this.field[index-clearLocation].classList.contains("triangle-look-down-unit")) {
+        if (booleanDeleteUnite) {
+          this.trianglePlayer2.pop();
+        }
+        if (this.circlePlayer2.length === 0 && this.squarePlayer2.length === 0 && this.trianglePlayer2.length === 0) {
+          alert("Игрок 1 Победил");
+        }
         this.clearEnemy(index, clearLocation, "triangle-look-down", "cage triangle-look-down-unit");
       } else {
         this.field[index-clearLocation].innerHTML = "";
@@ -730,10 +769,28 @@ const GAME = {
       || this.field[index-clearLocation].classList.contains("square-look-down-unit")) {
         plugа = 0;
       } else if (this.field[index-clearLocation].classList.contains("circle-look-up-unit")) {
+        if (booleanDeleteUnite) {
+          this.circlePlayer1.pop();
+        }
+        if (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) {
+          alert("Игрок 2 Победил");
+        }
         this.clearEnemy(index, clearLocation, "circle-look-up", "cage circle-look-up-unit");
       } else if (this.field[index-clearLocation].classList.contains("square-look-up-unit")) {
+        if (booleanDeleteUnite) {
+          this.squarePlayer1.pop();
+        }
+        if (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) {
+          alert("Игрок 2 Победил");
+        }
         this.clearEnemy(index, clearLocation, "square-look-up", "cage square-look-up-unit");
       } else if (this.field[index-clearLocation].classList.contains("triangle-look-up-unit")) {
+        if (booleanDeleteUnite) {
+          this.trianglePlayer1.pop();
+        }
+        if (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) {
+          alert("Игрок 2 Победил");
+        }
         this.clearEnemy(index, clearLocation, "triangle-look-up", "cage triangle-look-up-unit");
       } else {
         this.field[index-clearLocation].innerHTML = "";
@@ -761,12 +818,12 @@ const GAME = {
           if (this.player1) {
             this.field.find((item, index) => {
               if (item.classList.contains("active")) {
-                this.clearActive(index);
+                this.clearActive(index, false);
                 cage[index].classList.remove("active");
               }
             });
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             }
             if (cage[i].classList.contains("player1-ability-table-on")) {
@@ -793,7 +850,6 @@ const GAME = {
             headerAbilitiesWindow.innerHTML = "Выберите способ атаки";
             abilitiesWindow.prepend(headerAbilitiesWindow);
     
-    
             let abilityBTN1 = document.createElement("button");
             abilityBTN1.className = "player1-ability-BTN1";
             abilityBTN1.innerHTML = "ЛУЧ 1";
@@ -814,12 +870,12 @@ const GAME = {
           } else {
             this.field.find((item, index) => {
               if (item.classList.contains("active")) {
-                this.clearActive(index);
+                this.clearActive(index, false);
                 cage[index].classList.remove("active");
               }
             });
             if (cage[i].classList.contains("active")) {
-              this.clearActive(i);
+              this.clearActive(i, false);
               cage[i].classList.remove("active");
             }
             if (cage[i].classList.contains("player2-ability-table-on")) {
@@ -1195,12 +1251,12 @@ const GAME = {
   },
 
   showUnits() {
-    console.log(this.trianglelPlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
+    console.log(this.trianglePlayer1);  // Array [ span.triangle-look-up, span.triangle-look-up]
     console.log(this.trianglePlayer2); // Array [ span.triangle-look-down, span.triangle-look-down]
     console.log(this.squarePlayer1); // Array [ span.square-look-up]
     console.log(this.squarePlayer2); // Array [ span.square-look-down]
     console.log(this.circlePlayer1); // Array(3) [ span.circle-look-up, span.circle-look-up, span.circle-look-up]
-    console.log(this.circlePlayer2); // Array(3) [ span.circle-look-down, span.circle-look-down, span.circle-look-down]
+    console.log(this.circlePlayer2); // Array(3) [ span.circle-look-down, span.circle-look-down, span.circle-look-down] 
   }
 }
 
@@ -1219,9 +1275,9 @@ startGameBTN.addEventListener("click", () => {
 });
 
 
-showUnit.addEventListener("click", function () {
-  GAME.showUnits();
-});
+// showUnit.addEventListener("click", function () {
+//   GAME.showUnits();
+// });
 
 
 
