@@ -217,6 +217,7 @@ const GAME = {
               }
             }
           } else {
+<<<<<<< HEAD
             if (cage[i].classList.contains("pre-move") && cage[i].classList.contains("circle-look-down-unit")
             || cage[i].classList.contains("pre-move") && cage[i].classList.contains("triangle-look-down-unit")
             || cage[i].classList.contains("pre-move") && cage[i].classList.contains("square-look-down-unit")) {
@@ -234,6 +235,32 @@ const GAME = {
             } else if (cage[i].classList.contains("pre-move")) {
               // console.log("work move");
               this.move(i, false); 
+=======
+            if (cage[i].classList.contains("pre-move")) {
+              this.move(i); 
+              let arr = [];
+
+
+              for (let prop of cage) {
+                if (prop.classList.contains("circle-look-down-unit") 
+                || prop.classList.contains("triangle-look-down-unit")
+                || prop.classList.contains("square-look-down-unit")) {
+                  arr.push(prop);
+                } 
+              }
+              
+              if (arr.length === 0) {
+                alert("Игрок 1 победил");
+                let field = document.querySelector(".field");
+                document.body.remove(field);
+                // window.onload = function() {
+                //   let newGameContainer = document.createElement("div");
+                //   newGameContainer.className = "new-game-container";
+                //   document.body.prepend(newGameContainer);
+                // }
+              } 
+
+>>>>>>> de63ce5494cffb0eda6a557496ac2b5bacf84eee
               this.player1 = false;
               this.whoseMove.style.cssText = `display: block;
                                               color: rgb(0, 0, 255);
@@ -412,6 +439,7 @@ const GAME = {
               }
             }
           } else {
+<<<<<<< HEAD
             if (cage[i].classList.contains("pre-move") && cage[i].classList.contains("circle-look-up-unit")
             || cage[i].classList.contains("pre-move") && cage[i].classList.contains("triangle-look-up-unit")
             || cage[i].classList.contains("pre-move") && cage[i].classList.contains("square-look-up-unit")) {
@@ -425,6 +453,28 @@ const GAME = {
             } else if (cage[i].classList.contains("pre-move")) {
               // console.log("work move");
               this.move(i, false);
+=======
+            if (cage[i].classList.contains("pre-move")) {
+              this.move(i);
+              let arr = [];
+              let field = document.querySelector(".field");
+              for (let prop of cage) {
+                if (prop.classList.contains("circle-look-up-unit") 
+                || prop.classList.contains("triangle-look-up-unit")
+                || prop.classList.contains("square-look-up-unit")) {
+                  arr.push(prop);
+                } 
+              }
+              if (arr.length === 0) {
+                alert("Игрок 2 победил");
+                document.body.remove(field);
+
+                let newGameContainer = document.createElement("div");
+                newGameContainer.className = "new-game-container";
+                document.body.append(newGameContainer);
+              } 
+
+>>>>>>> de63ce5494cffb0eda6a557496ac2b5bacf84eee
               this.player1 = true;
               this.whoseMove.style.cssText = `display: block;
                                               color: rgb(255, 0, 0);
