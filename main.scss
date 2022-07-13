@@ -5,8 +5,8 @@ $color-green: rgb(0, 255, 0);
 $color-blue: rgb(0, 0, 255);
 $color-yellow: rgb(255, 255, 0);
 $color-pink: rgb(255, 0, 255);
-$color-player1:rgb(255, 0, 0);
-$color-player2: rgb(0, 0, 255);
+$color-player1:rgb(0, 255, 174);
+$color-player2: rgb(255, 0, 195);
 
 $laserWidth: 120 * 3 + px;
 
@@ -430,14 +430,57 @@ background-color: $color-player1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   border: 5px solid $color-white;
   box-shadow: 5px 7px 7px 4px rgb(199, 199, 199);
   width: 500px;
   height: 200px;
   color: $color-white;
+  row-gap: 10%;
 
+  &__button-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 5%;
+  }
 }
 
+.new-game-header {
+  border: 3px solid $color-white;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+  box-shadow: 10px 7px 7px 4px rgb(237, 235, 235);
+  transition: 0.4s;
+  color: $color-white;
+  user-select: none; 
+}
+
+.new-game-container-btn {
+  width: 200px;
+  height: 50px;
+  color: antiquewhite;
+  font-size: 20px;
+
+  &:hover {
+    background-color: $color-white;
+    border: 3px solid rgba(36, 36, 35, 0.737);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.798);
+    border: 0px solid rgb(47, 45, 27);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 5px;
+  }
+}
 
 @media (min-width: 500px) and (max-width: 630px) {
   .field {

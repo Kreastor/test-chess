@@ -217,14 +217,8 @@ const GAME = {
               }
               
               if (arr.length === 0) {
-                alert("Игрок 1 победил");
-                let field = document.querySelector(".field");
-                document.body.remove(field);
-                // window.onload = function() {
-                //   let newGameContainer = document.createElement("div");
-                //   newGameContainer.className = "new-game-container";
-                //   document.body.prepend(newGameContainer);
-                // }
+                console.log("Игрок 1 победил");
+                this.result();
               } 
 
               this.player1 = false;
@@ -408,7 +402,7 @@ const GAME = {
             if (cage[i].classList.contains("pre-move")) {
               this.move(i);
               let arr = [];
-   
+
               for (let prop of cage) {
                 if (prop.classList.contains("circle-look-up-unit") 
                 || prop.classList.contains("triangle-look-up-unit")
@@ -418,11 +412,8 @@ const GAME = {
               }
               if (arr.length === 0) {
                 alert("Игрок 2 победил");
-                document.body.remove(field);
-
-                // let newGameContainer = document.createElement("div");
-                // newGameContainer.className = "new-game-container";
-                // document.body.append(newGameContainer);
+                console.log("Игрок 2 победил");
+                this.result();
               } 
 
               this.player1 = true;
@@ -1079,9 +1070,9 @@ const GAME = {
                 cage[index-4].className = "cage empty-cage";
               }, 500);
 
-
               setTimeout(() => {
                 let arr = [];
+
                 for (let prop of cage) {
                   if (prop.classList.contains("circle-look-down-unit") 
                   || prop.classList.contains("triangle-look-down-unit")
@@ -1089,17 +1080,11 @@ const GAME = {
                     arr.push(prop);
                   } 
                 }
-                console.log(arr);
                 
                 if (arr.length === 0) {
                   alert("Игрок 1 победил");
-                  let field = document.querySelector(".field");
-                  document.body.remove(field);
-                  // window.onload = function() {
-                  //   let newGameContainer = document.createElement("div");
-                  //   newGameContainer.className = "new-game-container";
-                  //   document.body.prepend(newGameContainer);
-                  // }
+                  console.log("Игрок 1 победил");
+                  this.result();
                 } 
               }, 600)
 
@@ -1145,6 +1130,7 @@ const GAME = {
 
               setTimeout(() => {
                 let arr = [];
+
                 for (let prop of cage) {
                   if (prop.classList.contains("circle-look-down-unit") 
                   || prop.classList.contains("triangle-look-down-unit")
@@ -1152,17 +1138,11 @@ const GAME = {
                     arr.push(prop);
                   } 
                 }
-                console.log(arr);
                 
                 if (arr.length === 0) {
                   alert("Игрок 1 победил");
-                  let field = document.querySelector(".field");
-                  document.body.remove(field);
-                  // window.onload = function() {
-                  //   let newGameContainer = document.createElement("div");
-                  //   newGameContainer.className = "new-game-container";
-                  //   document.body.prepend(newGameContainer);
-                  // }
+                  console.log("Игрок 1 победил");
+                  this.result();
                 } 
               }, 600)
 
@@ -1208,6 +1188,7 @@ const GAME = {
 
               setTimeout(() => {
                 let arr = [];
+
                 for (let prop of cage) {
                   if (prop.classList.contains("circle-look-up-unit") 
                   || prop.classList.contains("triangle-look-up-unit")
@@ -1215,17 +1196,11 @@ const GAME = {
                     arr.push(prop);
                   } 
                 }
-                console.log(arr);
                 
                 if (arr.length === 0) {
                   alert("Игрок 2 победил");
-                  let field = document.querySelector(".field");
-                  document.body.remove(field);
-                  // window.onload = function() {
-                  //   let newGameContainer = document.createElement("div");
-                  //   newGameContainer.className = "new-game-container";
-                  //   document.body.prepend(newGameContainer);
-                  // }
+                  console.log("Игрок 2 победил");
+                  this.result();
                 } 
               }, 600)
 
@@ -1270,6 +1245,7 @@ const GAME = {
               
               setTimeout(() => {
                 let arr = [];
+
                 for (let prop of cage) {
                   if (prop.classList.contains("circle-look-up-unit") 
                   || prop.classList.contains("triangle-look-up-unit")
@@ -1277,17 +1253,11 @@ const GAME = {
                     arr.push(prop);
                   } 
                 }
-                console.log(arr);
                 
                 if (arr.length === 0) {
                   alert("Игрок 2 победил");
-                  let field = document.querySelector(".field");
-                  document.body.remove(field);
-                  // window.onload = function() {
-                  //   let newGameContainer = document.createElement("div");
-                  //   newGameContainer.className = "new-game-container";
-                  //   document.body.prepend(newGameContainer);
-                  // }
+                  console.log("Игрок 2 победил");
+                  this.result();
                 } 
               }, 600)
 
@@ -1310,12 +1280,78 @@ const GAME = {
       })
     }
   },
+
+  result() {
+    document.body.innerHTML = "";
+  
+    let newGameContainer = document.createElement("div");
+    newGameContainer.className = "new-game-container";
+    document.body.prepend(newGameContainer);
+
+    let newGameContainerHeader = document.createElement("h1");
+    newGameContainerHeader.className = "new-game-container-header";
+    newGameContainerHeader.innerHTML = "Сыграть ещё раз?"
+    newGameContainer.append(newGameContainerHeader);
+
+    let newGameContainer__buttonsBox = document.createElement("div");
+    newGameContainer__buttonsBox.className = "new-game-container__button-box";
+    newGameContainer.append(newGameContainer__buttonsBox);
+
+    let newGameContainerBTNYes = document.createElement("button");
+    newGameContainerBTNYes.className = "new-game-container-btn";
+    newGameContainerBTNYes.id = "yes";
+    newGameContainerBTNYes.innerHTML = "Да"
+    newGameContainer__buttonsBox.append(newGameContainerBTNYes);
+    
+    let newGameContainerBTNNo = document.createElement("button");
+    newGameContainerBTNNo.className = "new-game-container-btn";
+    newGameContainerBTNNo.id = "no";
+    newGameContainerBTNNo.innerHTML = "Нет"
+    newGameContainer__buttonsBox.append(newGameContainerBTNNo);
+
+    this.playAgain();
+    return this;
+  },
+
+  playAgain() {
+
+    // let newGameContainer = document.querySelector(".new-game-container");
+    let yesBtn = document.getElementById("yes");
+
+    yesBtn.addEventListener("click", (event) => {
+
+      document.body.innerHTML = "";
+      // // newGameContainer.style = "display:none";
+      // let whoseMove = document.createElement("h1");
+      // whoseMove.id = "whose-move";
+      // document.body.prepend(whoseMove);
+      // whoseMove.style.cssText =  `display: block;
+      //                             color: rgb(255, 0, 0);
+      //                             border-color: rgb(255, 0, 0);`
+      // whoseMove.innerHTML = "ХОД ИГРОКА 1";
+
+      
+      // setTimeout(() => this.createGame(), 100); 
+      // setTimeout(() => this.selectUnit(), 500);
+      // setTimeout(() => this.callRoyalAbilities(), 600);
+    })
+
+    let noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("click", (event) => {
+      document.body.innerHTML = "";
+    })
+
+  }
+
+
 }
 
 const startGameBTN = document.querySelector(".border-menu__item");
-const whoseMove = document.querySelector("#whose-move");
+
 
 startGameBTN.addEventListener("click", () => {
+  let whoseMove = document.querySelector("#whose-move");
   document.querySelector(".border-menu").style = "display:none";
   whoseMove.style.cssText =  `display: block;
                             color: rgb(255, 0, 0);
@@ -1325,3 +1361,4 @@ startGameBTN.addEventListener("click", () => {
   setTimeout(() => GAME.selectUnit(), 500);
   setTimeout(() => GAME.callRoyalAbilities(), 600);
 });
+
