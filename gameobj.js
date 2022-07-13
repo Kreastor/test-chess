@@ -222,6 +222,10 @@ const GAME = {
             || cage[i].classList.contains("pre-move") && cage[i].classList.contains("square-look-down-unit")) {
               // console.log("work attack");
               this.move(i, true);
+              cage.find((item, index) => {
+                console.log(item);
+                // (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) 
+              })
               this.player1 = false;
               this.whoseMove.style.cssText = `display: block;
                                               color: rgb(0, 0, 255);
@@ -737,6 +741,7 @@ const GAME = {
         plugа = 0;
       } else if (this.field[index-clearLocation].classList.contains("circle-look-down-unit")) {
         if (booleanDeleteUnite) {
+          console.log("круг делит. Должен срабатывать когда я съедаю круг синих и после чего удалять только один круг из массива");
           this.circlePlayer2.pop();
         }
         if (this.circlePlayer2.length === 0 && this.squarePlayer2.length === 0 && this.trianglePlayer2.length === 0) {
@@ -745,6 +750,7 @@ const GAME = {
         this.clearEnemy(index, clearLocation, "circle-look-down", "cage circle-look-down-unit");
       } else if (this.field[index-clearLocation].classList.contains("square-look-down-unit")) {
         if (booleanDeleteUnite) {
+          console.log("квадрат делит. Должен срабатывать когда я съедаю квадрат синих и после чего удалять только один квадрат из массива");
           this.squarePlayer2.pop();
         }
         if (this.circlePlayer2.length === 0 && this.squarePlayer2.length === 0 && this.trianglePlayer2.length === 0) {
@@ -753,6 +759,7 @@ const GAME = {
         this.clearEnemy(index, clearLocation, "square-look-down", "cage square-look-down-unit");
       } else if (this.field[index-clearLocation].classList.contains("triangle-look-down-unit")) {
         if (booleanDeleteUnite) {
+        console.log("трингл делит. Должен срабатывать когда я съедаю треугольник синих и после чего удалять только один треугольник из массива");
           this.trianglePlayer2.pop();
         }
         if (this.circlePlayer2.length === 0 && this.squarePlayer2.length === 0 && this.trianglePlayer2.length === 0) {
@@ -770,6 +777,7 @@ const GAME = {
         plugа = 0;
       } else if (this.field[index-clearLocation].classList.contains("circle-look-up-unit")) {
         if (booleanDeleteUnite) {
+        console.log("круг делит. Должен срабатывать когда я съедаю круг красных и после чего удалять только один круг из массива");
           this.circlePlayer1.pop();
         }
         if (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) {
@@ -778,6 +786,7 @@ const GAME = {
         this.clearEnemy(index, clearLocation, "circle-look-up", "cage circle-look-up-unit");
       } else if (this.field[index-clearLocation].classList.contains("square-look-up-unit")) {
         if (booleanDeleteUnite) {
+          console.log("квадрат делит. Должен срабатывать когда я съедаю квадрат красных и после чего удалять только один квадрат из массива");
           this.squarePlayer1.pop();
         }
         if (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) {
@@ -786,6 +795,7 @@ const GAME = {
         this.clearEnemy(index, clearLocation, "square-look-up", "cage square-look-up-unit");
       } else if (this.field[index-clearLocation].classList.contains("triangle-look-up-unit")) {
         if (booleanDeleteUnite) {
+        console.log("трингл делит. Должен срабатывать когда я съедаю треугольник красных и после чего удалять только один треугольник из массива");
           this.trianglePlayer1.pop();
         }
         if (this.circlePlayer1.length === 0 && this.squarePlayer1.length === 0 && this.trianglePlayer1.length === 0) {
