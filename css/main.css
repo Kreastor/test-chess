@@ -111,7 +111,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid red;
+  border: 1px solid #00ffae;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -125,7 +125,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid red;
+  border: 1px solid #00ffae;
   width: 50px;
   height: 50px;
   -webkit-transition: 0.4s;
@@ -142,7 +142,7 @@
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-bottom: 40px solid red;
+  border-bottom: 40px solid #00ffae;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -153,7 +153,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid blue;
+  border: 1px solid #ff00c3;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -167,7 +167,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  border: 1px solid blue;
+  border: 1px solid #ff00c3;
   width: 50px;
   height: 50px;
   -webkit-transition: 0.4s;
@@ -184,14 +184,14 @@
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 40px solid blue;
+  border-top: 40px solid #ff00c3;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .circle-look-up:active,
 .square-look-up:active {
-  background-color: red;
+  background-color: #00ffae;
   -webkit-transform: translate(-50%, -75%);
           transform: translate(-50%, -75%);
 }
@@ -203,7 +203,7 @@
 
 .circle-look-down:active,
 .square-look-down:active {
-  background-color: blue;
+  background-color: #ff00c3;
   -webkit-transform: translate(-50%, -25%);
           transform: translate(-50%, -25%);
 }
@@ -284,7 +284,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 0 auto;
-  border: 3px solid red;
+  border: 3px solid #00ffae;
 }
 
 .player2-abilities-window {
@@ -304,7 +304,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 0 auto;
-  border: 3px solid blue;
+  border: 3px solid #ff00c3;
 }
 
 .header-player1-abilities-window {
@@ -391,18 +391,18 @@
 
 .player1-ability-BTN1:hover,
 .player1-ability-BTN2:hover {
-  color: red;
-  border: 3px solid red;
-  -webkit-box-shadow: 2px 2px 4px 6px red;
-          box-shadow: 2px 2px 4px 6px red;
+  color: #00ffae;
+  border: 3px solid #00ffae;
+  -webkit-box-shadow: 2px 2px 4px 6px #00ffae;
+          box-shadow: 2px 2px 4px 6px #00ffae;
 }
 
 .player2-ability-BTN1:hover,
 .player2-ability-BTN2:hover {
-  color: blue;
-  border: 3px solid blue;
-  -webkit-box-shadow: 2px 2px 4px 6px blue;
-          box-shadow: 2px 2px 4px 6px blue;
+  color: #ff00c3;
+  border: 3px solid #ff00c3;
+  -webkit-box-shadow: 2px 2px 4px 6px #ff00c3;
+          box-shadow: 2px 2px 4px 6px #ff00c3;
 }
 
 .player1-ability-BTN1:active,
@@ -426,18 +426,18 @@
 }
 
 .player1-ability-table-on .square-look-up {
-  background-color: red;
+  background-color: #00ffae;
 }
 
 .player2-ability-table-on .square-look-up {
-  background-color: blue;
+  background-color: #ff00c3;
 }
 
 .player1-laser1 {
   width: 230px;
   height: 5px;
-  border: 1px solid red;
-  background: red;
+  border: 1px solid #00ffae;
+  background: #00ffae;
   border-radius: 18px;
   -webkit-box-shadow: 2px 2px 10px 1px #f4dede;
           box-shadow: 2px 2px 10px 1px #f4dede;
@@ -455,8 +455,8 @@
 .player2-laser1 {
   width: 230px;
   height: 5px;
-  border: 1px solid blue;
-  background: blue;
+  border: 1px solid #ff00c3;
+  background: #ff00c3;
   border-radius: 18px;
   -webkit-box-shadow: 2px 2px 10px 1px #f4dede;
           box-shadow: 2px 2px 10px 1px #f4dede;
@@ -504,8 +504,8 @@
 .player1-laser2 {
   width: 230px;
   height: 5px;
-  border: 1px solid red;
-  background: red;
+  border: 1px solid #00ffae;
+  background: #00ffae;
   border-radius: 18px;
   -webkit-box-shadow: 2px 2px 10px 1px #f4dede;
           box-shadow: 2px 2px 10px 1px #f4dede;
@@ -523,8 +523,8 @@
 .player2-laser2 {
   width: 230px;
   height: 5px;
-  border: 1px solid blue;
-  background: blue;
+  border: 1px solid #ff00c3;
+  background: #ff00c3;
   border-radius: 18px;
   -webkit-box-shadow: 2px 2px 10px 1px #f4dede;
           box-shadow: 2px 2px 10px 1px #f4dede;
@@ -566,5 +566,282 @@
   }
   100% {
     width: 230px;
+  }
+}
+
+.new-game-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 5px solid #fff;
+  -webkit-box-shadow: 5px 7px 7px 4px #c7c7c7;
+          box-shadow: 5px 7px 7px 4px #c7c7c7;
+  width: 500px;
+  height: 200px;
+  color: #fff;
+  row-gap: 10%;
+}
+
+.new-game-container__button-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 5%;
+          column-gap: 5%;
+}
+
+.new-game-header {
+  border: 3px solid #fff;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+  -webkit-box-shadow: 10px 7px 7px 4px #edebeb;
+          box-shadow: 10px 7px 7px 4px #edebeb;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.new-game-container-btn {
+  width: 200px;
+  height: 50px;
+  color: antiquewhite;
+  font-size: 20px;
+}
+
+.new-game-container-btn:hover {
+  background-color: #fff;
+  border: 3px solid rgba(36, 36, 35, 0.737);
+  color: black;
+  cursor: pointer;
+}
+
+.new-game-container-btn:active {
+  background-color: rgba(255, 255, 255, 0.798);
+  border: 0px solid #2f2d1b;
+  color: black;
+  cursor: pointer;
+  padding: 5px;
+}
+
+@media (min-width: 500px) and (max-width: 630px) {
+  .field {
+    width: 400px;
+    margin: 50% auto 0;
+  }
+  .cage {
+    width: 80px;
+    height: 80px;
+  }
+  .triangle-look-down {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #ff00c3;
+  }
+  .square-look-down {
+    border: 3px solid #ff00c3;
+    width: 30px;
+    height: 30px;
+  }
+  .circle-look-down {
+    border: 3px solid #ff00c3;
+    width: 30px;
+    height: 30px;
+  }
+  .triangle-look-up {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #00ffae;
+  }
+  .square-look-up {
+    border: 3px solid #00ffae;
+    width: 30px;
+    height: 30px;
+  }
+  .circle-look-up {
+    border: 3px solid #00ffae;
+    width: 30px;
+    height: 30px;
+  }
+  .pre-move-point,
+  .attack-move-point {
+    width: 10px;
+    height: 10px;
+  }
+  .player1-abilities-window {
+    top: 80%;
+    left: 38%;
+    width: 125px;
+    height: 150px;
+  }
+  .player2-abilities-window {
+    top: 10%;
+    left: 37%;
+    width: 125px;
+    height: 150px;
+  }
+  .header-player1-abilities-window,
+  .header-player2-abilities-window {
+    font-size: 14px;
+  }
+  .player1-ability-BTN1,
+  .player1-ability-BTN2,
+  .player2-ability-BTN1,
+  .player2-ability-BTN2 {
+    width: 90px;
+    height: 35px;
+    font-size: 16px;
+  }
+  .player1-laser1 {
+    width: 160px;
+    -webkit-transform: translateY(-45px) rotate(-45deg);
+            transform: translateY(-45px) rotate(-45deg);
+  }
+  .player1-laser2 {
+    width: 160px;
+    -webkit-transform: translate(-85px, -45px) rotate(45deg);
+            transform: translate(-85px, -45px) rotate(45deg);
+  }
+  .player2-laser1 {
+    width: 160px;
+    -webkit-transform: translate(5px, 50px) rotate(-135deg);
+            transform: translate(5px, 50px) rotate(-135deg);
+  }
+  .player2-laser2 {
+    width: 160px;
+    -webkit-transform: translate(-90px, 50px) rotate(-45deg);
+            transform: translate(-90px, 50px) rotate(-45deg);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 499px) {
+  .border-menu {
+    width: 220px;
+    height: 210px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .border-menu__item {
+    padding: 15px;
+    font-size: 25px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  #whose-move {
+    font-size: 15px;
+  }
+  .field {
+    width: 300px;
+    margin: 80% auto 0;
+  }
+  .cage {
+    width: 60px;
+    height: 60px;
+  }
+  .triangle-look-down {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #ff00c3;
+  }
+  .square-look-down {
+    border: 3px solid #ff00c3;
+    width: 25px;
+    height: 25px;
+  }
+  .circle-look-down {
+    border: 3px solid #ff00c3;
+    width: 20px;
+    height: 20px;
+  }
+  .triangle-look-up {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #00ffae;
+  }
+  .square-look-up {
+    border: 3px solid #00ffae;
+    width: 25px;
+    height: 25px;
+  }
+  .circle-look-up {
+    border: 3px solid #00ffae;
+    width: 20px;
+    height: 20px;
+  }
+  .pre-move-point,
+  .attack-move-point {
+    width: 10px;
+    height: 10px;
+  }
+  .player1-abilities-window {
+    top: 70%;
+    left: 37%;
+    width: 80px;
+    height: 80px;
+  }
+  .player2-abilities-window {
+    top: 20%;
+    left: 37%;
+    width: 80px;
+    height: 80px;
+  }
+  .header-player1-abilities-window,
+  .header-player2-abilities-window {
+    font-size: 10px;
+  }
+  .player1-ability-BTN1,
+  .player1-ability-BTN2,
+  .player2-ability-BTN1,
+  .player2-ability-BTN2 {
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+  }
+  .player1-laser1 {
+    width: 110px;
+    -webkit-transform: translateY(-30px) rotate(-45deg);
+            transform: translateY(-30px) rotate(-45deg);
+  }
+  .player1-laser2 {
+    width: 110px;
+    -webkit-transform: translate(-55px, -30px) rotate(45deg);
+            transform: translate(-55px, -30px) rotate(45deg);
+  }
+  .player2-laser1 {
+    width: 110px;
+    -webkit-transform: translate(5px, 35px) rotate(-135deg);
+            transform: translate(5px, 35px) rotate(-135deg);
+  }
+  .player2-laser2 {
+    width: 110px;
+    -webkit-transform: translate(-65px, 35px) rotate(-45deg);
+            transform: translate(-65px, 35px) rotate(-45deg);
   }
 }

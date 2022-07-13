@@ -5,8 +5,8 @@ $color-green: rgb(0, 255, 0);
 $color-blue: rgb(0, 0, 255);
 $color-yellow: rgb(255, 255, 0);
 $color-pink: rgb(255, 0, 255);
-$color-player1:rgb(255, 0, 0);
-$color-player2: rgb(0, 0, 255);
+$color-player1:rgb(0, 255, 174);
+$color-player2: rgb(255, 0, 195);
 
 $laserWidth: 120 * 3 + px;
 
@@ -420,4 +420,289 @@ background-color: $color-player1;
   25%  {width: 115px}
   50%  {width: 172.5px}
   100% {width: 230px}
+}
+
+.new-game-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid $color-white;
+  box-shadow: 5px 7px 7px 4px rgb(199, 199, 199);
+  width: 500px;
+  height: 200px;
+  color: $color-white;
+  row-gap: 10%;
+
+  &__button-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 5%;
+  }
+}
+
+.new-game-header {
+  border: 3px solid $color-white;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 25px;
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+  box-shadow: 10px 7px 7px 4px rgb(237, 235, 235);
+  transition: 0.4s;
+  color: $color-white;
+  user-select: none; 
+}
+
+.new-game-container-btn {
+  width: 200px;
+  height: 50px;
+  color: antiquewhite;
+  font-size: 20px;
+
+  &:hover {
+    background-color: $color-white;
+    border: 3px solid rgba(36, 36, 35, 0.737);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.798);
+    border: 0px solid rgb(47, 45, 27);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 5px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 630px) {
+  .field {
+    width: 400px;
+    margin: 50% auto 0;
+  }
+  
+  .cage {
+    width: 80px;
+    height: 80px;
+  }
+
+  .triangle-look-down {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid $color-player2;
+  }
+
+  .square-look-down {
+    border: 3px solid $color-player2;
+    width: 30px;
+    height: 30px;
+  }
+
+  .circle-look-down {
+    border: 3px solid $color-player2;
+    width: 30px;
+    height: 30px;
+  }
+
+  .triangle-look-up {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid $color-player1;
+  }
+
+  .square-look-up {
+    border: 3px solid $color-player1;
+    width: 30px;
+    height: 30px;
+  }
+
+  .circle-look-up {
+    border: 3px solid $color-player1;
+    width: 30px;
+    height: 30px;
+  }
+
+  .pre-move-point,
+  .attack-move-point {
+    width: 10px;
+    height: 10px;
+  }
+
+  .player1-abilities-window {
+    top: 80%;
+    left: 38%;
+    width: 125px;
+    height: 150px;
+  } 
+
+  .player2-abilities-window {
+    top: 10%;
+    left: 37%;
+    width: 125px;
+    height: 150px;
+  }
+
+  .header-player1-abilities-window,
+  .header-player2-abilities-window {
+    font-size: 14px;
+  }
+
+  .player1-ability-BTN1, 
+  .player1-ability-BTN2,
+  .player2-ability-BTN1, 
+  .player2-ability-BTN2 {
+    width: 90px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .player1-laser1 {
+    width: 160px;
+    transform: translateY(-45px) rotate(-45deg);
+  }
+
+  .player1-laser2 {
+    width: 160px;
+    transform: translate(-85px, -45px) rotate(45deg);
+  }
+
+  
+  .player2-laser1 {
+    width: 160px;
+    transform: translate(5px, 50px) rotate(-135deg);
+  }
+
+  .player2-laser2 {
+    width: 160px;
+    transform: translate(-90px, 50px) rotate(-45deg);
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 499px) {
+
+  .border-menu {
+    width: 220px;
+    height: 210px;
+    box-shadow: none;
+  }
+
+  .border-menu__item {
+    padding: 15px;
+    font-size: 25px;
+    box-shadow: none;
+  }
+
+  #whose-move {
+    font-size: 15px;
+  }
+
+  .field {
+    width: 300px;
+    margin: 80% auto 0;
+  }
+  
+  .cage {
+    width: 60px;
+    height: 60px;
+  }
+
+  .triangle-look-down {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid $color-player2;
+  }
+
+  .square-look-down {
+    border: 3px solid $color-player2;
+    width: 25px;
+    height: 25px;
+  }
+
+  .circle-look-down {
+    border: 3px solid $color-player2;
+    width: 20px;
+    height: 20px;
+  }
+
+  .triangle-look-up {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid $color-player1;
+  }
+
+  .square-look-up {
+    border: 3px solid $color-player1;
+    width: 25px;
+    height: 25px;
+  }
+
+  .circle-look-up {
+    border: 3px solid $color-player1;
+    width: 20px;
+    height: 20px;
+  }
+
+  .pre-move-point,
+  .attack-move-point {
+    width: 10px;
+    height: 10px;
+  }
+
+  .player1-abilities-window {
+    top: 70%;
+    left: 37%;
+    width: 80px;
+    height: 80px;
+  } 
+
+  .player2-abilities-window {
+    top: 20%;
+    left: 37%;
+    width: 80px;
+    height: 80px;
+  }
+
+  .header-player1-abilities-window,
+  .header-player2-abilities-window {
+    font-size: 10px;
+  }
+
+  .player1-ability-BTN1, 
+  .player1-ability-BTN2,
+  .player2-ability-BTN1, 
+  .player2-ability-BTN2 {
+    width: 60px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .player1-laser1 {
+    width: 110px;
+    transform: translateY(-30px) rotate(-45deg);
+  }
+
+  .player1-laser2 {
+    width: 110px;
+    transform: translate(-55px, -30px) rotate(45deg);
+  }
+
+  
+  .player2-laser1 {
+    width: 110px;
+    transform: translate(5px, 35px) rotate(-135deg);
+  }
+
+  .player2-laser2 {
+    width: 110px;
+    transform: translate(-65px, 35px) rotate(-45deg);
+  }
+  
 }
